@@ -41,7 +41,7 @@ services:
       - jenkins0
 
   bitbucket:
-    image: atlassian/bitbucket-server:5.2
+    image: atlassian/bitbucket-server:5.2.3
     ports:
       - 7999:7999
       - 7990:7990
