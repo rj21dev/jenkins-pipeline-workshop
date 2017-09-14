@@ -45,7 +45,7 @@ services:
       - 9000:9000
       - 9092:9092
     volumes:
-      - ./.sonarqube_new/conf:/opt/sonarqube/conf
-      - ./.sonarqube_new/data:/opt/sonarqube/data
-      - ./.sonarqube_new/extensions:/opt/sonarqube/extensions
-      - ./.sonarqube_new/plugins:/opt/sonarqube/lib/bundled-plugins
+      - ./.sonarqube/conf:/opt/sonarqube/conf
+      - ./.sonarqube/data:/opt/sonarqube/data
+      - ./.sonarqube/extensions:/opt/sonarqube/extensions
+      - ./.sonarqube/plugins:/opt/sonarqube/lib/bundled-plugins
