@@ -24,4 +24,4 @@ docker-compose up -d
 
 ### Явки:пароли:
 + :godmode: admin:admin
-+ :feelsgood: user:user
++ :hurtrealbad: user:user
