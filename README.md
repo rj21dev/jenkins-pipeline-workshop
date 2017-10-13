@@ -24,5 +24,6 @@ docker-compose up -d
 - BitBucket порт: 7990 http://localhost:7990/
 
 ### Явки:пароли:
-+ :godmode: admin:admin
-+ :hurtrealbad: user:user
+:godmode: admin:admin
+
+:hurtrealbad: user:user
