@@ -17,6 +17,7 @@ docker-compose up -d
 
 ### Координаты:
 Сервисы стартуют некоторое время. После запуска сервисов они должны быть доступны по следующим портам:
+- Portainer порт: 9001 http://localhost:9000/
 - Jenkins порт: 8080 http://localhost:8080/
 - Nexus порт: 8081 http://localhost:8081/
 - Sonar порт: 9000 http://localhost:9000/
