@@ -1,308 +1,4 @@
 ;
-/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:setup-tracking-widget', location = '/static/bitbucket/internal/widget/setup-tracking.js' */
-define("bitbucket/internal/widget/setup-tracking",["module","exports","jquery","lodash","bitbucket/internal/util/client-storage"],function(h,e,k,l,m){Object.defineProperty(e,"__esModule",{value:!0});var c=babelHelpers.interopRequireDefault(k),n=babelHelpers.interopRequireDefault(l),f=babelHelpers.interopRequireDefault(m),g=function(a){var b=a.isDevMode?"https://qa-wac.internal.atlassian.com":"https://www.atlassian.com",d=c.default.param({product:"stash",sid:a.serverId,pg:a.pageId,v:a.version});a=
-(0,c.default)("#setup-progress-iframe");b=b+"/pingback?"+d;a.length?a.attr("src",b):(0,c.default)("\x3ciframe\x3e").attr("id","setup-progress-iframe").css("display","none").appendTo("body").attr("src",b)};e.default={track:function(a){var b=(0,c.default)("#content"),d=b.attr("data-server-id"),b="true"===b.attr("data-dev-mode-enabled"),e=c.default.trim((0,c.default)("#product-version").text());a=a?a:window.location.pathname.replace(/\//g,"_");d={isDevMode:b,serverId:d,pageId:a,version:e};a=n.default.extend({},
-d,{pageId:"setup-complete"});f.default.setSessionItem("stash.setup.complete.data",a);g(d)},trackLoginPage:function(){var a=f.default.getSessionItem("stash.setup.complete.data");a&&(f.default.removeSessionItem("stash.setup.complete.data"),g(a))}};h.exports=e["default"]});;
-;
-/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:user-link', location = '/static/bitbucket/internal/widget/user/user-link.soy' */
-// This file was automatically generated from user-link.soy.
-// Please don't edit this file by hand.
-
-/**
- * @fileoverview Templates in namespace bitbucket.internal.widget.
- */
-
-if (typeof bitbucket == 'undefined') { var bitbucket = {}; }
-if (typeof bitbucket.internal == 'undefined') { bitbucket.internal = {}; }
-if (typeof bitbucket.internal.widget == 'undefined') { bitbucket.internal.widget = {}; }
-
-
-bitbucket.internal.widget.userLink = function(opt_data, opt_ignored) {
-  var output = '';
-  var displayName__soy3 = opt_data.user.displayName || opt_data.user.name;
-  output += (opt_data.href || opt_data.user.type == 'NORMAL' && opt_data.user.slug && !!(require('bitbucket/internal/model/page-state').getCurrentUser())) ? '<a href="' + soy.$$escapeHtml(opt_data.href ? opt_data.href : require('bitbucket/util/navbuilder').user(opt_data.user).build()) + '" ' + ((opt_data.extraClasses) ? 'class="' + soy.$$escapeHtml(opt_data.extraClasses) + '"' : '') + ((! opt_data.skipTitle) ? 'title="' + soy.$$escapeHtml(displayName__soy3) + '"' : '') + '>' + soy.$$escapeHtml(soy.$$truncate(displayName__soy3, 100, true)) + '</a>' : '<span' + ((opt_data.extraClasses) ? ' class="' + soy.$$escapeHtml(opt_data.extraClasses) + '"' : '') + ((! opt_data.skipTitle) ? ' title="' + soy.$$escapeHtml(displayName__soy3) + '"' : '') + '>' + soy.$$escapeHtml(soy.$$truncate(displayName__soy3, 100, true)) + '</span>';
-  return output;
-};
-if (goog.DEBUG) {
-  bitbucket.internal.widget.userLink.soyTemplateName = 'bitbucket.internal.widget.userLink';
-}
-;
-;
-/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:avatar', location = '/static/bitbucket/internal/widget/avatar/access-key-avatar.soy' */
-// This file was automatically generated from access-key-avatar.soy.
-// Please don't edit this file by hand.
-
-/**
- * @fileoverview Templates in namespace bitbucket.internal.widget.
- */
-
-if (typeof bitbucket == 'undefined') { var bitbucket = {}; }
-if (typeof bitbucket.internal == 'undefined') { bitbucket.internal = {}; }
-if (typeof bitbucket.internal.widget == 'undefined') { bitbucket.internal.widget = {}; }
-
-
-bitbucket.internal.widget.accessKey = function(opt_data, opt_ignored) {
-  return '<span title="' + soy.$$escapeHtml(opt_data.text) + '"><span class="aui-avatar aui-avatar-' + soy.$$escapeHtml(opt_data.size) + ' key-avatar"></span><span class="access-key-label">' + soy.$$escapeHtml(opt_data.label || opt_data.text) + '</span></span>';
-};
-if (goog.DEBUG) {
-  bitbucket.internal.widget.accessKey.soyTemplateName = 'bitbucket.internal.widget.accessKey';
-}
-
-
-bitbucket.internal.widget.accessKeyWithText = function(opt_data, opt_ignored) {
-  return bitbucket.internal.widget.accessKey(opt_data) + '<span class="access-key-text" title="' + soy.$$escapeHtml(opt_data.text) + '">' + soy.$$escapeHtml(opt_data.text) + '</span>';
-};
-if (goog.DEBUG) {
-  bitbucket.internal.widget.accessKeyWithText.soyTemplateName = 'bitbucket.internal.widget.accessKeyWithText';
-}
-;
-;
-/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:avatar', location = '/static/bitbucket/internal/widget/avatar/group-avatar.soy' */
-// This file was automatically generated from group-avatar.soy.
-// Please don't edit this file by hand.
-
-/**
- * @fileoverview Templates in namespace bitbucket.internal.widget.
- */
-
-if (typeof bitbucket == 'undefined') { var bitbucket = {}; }
-if (typeof bitbucket.internal == 'undefined') { bitbucket.internal = {}; }
-if (typeof bitbucket.internal.widget == 'undefined') { bitbucket.internal.widget = {}; }
-
-
-bitbucket.internal.widget.groupAvatar = function(opt_data, opt_ignored) {
-  return '<span class="aui-avatar aui-avatar-' + soy.$$escapeHtml(opt_data.size) + ' group-avatar' + soy.$$escapeHtml(opt_data.extraClasses ? ' ' + opt_data.extraClasses : '') + '" data-groupname="' + soy.$$escapeHtml(opt_data.name) + '"></span>';
-};
-if (goog.DEBUG) {
-  bitbucket.internal.widget.groupAvatar.soyTemplateName = 'bitbucket.internal.widget.groupAvatar';
-}
-
-
-bitbucket.internal.widget.groupAvatarWithName = function(opt_data, opt_ignored) {
-  return '<span title="' + soy.$$escapeHtml(opt_data.name) + '"' + ((opt_data.extraClasses) ? ' class="' + soy.$$escapeHtml(opt_data.extraClasses) + '"' : '') + '><span class="aui-avatar aui-avatar-' + soy.$$escapeHtml(opt_data.size) + ' group-avatar' + soy.$$escapeHtml(opt_data.avatarClasses ? ' ' + opt_data.avatarClasses : '') + '" data-groupname="' + soy.$$escapeHtml(opt_data.name) + '"></span>' + soy.$$escapeHtml(opt_data.name) + '</span>';
-};
-if (goog.DEBUG) {
-  bitbucket.internal.widget.groupAvatarWithName.soyTemplateName = 'bitbucket.internal.widget.groupAvatarWithName';
-}
-;
-;
-/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:avatar', location = '/static/bitbucket/internal/widget/avatar/avatar.soy' */
-// This file was automatically generated from avatar.soy.
-// Please don't edit this file by hand.
-
-/**
- * @fileoverview Templates in namespace bitbucket.internal.widget.
- */
-
-if (typeof bitbucket == 'undefined') { var bitbucket = {}; }
-if (typeof bitbucket.internal == 'undefined') { bitbucket.internal = {}; }
-if (typeof bitbucket.internal.widget == 'undefined') { bitbucket.internal.widget = {}; }
-
-
-bitbucket.internal.widget.avatar = function(opt_data, opt_ignored) {
-  return '' + aui.avatar.avatar({size: opt_data.size, avatarImageUrl: require('bitbucket/util/navbuilder')._avatarUrl(opt_data.person, ({XSMALL:32,SMALL:48,MEDIUM:64,LARGE:96,XLARGE:128,XXLARGE:192,XXXLARGE:256})[opt_data.size.toUpperCase()]).build(), accessibilityText: opt_data.person.displayName || opt_data.person.name, title: opt_data.tooltip, badgeContent: opt_data.badgeContent, extraClasses: 'user-avatar' + (opt_data.hideBadge ? ' badge-hidden' : '') + (opt_data.extraClasses ? ' ' + opt_data.extraClasses : ''), imageClasses: opt_data.imageClasses, extraAttributes: {'data-username': opt_data.person.name}, id: opt_data.id});
-};
-if (goog.DEBUG) {
-  bitbucket.internal.widget.avatar.soyTemplateName = 'bitbucket.internal.widget.avatar';
-}
-
-
-bitbucket.internal.widget.avatarWithName = function(opt_data, opt_ignored) {
-  var output = '';
-  var personName__soy14 = opt_data.person.displayName || opt_data.person.name;
-  output += '<div class="avatar-with-name' + ((opt_data.extraClasses) ? ' ' + soy.$$escapeHtml(opt_data.extraClasses) : '') + ((opt_data.deleted) ? ' deleted-user' : '') + '" title="' + soy.$$escapeHtml(personName__soy14) + '">' + bitbucket.internal.widget.avatar({size: opt_data.size, person: opt_data.person, imageClasses: opt_data.imageClasses, extraClasses: opt_data.avatarClasses, badgeContent: opt_data.badgeContent, hideBadge: opt_data.hideBadge, id: opt_data.id}) + ((opt_data.link && ! opt_data.deleted) ? bitbucket.internal.widget.userLink({user: opt_data.person, href: opt_data.href, extraClasses: opt_data.linkExtraClasses, skipTitle: true}) : '<span class="display-name">' + soy.$$escapeHtml(personName__soy14) + '</span>') + '</div>';
-  return output;
-};
-if (goog.DEBUG) {
-  bitbucket.internal.widget.avatarWithName.soyTemplateName = 'bitbucket.internal.widget.avatarWithName';
-}
-
-
-bitbucket.internal.widget.avatarWithNameAndEmail = function(opt_data, opt_ignored) {
-  return bitbucket.internal.widget.avatarWithName(opt_data) + '<span class="email-address" title="' + soy.$$escapeHtml(opt_data.person.emailAddress) + '">' + soy.$$escapeHtml(opt_data.person.emailAddress) + '</span>';
-};
-if (goog.DEBUG) {
-  bitbucket.internal.widget.avatarWithNameAndEmail.soyTemplateName = 'bitbucket.internal.widget.avatarWithNameAndEmail';
-}
-
-
-bitbucket.internal.widget.avatarSizeInPx = function(opt_data, opt_ignored) {
-  return '' + soy.$$escapeHtml(({XSMALL:32,SMALL:48,MEDIUM:64,LARGE:96,XLARGE:128,XXLARGE:192,XXXLARGE:256})[opt_data.size.toUpperCase()]) + ((opt_data.showPx) ? 'px' : '');
-};
-if (goog.DEBUG) {
-  bitbucket.internal.widget.avatarSizeInPx.soyTemplateName = 'bitbucket.internal.widget.avatarSizeInPx';
-}
-
-
-bitbucket.internal.widget.avatarWithBadge = function(opt_data, opt_ignored) {
-  return '' + bitbucket.internal.widget.avatar({size: opt_data.size, person: opt_data.person, tooltip: opt_data.tooltip, imageClasses: opt_data.imageClasses, extraClasses: opt_data.extraClasses, id: opt_data.id, hideBadge: opt_data.hideBadge, badgeContent: '<span class="badge' + soy.$$escapeHtml(opt_data.badgeClasses ? ' ' + opt_data.badgeClasses : '') + '">' + soy.$$escapeHtml(opt_data.badgeText) + '</span>'});
-};
-if (goog.DEBUG) {
-  bitbucket.internal.widget.avatarWithBadge.soyTemplateName = 'bitbucket.internal.widget.avatarWithBadge';
-}
-
-
-bitbucket.internal.widget.avatarWithNameAndBadge = function(opt_data, opt_ignored) {
-  return '' + bitbucket.internal.widget.avatarWithName({size: opt_data.size, person: opt_data.person, extraClasses: opt_data.extraClasses, avatarClasses: opt_data.avatarClasses, imageClasses: opt_data.imageClasses, id: opt_data.id, hideBadge: opt_data.hideBadge, badgeContent: '<span class="badge' + soy.$$escapeHtml(opt_data.badgeClasses ? ' ' + opt_data.badgeClasses : '') + '">' + soy.$$escapeHtml(opt_data.badgeText) + '</span>'});
-};
-if (goog.DEBUG) {
-  bitbucket.internal.widget.avatarWithNameAndBadge.soyTemplateName = 'bitbucket.internal.widget.avatarWithNameAndBadge';
-}
-;
-;
-/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:person-model', location = '/static/bitbucket/internal/model/person.js' */
-define("bitbucket/internal/model/person",["module","exports","backbone-brace"],function(c,a,b){Object.defineProperty(a,"__esModule",{value:!0});b=babelHelpers.interopRequireDefault(b);a.default=b.default.Model.extend({namedAttributes:{emailAddress:"string",name:"string"},idAttribute:"name",initialize:function(){null==this.namedAttributes.id&&this.setId(this.attributes[this.idAttribute])}});c.exports=a["default"]});;
-;
-/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:stash-user-model', location = '/static/bitbucket/internal/model/stash-user.js' */
-define("bitbucket/internal/model/stash-user",["module","exports","bitbucket/internal/model/person"],function(c,a,b){Object.defineProperty(a,"__esModule",{value:!0});b=babelHelpers.interopRequireDefault(b).default.extend({namedAttributes:{active:"boolean",avatarUrl:"string",displayName:"string",id:"number",isAdmin:"boolean",link:Object,links:Object,type:"string",slug:"string"}});a.default=b;c.exports=a["default"]});;
-;
-/* module-key = 'com.atlassian.bitbucket.server.bitbucket-bower-components:bacon', location = '/static/bower/bacon/dist/Bacon.js' */
-(function(){var a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,$,_,ab,bb,cb,db,eb,fb,gb,hb,ib={}.hasOwnProperty,jb=[].slice,kb=function(a,b){function c(){this.constructor=a}for(var d in b)ib.call(b,d)&&(a[d]=b[d]);return c.prototype=b.prototype,a.prototype=new c,a.__super__=b.prototype,a},lb=function(a,b){return function(){return a.apply(b,arguments)}};a={toString:function(){return"Bacon"}},a.version="0.7.42",l=("undefined"!=typeof global&&null!==global?global:this).Error,gb={indexOf:Array.prototype.indexOf?function(a,b){return a.indexOf(b)}:function(a,b){var c,d,e,f;for(c=e=0,f=a.length;f>e;c=++e)if(d=a[c],b===d)return c;return-1},indexWhere:function(a,b){var c,d,e,f;for(c=e=0,f=a.length;f>e;c=++e)if(d=a[c],b(d))return c;return-1},head:function(a){return a[0]},always:function(a){return function(){return a}},negate:function(a){return function(b){return!a(b)}},empty:function(a){return 0===a.length},tail:function(a){return a.slice(1,a.length)},filter:function(a,b){var c,d,e,f;for(c=[],e=0,f=b.length;f>e;e++)d=b[e],a(d)&&c.push(d);return c},map:function(a,b){var c,d,e,f;for(f=[],d=0,e=b.length;e>d;d++)c=b[d],f.push(a(c));return f},each:function(a,b){var c,d;for(c in a)d=a[c],b(c,d);return void 0},toArray:function(a){return J(a)?a:[a]},contains:function(a,b){return-1!==gb.indexOf(a,b)},id:function(a){return a},last:function(a){return a[a.length-1]},all:function(a,b){var c,d,e;for(null==b&&(b=gb.id),d=0,e=a.length;e>d;d++)if(c=a[d],!b(c))return!1;return!0},any:function(a,b){var c,d,e;for(null==b&&(b=gb.id),d=0,e=a.length;e>d;d++)if(c=a[d],b(c))return!0;return!1},without:function(a,b){return gb.filter(function(b){return b!==a},b)},remove:function(a,b){var c;return c=gb.indexOf(b,a),c>=0?b.splice(c,1):void 0},fold:function(a,b,c){var d,e,f;for(e=0,f=a.length;f>e;e++)d=a[e],b=c(b,d);return b},flatMap:function(a,b){return gb.fold(b,[],function(b,c){return b.concat(a(c))})},cached:function(a){var b;return b=o,function(){return b===o&&(b=a(),a=void 0),b}},toString:function(a){var b,c,d,e;try{return X++,null==a?"undefined":L(a)?"function":J(a)?X>5?"[..]":"["+gb.map(gb.toString,a).toString()+"]":null!=(null!=a?a.toString:void 0)&&a.toString!==Object.prototype.toString?a.toString():"object"==typeof a?X>5?"{..}":(c=function(){var c;c=[];for(d in a)ib.call(a,d)&&(e=function(){try{return a[d]}catch(c){return b=c}}(),c.push(gb.toString(d)+":"+gb.toString(e)));return c}(),"{"+c+"}"):a}finally{X--}}},X=0,a._=gb,a.scheduler={setTimeout:function(a,b){return setTimeout(a,b)},setInterval:function(a,b){return setInterval(a,b)},clearInterval:function(a){return clearInterval(a)},now:function(){return(new Date).getTime()}},a.fromBinder=function(b,c){return null==c&&(c=gb.id),new k(B(a,"fromBinder",b,c),function(d){var e,f,g,h;return h=!1,e=!1,f=function(){return h?void 0:"undefined"!=typeof g&&null!==g?(g(),h=!0):e=!0},g=b(function(){var b,e,g,h,i,k;for(b=1<=arguments.length?jb.call(arguments,0):[],h=c.apply(this,b),J(h)&&gb.last(h)instanceof j||(h=[h]),g=a.more,i=0,k=h.length;k>i;i++)if(e=h[i],g=d(e=_(e)),g===a.noMore||e.isEnd())return f(),g;return g}),e&&f(),f})},a.$={},a.$.asEventStream=function(b,c,d){var e;return L(c)&&(e=[c,void 0],d=e[0],c=e[1]),eb(this.selector||this,"asEventStream",b,a.fromBinder(function(a){return function(d){return a.on(b,c,d),function(){return a.off(b,c,d)}}}(this),d))},null!=(hb="undefined"!=typeof jQuery&&null!==jQuery?jQuery:"undefined"!=typeof Zepto&&null!==Zepto?Zepto:void 0)&&(hb.fn.asEventStream=a.$.asEventStream),a.fromEventTarget=function(b,c,d){var e,f,g,h,i,j,k,l;return e=null!=(g=null!=(h=null!=(i=b.addEventListener)?i:b.addListener)?h:b.bind)?g:b.on,f=null!=(j=null!=(k=null!=(l=b.removeEventListener)?l:b.removeListener)?k:b.unbind)?j:b.off,eb(a,"fromEventTarget",b,c,a.fromBinder(function(a){return e.call(b,c,a),function(){return f.call(b,c,a)}},d))},a.fromPromise=function(b,c){return eb(a,"fromPromise",b,a.fromBinder(function(a){return b.then(a,function(b){return a(new i(b))}),function(){return c&&"function"==typeof b.abort?b.abort():void 0}},function(a){return[a,C()]}))},a.noMore=["<no-more>"],a.more=["<more>"],a.later=function(b,c){return eb(a,"later",b,c,a.fromPoll(b,function(){return[c,C()]}))},a.sequentially=function(b,c){var d;return d=0,eb(a,"sequentially",b,c,a.fromPoll(b,function(){var a;return a=c[d++],d<c.length?a:d===c.length?[a,C()]:C()}))},a.repeatedly=function(b,c){var d;return d=0,eb(a,"repeatedly",b,c,a.fromPoll(b,function(){return c[d++%c.length]}))},a.spy=function(a){return Z.push(a)},Z=[],Y=function(a){var b,c,d;if(Z.length&&!Y.running)try{for(Y.running=!0,c=0,d=Z.length;d>c;c++)(b=Z[c])(a)}finally{delete Y.running}return void 0},fb=function(a){return function(){var b,c,d,e;return d=arguments[0],b=2<=arguments.length?jb.call(arguments,1):[],"object"==typeof d&&b.length&&(c=d,e=b[0],d=function(){return c[e].apply(c,arguments)},b=b.slice(1)),a.apply(null,[d].concat(jb.call(b)))}},O=function(b,c){return fb(function(){var d,e,f;return e=arguments[0],d=2<=arguments.length?jb.call(arguments,1):[],f=W(c,[function(a,b){return e.apply(null,jb.call(a).concat([b]))}]),eb.apply(null,[a,b,e].concat(jb.call(d),[a.combineAsArray(d).flatMap(f)]))})},a.fromCallback=O("fromCallback",function(){var b,c;return c=arguments[0],b=2<=arguments.length?jb.call(arguments,1):[],a.fromBinder(function(a){return P(c,b)(a),V},function(a){return[a,C()]})}),a.fromNodeCallback=O("fromNodeCallback",function(){var b,c;return c=arguments[0],b=2<=arguments.length?jb.call(arguments,1):[],a.fromBinder(function(a){return P(c,b)(a),V},function(a,b){return a?[new i(a),C()]:[b,C()]})}),a.fromPoll=function(b,c){return eb(a,"fromPoll",b,c,a.fromBinder(function(c){var d;return d=a.scheduler.setInterval(c,b),function(){return a.scheduler.clearInterval(d)}},c))},a.interval=function(b,c){return null==c&&(c={}),eb(a,"interval",b,c,a.fromPoll(b,function(){return U(c)}))},a.constant=function(b){return new q(B(a,"constant",b),function(a){return a(I(b)),a(C()),V})},a.never=function(){return new k(B(a,"never"),function(a){return a(C()),V})},a.once=function(b){return new k(B(a,"once",b),function(a){return a(_(b)),a(C()),V})},a.fromArray=function(b){var c;return b.length?(c=0,new k(B(a,"fromArray",b),function(d){var e,f,g;return g=!1,f=a.more,e=function(){var h;return f===a.noMore||g||(h=b[c++],f=d(_(h)),f===a.noMore)?void 0:c===b.length?d(C()):u.afterTransaction(e)},e(),function(){return g=!0}})):eb(a,"fromArray",b,a.never())},a.mergeAll=function(){var b;return b=1<=arguments.length?jb.call(arguments,0):[],J(b[0])&&(b=b[0]),b.length?new k(B.apply(null,[a,"mergeAll"].concat(jb.call(b))),function(c){var d,e,f;return d=0,f=function(e){return function(f){return e.dispatcher.subscribe(function(e){var g;return e.isEnd()?(d++,d===b.length?c(C()):a.more):(g=c(e),g===a.noMore&&f(),g)})}},e=gb.map(f,b),x.apply(null,e)}):a.never()},a.zipAsArray=function(){var b;return b=1<=arguments.length?jb.call(arguments,0):[],J(b[0])&&(b=b[0]),eb.apply(null,[a,"zipAsArray"].concat(jb.call(b),[a.zipWith(b,function(){var a;return a=1<=arguments.length?jb.call(arguments,0):[]})]))},a.zipWith=function(){var b,c,d;return b=arguments[0],c=2<=arguments.length?jb.call(arguments,1):[],L(b)||(d=[b,c[0]],c=d[0],b=d[1]),c=gb.map(function(a){return a.toEventStream()},c),eb.apply(null,[a,"zipWith",b].concat(jb.call(c),[a.when(c,b)]))},a.groupSimultaneous=function(){var c,d,e;return e=1<=arguments.length?jb.call(arguments,0):[],1===e.length&&J(e[0])&&(e=e[0]),d=function(){var a,d,f;for(f=[],a=0,d=e.length;d>a;a++)c=e[a],f.push(new b(c));return f}(),eb.apply(null,[a,"groupSimultaneous"].concat(jb.call(e),[a.when(d,function(){var a;return a=1<=arguments.length?jb.call(arguments,0):[]})]))},a.combineAsArray=function(){var b,c,d,e,f,g,h;for(f=1<=arguments.length?jb.call(arguments,0):[],1===f.length&&J(f[0])&&(f=f[0]),b=g=0,h=f.length;h>g;b=++g)e=f[b],M(e)||(f[b]=a.constant(e));return f.length?(d=function(){var a,b,d;for(d=[],a=0,b=f.length;b>a;a++)c=f[a],d.push(new t(c,!0));return d}(),eb.apply(null,[a,"combineAsArray"].concat(jb.call(f),[a.when(d,function(){var a;return a=1<=arguments.length?jb.call(arguments,0):[]}).toProperty()]))):a.constant([])},a.onValues=function(){var b,c,d;return c=2<=arguments.length?jb.call(arguments,0,d=arguments.length-1):(d=0,[]),b=arguments[d++],a.combineAsArray(c).onValues(b)},a.combineWith=function(){var b,c;return b=arguments[0],c=2<=arguments.length?jb.call(arguments,1):[],eb.apply(null,[a,"combineWith",b].concat(jb.call(c),[a.combineAsArray(c).map(function(a){return b.apply(null,a)})]))},a.combineTemplate=function(b){var c,d,e,f,g,h,i,j,k,l;return i=[],l=[],h=function(a){return a[a.length-1]},k=function(a,b,c){return h(a)[b]=c},c=function(a,b){return function(c,d){return k(c,a,d[b])}},g=function(a,b){return function(c){return k(c,a,b)}},j=function(a){return J(a)?[]:{}},e=function(a,b){var d,e;return M(b)?(l.push(b),i.push(c(a,l.length-1))):b!==Object(b)||"function"==typeof b||b instanceof RegExp||b instanceof Date?i.push(g(a,b)):(e=function(a){return function(c){var d;return d=j(b),k(c,a,d),c.push(d)}},d=function(a){return a.pop()},i.push(e(a)),f(b),i.push(d))},f=function(a){return gb.each(a,e)},f(b),d=function(a){var c,d,e,f,g;for(e=j(b),c=[e],f=0,g=i.length;g>f;f++)(d=i[f])(c,a);return e},eb(a,"combineTemplate",b,a.combineAsArray(l).map(d))},a.retry=function(b){var c,d,e,f,g,h;if(!L(b.source))throw new l("'source' option has to be a function");return h=b.source,f=b.retries||0,e=b.maxRetries||f,c=b.delay||function(){return 0},d=b.isRetryable||function(){return!0},g=function(b){var g,i;return i={source:h,retries:f-1,maxRetries:e,delay:c,isRetryable:d},g=function(){return a.retry(i)},a.later(c(b)).filter(!1).concat(a.once().flatMap(g))},eb(a,"retry",b,h().flatMapError(function(b){return d(b)&&f>0?g({error:b,retriesDone:e-f}):a.once(new i(b))}))},D=0,j=function(){function a(){this.id=++D}return a.prototype.isEvent=function(){return!0},a.prototype.isEnd=function(){return!1},a.prototype.isInitial=function(){return!1},a.prototype.isNext=function(){return!1},a.prototype.isError=function(){return!1},a.prototype.hasValue=function(){return!1},a.prototype.filter=function(){return!0},a.prototype.inspect=function(){return this.toString()},a.prototype.log=function(){return this.toString()},a}(),n=function(a){function b(a,c){b.__super__.constructor.call(this),!c&&L(a)||a instanceof b?(this.valueF=a,this.valueInternal=void 0):(this.valueF=void 0,this.valueInternal=a)}return kb(b,a),b.prototype.isNext=function(){return!0},b.prototype.hasValue=function(){return!0},b.prototype.value=function(){return this.valueF instanceof b?(this.valueInternal=this.valueF.value(),this.valueF=void 0):this.valueF&&(this.valueInternal=this.valueF(),this.valueF=void 0),this.valueInternal},b.prototype.fmap=function(a){var b,c;return this.valueInternal?(c=this.valueInternal,this.apply(function(){return a(c)})):(b=this,this.apply(function(){return a(b.value())}))},b.prototype.apply=function(a){return new b(a)},b.prototype.filter=function(a){return a(this.value())},b.prototype.toString=function(){return gb.toString(this.value())},b.prototype.log=function(){return this.value()},b}(j),m=function(a){function b(){return b.__super__.constructor.apply(this,arguments)}return kb(b,a),b.prototype.isInitial=function(){return!0},b.prototype.isNext=function(){return!1},b.prototype.apply=function(a){return new b(a)},b.prototype.toNext=function(){return new n(this)},b}(n),h=function(a){function b(){return b.__super__.constructor.apply(this,arguments)}return kb(b,a),b.prototype.isEnd=function(){return!0},b.prototype.fmap=function(){return this},b.prototype.apply=function(){return this},b.prototype.toString=function(){return"<end>"},b}(j),i=function(a){function b(a){this.error=a}return kb(b,a),b.prototype.isError=function(){return!0},b.prototype.fmap=function(){return this},b.prototype.apply=function(){return this},b.prototype.toString=function(){return"<error> "+gb.toString(this.error)},b}(j),H=0,p=function(){function b(a){this.id=++H,eb(a,this),this.initialDesc=this.desc}return b.prototype.subscribe=function(a){return u.wrappedSubscribe(this,a)},b.prototype.subscribeInternal=function(a){return this.dispatcher.subscribe(a)},b.prototype.onValue=function(){var a;return a=Q(arguments),this.subscribe(function(b){return b.hasValue()?a(b.value()):void 0})},b.prototype.onValues=function(a){return this.onValue(function(b){return a.apply(null,b)})},b.prototype.onError=function(){var a;return a=Q(arguments),this.subscribe(function(b){return b.isError()?a(b.error):void 0})},b.prototype.onEnd=function(){var a;return a=Q(arguments),this.subscribe(function(b){return b.isEnd()?a():void 0})},b.prototype.errors=function(){return eb(this,"errors",this.filter(function(){return!1}))},b.prototype.filter=function(){var b,c;return c=arguments[0],b=2<=arguments.length?jb.call(arguments,1):[],A(this,c,b,function(b){return eb(this,"filter",b,this.withHandler(function(c){return c.filter(b)?this.push(c):a.more}))})},b.prototype.takeWhile=function(){var b,c;return c=arguments[0],b=2<=arguments.length?jb.call(arguments,1):[],A(this,c,b,function(b){return eb(this,"takeWhile",b,this.withHandler(function(c){return c.filter(b)?this.push(c):(this.push(C()),a.noMore)}))})},b.prototype.endOnError=function(){var a,b;return b=arguments[0],a=2<=arguments.length?jb.call(arguments,1):[],null==b&&(b=!0),A(this,b,a,function(a){return eb(this,"endOnError",this.withHandler(function(b){return b.isError()&&a(b.error)?(this.push(b),this.push(C())):this.push(b)}))})},b.prototype.take=function(b){return 0>=b?a.never():eb(this,"take",b,this.withHandler(function(c){return c.hasValue()?(b--,b>0?this.push(c):(0===b&&this.push(c),this.push(C()),a.noMore)):this.push(c)}))},b.prototype.map=function(){var a,b;return b=arguments[0],a=2<=arguments.length?jb.call(arguments,1):[],b instanceof q?b.sampledBy(this,G):A(this,b,a,function(a){return eb(this,"map",a,this.withHandler(function(b){return this.push(b.fmap(a))}))})},b.prototype.mapError=function(){var a;return a=Q(arguments),eb(this,"mapError",a,this.withHandler(function(b){return this.push(b.isError()?U(a(b.error)):b)}))},b.prototype.mapEnd=function(){var b;return b=Q(arguments),eb(this,"mapEnd",b,this.withHandler(function(c){return c.isEnd()?(this.push(U(b(c))),this.push(C()),a.noMore):this.push(c)}))},b.prototype.doAction=function(){var a;return a=Q(arguments),eb(this,"doAction",a,this.withHandler(function(b){return b.hasValue()&&a(b.value()),this.push(b)}))},b.prototype.skip=function(b){return eb(this,"skip",b,this.withHandler(function(c){return c.hasValue()&&b>0?(b--,a.more):this.push(c)}))},b.prototype.skipDuplicates=function(a){return null==a&&(a=function(a,b){return a===b}),eb(this,"skipDuplicates",this.withStateMachine(o,function(b,c){return c.hasValue()?c.isInitial()||b===o||!a(b.get(),c.value())?[new s(c.value()),[c]]:[b,[]]:[b,[c]]}))},b.prototype.skipErrors=function(){return eb(this,"skipErrors",this.withHandler(function(b){return b.isError()?a.more:this.push(b)}))},b.prototype.withStateMachine=function(b,c){var d;return d=b,eb(this,"withStateMachine",b,c,this.withHandler(function(b){var e,f,g,h,i,j,k;for(e=c(d,b),f=e[0],h=e[1],d=f,i=a.more,j=0,k=h.length;k>j;j++)if(g=h[j],i=this.push(g),i===a.noMore)return i;return i}))},b.prototype.scan=function(b,c){var d,e,f;return c=$(c),d=cb(b),f=function(b){return function(f){var g,h,i,j;return g=!1,j=V,h=a.more,i=function(){return g?void 0:d.forEach(function(b){return g=!0,h=f(new m(function(){return b})),h===a.noMore?(j(),j=V):void 0})},j=b.dispatcher.subscribe(function(b){var e,j;return b.hasValue()?g&&b.isInitial()?a.more:(b.isInitial()||i(),g=!0,j=d.getOrElse(void 0),e=c(j,b.value()),d=new s(e),f(b.apply(function(){return e}))):(b.isEnd()&&(h=i()),h!==a.noMore?f(b):void 0)}),u.whenDoneWith(e,i),j}}(this),e=new q(B(this,"scan",b,c),f)},b.prototype.fold=function(a,b){return eb(this,"fold",a,b,this.scan(a,b).sampledBy(this.filter(!1).mapEnd().toProperty()))},b.prototype.zip=function(b,c){return null==c&&(c=Array),eb(this,"zip",b,a.zipWith([this,b],c))},b.prototype.diff=function(a,b){return b=$(b),eb(this,"diff",a,b,this.scan([a],function(a,c){return[c,b(a[0],c)]}).filter(function(a){return 2===a.length}).map(function(a){return a[1]}))},b.prototype.flatMap=function(){return F(this,T(arguments))},b.prototype.flatMapFirst=function(){return F(this,T(arguments),!0)},b.prototype.flatMapWithConcurrencyLimit=function(){var a,b;return b=arguments[0],a=2<=arguments.length?jb.call(arguments,1):[],eb.apply(null,[this,"flatMapWithConcurrencyLimit",b].concat(jb.call(a),[F(this,T(a),!1,b)]))},b.prototype.flatMapLatest=function(){var a,b;return a=T(arguments),b=this.toEventStream(),eb(this,"flatMapLatest",a,b.flatMap(function(c){return S(a(c)).takeUntil(b)}))},b.prototype.flatMapError=function(b){return eb(this,"flatMapError",b,this.mapError(function(a){return new i(a)}).flatMap(function(c){return c instanceof i?b(c.error):a.once(c)}))},b.prototype.flatMapConcat=function(){return eb.apply(null,[this,"flatMapConcat"].concat(jb.call(arguments),[this.flatMapWithConcurrencyLimit.apply(this,[1].concat(jb.call(arguments)))]))},b.prototype.bufferingThrottle=function(b){return eb(this,"bufferingThrottle",b,this.flatMapConcat(function(c){return a.once(c).concat(a.later(b).filter(!1))}))},b.prototype.not=function(){return eb(this,"not",this.map(function(a){return!a}))},b.prototype.log=function(){var a;return a=1<=arguments.length?jb.call(arguments,0):[],this.subscribe(function(b){return"undefined"!=typeof console&&null!==console&&"function"==typeof console.log?console.log.apply(console,jb.call(a).concat([b.log()])):void 0}),this},b.prototype.slidingWindow=function(a,b){return null==b&&(b=0),eb(this,"slidingWindow",a,b,this.scan([],function(b,c){return b.concat([c]).slice(-a)}).filter(function(a){return a.length>=b}))},b.prototype.combine=function(b,c){var d;return d=$(c),eb(this,"combine",b,c,a.combineAsArray(this,b).map(function(a){return d(a[0],a[1])}))},b.prototype.decode=function(b){return eb(this,"decode",b,this.combine(a.combineTemplate(b),function(a,b){return b[a]}))},b.prototype.awaiting=function(b){return eb(this,"awaiting",b,a.groupSimultaneous(this,b).map(function(a){var b,c;return b=a[0],c=a[1],0===c.length}).toProperty(!1).skipDuplicates())},b.prototype.name=function(a){return this._name=a,this},b.prototype.withDescription=function(){return B.apply(null,arguments).apply(this)},b.prototype.toString=function(){return this._name?this._name:this.desc.toString()},b.prototype.internalDeps=function(){return this.initialDesc.deps()},b}(),p.prototype.reduce=p.prototype.fold,p.prototype.assign=p.prototype.onValue,p.prototype.inspect=p.prototype.toString,F=function(b,c,e,f){var g,h,i;return i=[b],g=[],h=new k(B(b,"flatMap"+(e?"First":""),c),function(h){var i,j,k,l,n;return k=new d,l=[],n=function(b){var d;return d=S(c(b.value())),g.push(d),k.add(function(b,c){return d.dispatcher.subscribe(function(e){var f;return e.isEnd()?(gb.remove(d,g),j(),i(c),a.noMore):(e instanceof m&&(e=e.toNext()),f=h(e),f===a.noMore&&b(),f)})})},j=function(){var a;return a=l.shift(),a?n(a):void 0},i=function(a){return a(),k.empty()?h(C()):void 0},k.add(function(c,d){return b.dispatcher.subscribe(function(b){return b.isEnd()?i(d):b.isError()?h(b):e&&k.count()>1?a.more:k.unsubscribed?a.noMore:f&&k.count()>f?l.push(b):n(b)})}),k.unsubscribe}),h.internalDeps=function(){return g.length?i.concat(g):i},h},k=function(b){function c(a,b,d){L(a)&&(d=b,b=a,a=[]),c.__super__.constructor.call(this,a),this.dispatcher=new g(b,d),Y(this)}return kb(c,b),c.prototype.delay=function(b){return eb(this,"delay",b,this.flatMap(function(c){return a.later(b,c)}))},c.prototype.debounce=function(b){return eb(this,"debounce",b,this.flatMapLatest(function(c){return a.later(b,c)}))},c.prototype.debounceImmediate=function(b){return eb(this,"debounceImmediate",b,this.flatMapFirst(function(c){return a.once(c).concat(a.later(b).filter(!1))}))},c.prototype.throttle=function(a){return eb(this,"throttle",a,this.bufferWithTime(a).map(function(a){return a[a.length-1]}))},c.prototype.bufferWithTime=function(a){return eb(this,"bufferWithTime",a,this.bufferWithTimeOrCount(a,Number.MAX_VALUE))},c.prototype.bufferWithCount=function(a){return eb(this,"bufferWithCount",a,this.bufferWithTimeOrCount(void 0,a))},c.prototype.bufferWithTimeOrCount=function(a,b){var c;return c=function(c){return c.values.length===b?c.flush():void 0!==a?c.schedule():void 0},eb(this,"bufferWithTimeOrCount",a,b,this.buffer(a,c,c))},c.prototype.buffer=function(b,c,d){var e,f,g;return null==c&&(c=V),null==d&&(d=V),e={scheduled:!1,end:void 0,values:[],flush:function(){var b;if(this.scheduled=!1,this.values.length>0){if(b=this.push(U(this.values)),this.values=[],null!=this.end)return this.push(this.end);if(b!==a.noMore)return d(this)}else if(null!=this.end)return this.push(this.end)},schedule:function(){return this.scheduled?void 0:(this.scheduled=!0,b(function(a){return function(){return a.flush()}}(this)))}},g=a.more,L(b)||(f=b,b=function(b){return a.scheduler.setTimeout(b,f)}),eb(this,"buffer",this.withHandler(function(a){return e.push=function(a){return function(b){return a.push(b)}}(this),a.isError()?g=this.push(a):a.isEnd()?(e.end=a,e.scheduled||e.flush()):(e.values.push(a.value()),c(e)),g}))},c.prototype.merge=function(b){var c;return c=this,eb(c,"merge",b,a.mergeAll(this,b))},c.prototype.toProperty=function(b){var c,d;return d=0===arguments.length?o:cb(function(){return b}),c=this.dispatcher,new q(B(this,"toProperty",b),function(b){var e,f,g,h;return e=!1,h=V,f=a.more,g=function(){return e?void 0:d.forEach(function(c){return e=!0,f=b(new m(c)),f===a.noMore?(h(),h=V):void 0})},h=c.subscribe(function(c){return c.hasValue()?e&&c.isInitial()?a.more:(c.isInitial()||g(),e=!0,d=new s(c),b(c)):(c.isEnd()&&(f=g()),f!==a.noMore?b(c):void 0)}),g(),h})},c.prototype.toEventStream=function(){return this},c.prototype.sampledBy=function(a,b){return eb(this,"sampledBy",a,b,this.toProperty().sampledBy(a,b))},c.prototype.concat=function(a){var b;return b=this,new c(B(b,"concat",a),function(c){var d,e;return e=V,d=b.dispatcher.subscribe(function(b){return b.isEnd()?e=a.dispatcher.subscribe(c):c(b)}),function(){return d(),e()}})},c.prototype.takeUntil=function(b){var c;return c={},eb(this,"takeUntil",b,a.groupSimultaneous(this.mapEnd(c),b.skipErrors()).withHandler(function(d){var e,f,g,h,i,j;if(d.hasValue()){if(j=d.value(),e=j[0],b=j[1],b.length)return this.push(C());for(f=a.more,h=0,i=e.length;i>h;h++)g=e[h],f=this.push(g===c?C():U(g));return f}return this.push(d)}))},c.prototype.skipUntil=function(a){var b;return b=a.take(1).map(!0).toProperty(!1),eb(this,"skipUntil",a,this.filter(b))},c.prototype.skipWhile=function(){var b,c,d;return c=arguments[0],b=2<=arguments.length?jb.call(arguments,1):[],d=!1,A(this,c,b,function(b){return eb(this,"skipWhile",b,this.withHandler(function(c){return!d&&c.hasValue()&&b(c.value())?a.more:(c.hasValue()&&(d=!0),this.push(c))}))})},c.prototype.holdWhen=function(b){var c,d,e;return e=b.startWith(!1),d=e.filter(function(a){return!a}),c=e.filter(gb.id),eb(this,"holdWhen",b,this.filter(!1).merge(e.flatMapConcat(function(b){return function(e){return e?b.scan([],function(a,b){return a.concat(b)}).sampledBy(d).take(1).flatMap(a.fromArray):b.takeUntil(c)}}(this))))},c.prototype.startWith=function(b){return eb(this,"startWith",b,a.once(b).concat(this))},c.prototype.withHandler=function(a){return new c(B(this,"withHandler",a),this.dispatcher.subscribe,a)},c}(p),q=function(b){function c(a,b,d){L(a)&&(d=b,b=a,a=[]),c.__super__.constructor.call(this,a),this.dispatcher=new r(this,b,d),Y(this)}return kb(c,b),c.prototype.sampledBy=function(b,d){var e,f,g,h,i;return null!=d?d=$(d):(e=!0,d=function(a){return a.value()}),i=new t(this,!1,e),g=new t(b,!0,e),h=a.when([i,g],d),f=b instanceof c?h.toProperty():h,eb(this,"sampledBy",b,d,f)},c.prototype.sample=function(b){return eb(this,"sample",b,this.sampledBy(a.interval(b,{})))},c.prototype.changes=function(){return new k(B(this,"changes"),function(a){return function(b){return a.dispatcher.subscribe(function(a){return a.isInitial()?void 0:b(a)})}}(this))},c.prototype.withHandler=function(a){return new c(B(this,"withHandler",a),this.dispatcher.subscribe,a)},c.prototype.toProperty=function(){return this},c.prototype.toEventStream=function(){return new k(B(this,"toEventStream"),function(a){return function(b){return a.dispatcher.subscribe(function(a){return a.isInitial()&&(a=a.toNext()),b(a)})}}(this))},c.prototype.and=function(a){return eb(this,"and",a,this.combine(a,function(a,b){return a&&b}))},c.prototype.or=function(a){return eb(this,"or",a,this.combine(a,function(a,b){return a||b}))},c.prototype.delay=function(a){return this.delayChanges("delay",a,function(b){return b.delay(a)})},c.prototype.debounce=function(a){return this.delayChanges("debounce",a,function(b){return b.debounce(a)})},c.prototype.throttle=function(a){return this.delayChanges("throttle",a,function(b){return b.throttle(a)})},c.prototype.delayChanges=function(){var a,b,c;return a=2<=arguments.length?jb.call(arguments,0,c=arguments.length-1):(c=0,[]),b=arguments[c++],eb.apply(null,[this].concat(jb.call(a),[v(this,b(this.changes()))]))},c.prototype.takeUntil=function(a){var b;return b=this.changes().takeUntil(a),eb(this,"takeUntil",a,v(this,b))},c.prototype.startWith=function(a){return eb(this,"startWith",a,this.scan(a,function(a,b){return b}))},c.prototype.bufferingThrottle=function(){var a;return(a=c.__super__.bufferingThrottle.apply(this,arguments)).bufferingThrottle.apply(a,arguments).toProperty()},c}(p),A=function(a,b,c,d){var e;return b instanceof q?(e=b.sampledBy(a,function(a,b){return[a,b]}),d.call(e,function(a){var b,c;return b=a[0],c=a[1],b}).map(function(a){var b,c;return b=a[0],c=a[1]})):(b=P(b,c),d.call(a,b))},v=function(b,c){var d;return d=new k(B(b,"justInitValue"),function(c){var e,f;return f=void 0,e=b.dispatcher.subscribe(function(b){return b.isEnd()||(f=b),a.noMore}),u.whenDoneWith(d,function(){return null!=f&&c(f),c(C())}),e}),d.concat(c).toProperty()},g=function(){function b(a,b){this._subscribe=a,this._handleEvent=b,this.subscribe=lb(this.subscribe,this),this.handleEvent=lb(this.handleEvent,this),this.subscriptions=[],this.queue=[],this.pushing=!1,this.ended=!1,this.prevError=void 0,this.unsubSrc=void 0}return b.prototype.hasSubscribers=function(){return this.subscriptions.length>0},b.prototype.removeSub=function(a){return this.subscriptions=gb.without(a,this.subscriptions)},b.prototype.push=function(a){return a.isEnd()&&(this.ended=!0),u.inTransaction(a,this,this.pushIt,[a])},b.prototype.pushToSubscriptions=function(b){var c,d,e,f,g,h;try{for(f=this.subscriptions,g=0,h=f.length;h>g;g++)e=f[g],d=e.sink(b),(d===a.noMore||b.isEnd())&&this.removeSub(e);return!0}catch(i){throw c=i,this.pushing=!1,this.queue=[],c}},b.prototype.pushIt=function(b){if(this.pushing)return this.queue.push(b),a.more;if(b!==this.prevError){for(b.isError()&&(this.prevError=b),this.pushing=!0,this.pushToSubscriptions(b),this.pushing=!1;this.queue.length;)b=this.queue.shift(),this.push(b);return this.hasSubscribers()?a.more:(this.unsubscribeFromSource(),a.noMore)}},b.prototype.handleEvent=function(a){return this._handleEvent?this._handleEvent(a):this.push(a)},b.prototype.unsubscribeFromSource=function(){return this.unsubSrc&&this.unsubSrc(),this.unsubSrc=void 0},b.prototype.subscribe=function(a){var b;return this.ended?(a(C()),V):(b={sink:a},this.subscriptions.push(b),1===this.subscriptions.length&&(this.unsubSrc=this._subscribe(this.handleEvent)),function(a){return function(){return a.removeSub(b),a.hasSubscribers()?void 0:a.unsubscribeFromSource()}}(this))},b}(),r=function(b){function c(a,b,d){this.property=a,this.subscribe=lb(this.subscribe,this),c.__super__.constructor.call(this,b,d),this.current=o,this.currentValueRootId=void 0,this.propertyEnded=!1}return kb(c,b),c.prototype.push=function(a){return a.isEnd()&&(this.propertyEnded=!0),a.hasValue()&&(this.current=new s(a),this.currentValueRootId=u.currentEventId()),c.__super__.push.call(this,a)},c.prototype.maybeSubSource=function(b,c){return c===a.noMore?V:this.propertyEnded?(b(C()),V):g.prototype.subscribe.call(this,b)},c.prototype.subscribe=function(b){var c,d,e,f;return d=!1,e=a.more,this.current.isDefined&&(this.hasSubscribers()||this.propertyEnded)?(c=u.currentEventId(),f=this.currentValueRootId,!this.propertyEnded&&f&&c&&c!==f?(u.whenDoneWith(this.property,function(a){return function(){return a.currentValueRootId===f?b(I(a.current.get().value())):void 0}}(this)),this.maybeSubSource(b,e)):(u.inTransaction(void 0,this,function(){return e=b(I(this.current.get().value()))},[]),this.maybeSubSource(b,e))):this.maybeSubSource(b,e)},c}(g),c=function(b){function c(){this.guardedSink=lb(this.guardedSink,this),this.subscribeAll=lb(this.subscribeAll,this),this.unsubAll=lb(this.unsubAll,this),this.sink=void 0,this.subscriptions=[],this.ended=!1,c.__super__.constructor.call(this,B(a,"Bus"),this.subscribeAll)}return kb(c,b),c.prototype.unsubAll=function(){var a,b,c,d;for(d=this.subscriptions,b=0,c=d.length;c>b;b++)a=d[b],"function"==typeof a.unsub&&a.unsub();return void 0},c.prototype.subscribeAll=function(a){var b,c,d,e;for(this.sink=a,e=w(this.subscriptions),c=0,d=e.length;d>c;c++)b=e[c],this.subscribeInput(b);return this.unsubAll},c.prototype.guardedSink=function(b){return function(c){return function(d){return d.isEnd()?(c.unsubscribeInput(b),a.noMore):c.sink(d)}}(this)},c.prototype.subscribeInput=function(a){return a.unsub=a.input.dispatcher.subscribe(this.guardedSink(a.input))},c.prototype.unsubscribeInput=function(a){var b,c,d,e,f;for(f=this.subscriptions,b=d=0,e=f.length;e>d;b=++d)if(c=f[b],c.input===a)return"function"==typeof c.unsub&&c.unsub(),void this.subscriptions.splice(b,1)},c.prototype.plug=function(a){var b;if(!this.ended)return b={input:a},this.subscriptions.push(b),null!=this.sink&&this.subscribeInput(b),function(b){return function(){return b.unsubscribeInput(a)}}(this)},c.prototype.end=function(){return this.ended=!0,this.unsubAll(),"function"==typeof this.sink?this.sink(C()):void 0},c.prototype.push=function(a){return"function"==typeof this.sink?this.sink(U(a)):void 0},c.prototype.error=function(a){return"function"==typeof this.sink?this.sink(new i(a)):void 0},c}(k),t=function(){function a(a,b,c){this.obs=a,this.sync=b,this.lazy=null!=c?c:!1,this.queue=[]}return a.prototype.subscribe=function(a){return this.obs.dispatcher.subscribe(a)},a.prototype.toString=function(){return this.obs.toString()},a.prototype.markEnded=function(){return this.ended=!0},a.prototype.consume=function(){return this.lazy?{value:gb.always(this.queue[0])}:this.queue[0]},a.prototype.push=function(a){return this.queue=[a]},a.prototype.mayHave=function(){return!0},a.prototype.hasAtLeast=function(){return this.queue.length},a.prototype.flatten=!0,a}(),e=function(a){function b(){return b.__super__.constructor.apply(this,arguments)}return kb(b,a),b.prototype.consume=function(){return this.queue.shift()},b.prototype.push=function(a){return this.queue.push(a)},b.prototype.mayHave=function(a){return!this.ended||this.queue.length>=a},b.prototype.hasAtLeast=function(a){return this.queue.length>=a},b.prototype.flatten=!1,b}(t),b=function(a){function b(a){b.__super__.constructor.call(this,a,!0)}return kb(b,a),b.prototype.consume=function(){var a;return a=this.queue,this.queue=[],{value:function(){return a}}},b.prototype.push=function(a){return this.queue.push(a.value())},b.prototype.hasAtLeast=function(){return!0},b}(t),t.isTrigger=function(a){return a instanceof t?a.sync:a instanceof k},t.fromObservable=function(a){return a instanceof t?a:a instanceof q?new t(a,!1):new e(a,!0)},B=function(){var a,b,c;return b=arguments[0],c=arguments[1],a=3<=arguments.length?jb.call(arguments,2):[],(b||c)instanceof f?b||c:new f(b,c,a)},E=function(a){return J(a)?gb.flatMap(E,a):M(a)?[a]:a instanceof t?[a.obs]:[]},f=function(){function a(a,b,c){this.context=a,this.method=b,this.args=c,this.cached=void 0
-}return a.prototype.deps=function(){return this.cached||(this.cached=E([this.context].concat(this.args)))},a.prototype.apply=function(a){return a.desc=this,a},a.prototype.toString=function(){return gb.toString(this.context)+"."+gb.toString(this.method)+"("+gb.map(gb.toString,this.args)+")"},a}(),eb=function(){var a,b,c;return a=2<=arguments.length?jb.call(arguments,0,c=arguments.length-1):(c=0,[]),b=arguments[c++],B.apply(null,a).apply(b)},a.when=function(){var b,c,d,e,f,g,h,i,j,l,m,n,o,p,q,r,s,v,w,A;if(0===arguments.length)return a.never();for(f=arguments.length,q="when: expecting arguments in the form (Observable+,function)+",o=[],j=[],c=0,l=[];f>c;){for(l[c]=arguments[c],l[c+1]=arguments[c+1],i=gb.toArray(arguments[c]),b=y(arguments[c+1]),h={f:b,ixs:[]},p=!1,r=0,v=i.length;v>r;r++){for(n=i[r],d=gb.indexOf(o,n),p||(p=t.isTrigger(n)),0>d&&(o.push(n),d=o.length-1),A=h.ixs,s=0,w=A.length;w>s;s++)e=A[s],e.index===d&&e.count++;h.ixs.push({index:d,count:1})}i.length>0&&j.push(h),c+=2}return o.length?(o=gb.map(t.fromObservable,o),g=gb.any(o,function(a){return a.flatten})&&z(gb.map(function(a){return a.obs},o)),m=new k(B.apply(null,[a,"when"].concat(jb.call(l))),function(b){var d,e,f,h,i,k,l;return l=[],f=!1,h=function(a){var b,d,e;for(e=a.ixs,b=0,d=e.length;d>b;b++)if(c=e[b],!o[c.index].hasAtLeast(c.count))return!1;return!0},e=function(a){return!a.sync||a.ended},d=function(a){var b,d,e;for(e=a.ixs,b=0,d=e.length;d>b;b++)if(c=e[b],!o[c.index].mayHave(c.count))return!0},i=function(a){return!a.source.flatten},k=function(k){return function(n){var p,q,r;return q=function(){return u.whenDoneWith(m,p)},r=function(){var d,e,f,g,k,m;if(!(l.length>0))return a.more;for(f=a.more,g=l.pop(),k=0,m=j.length;m>k;k++)if(e=j[k],h(e))return d=function(){var a,b,d,f;for(d=e.ixs,f=[],a=0,b=d.length;b>a;a++)c=d[a],f.push(o[c.index].consume());return f}(),f=b(g.e.apply(function(){var a,b;return b=function(){var b,c,e;for(e=[],b=0,c=d.length;c>b;b++)a=d[b],e.push(a.value());return e}(),e.f.apply(e,b)})),l.length&&(l=gb.filter(i,l)),f===a.noMore?f:r()},p=function(){var c;return c=r(),f&&(f=!1,(gb.all(o,e)||gb.all(j,d))&&(c=a.noMore,b(C()))),c===a.noMore&&n(),c},k.subscribe(function(c){var d;return c.isEnd()?(f=!0,k.markEnded(),q()):c.isError()?d=b(c):(k.push(c),k.sync&&(l.push({source:k,e:c}),g||u.hasWaiters()?q():p())),d===a.noMore&&n(),d||a.more})}},x.apply(null,function(){var a,b,c;for(c=[],a=0,b=o.length;b>a;a++)n=o[a],c.push(k(n));return c}())})):a.never()},z=function(a,b){var c;return null==b&&(b=[]),c=function(a){var d;return gb.contains(b,a)?!0:(d=a.internalDeps(),d.length?(b.push(a),gb.any(d,c)):(b.push(a),!1))},gb.any(a,c)},a.update=function(){var b,c,d,e;for(c=arguments[0],e=2<=arguments.length?jb.call(arguments,1):[],d=function(a){return function(){var b;return b=1<=arguments.length?jb.call(arguments,0):[],function(c){return a.apply(null,[c].concat(b))}}},b=e.length-1;b>0;)e[b]instanceof Function||(e[b]=function(a){return function(){return a}}(e[b])),e[b]=d(e[b]),b-=2;return eb.apply(null,[a,"update",c].concat(jb.call(e),[a.when.apply(a,e).scan(c,function(a,b){return b(a)})]))},x=function(){var a;return a=1<=arguments.length?jb.call(arguments,0):[],new d(a).unsubscribe},d=function(){function a(a){var b,c,d;for(null==a&&(a=[]),this.unsubscribe=lb(this.unsubscribe,this),this.unsubscribed=!1,this.subscriptions=[],this.starting=[],c=0,d=a.length;d>c;c++)b=a[c],this.add(b)}return a.prototype.add=function(a){var b,c,d;if(!this.unsubscribed)return b=!1,c=V,this.starting.push(a),d=function(d){return function(){return d.unsubscribed?void 0:(b=!0,d.remove(c),gb.remove(a,d.starting))}}(this),c=a(this.unsubscribe,d),this.unsubscribed||b||this.subscriptions.push(c),gb.remove(a,this.starting),c},a.prototype.remove=function(a){return this.unsubscribed?void 0:void 0!==gb.remove(a,this.subscriptions)?a():void 0},a.prototype.unsubscribe=function(){var a,b,c,d;if(!this.unsubscribed){for(this.unsubscribed=!0,d=this.subscriptions,b=0,c=d.length;c>b;b++)(a=d[b])();return this.subscriptions=[],this.starting=[]}},a.prototype.count=function(){return this.unsubscribed?0:this.subscriptions.length+this.starting.length},a.prototype.empty=function(){return 0===this.count()},a}(),a.CompositeUnsubscribe=d,s=function(){function a(a){this.value=a}return a.prototype.getOrElse=function(){return this.value},a.prototype.get=function(){return this.value},a.prototype.filter=function(b){return b(this.value)?new a(this.value):o},a.prototype.map=function(b){return new a(b(this.value))},a.prototype.forEach=function(a){return a(this.value)},a.prototype.isDefined=!0,a.prototype.toArray=function(){return[this.value]},a.prototype.inspect=function(){return"Some("+this.value+")"},a.prototype.toString=function(){return this.inspect()},a}(),o={getOrElse:function(a){return a},filter:function(){return o},map:function(){return o},forEach:function(){},isDefined:!1,toArray:function(){return[]},inspect:function(){return"None"},toString:function(){return this.inspect()}},u=function(){var b,c,d,e,f,g,h,i,j,k,l,m,n,o;return k=void 0,l=[],m={},c=[],d=0,b=function(a){return k?c.push(a):a()},n=function(a,b){var c;return k?(c=m[a.id],null==c?(c=m[a.id]=[b],l.push(a)):c.push(b)):b()},f=function(){for(;l.length>0;)h(0);return void 0},h=function(a){var b,c,d,e,f,h;for(c=l[a],d=c.id,e=m[d],l.splice(a,1),delete m[d],g(c),f=0,h=e.length;h>f;f++)(b=e[f])();return void 0},g=function(a){var b,c,d,e,f;for(c=a.internalDeps(),e=0,f=c.length;f>e;e++)b=c[e],g(b),m[b.id]&&(d=gb.indexOf(l,b),h(d));return void 0},j=function(a,b,e,g){var h,i;if(k)return e.apply(b,g);k=a;try{i=e.apply(b,g),f()}finally{for(k=void 0;d<c.length;)h=c[d],d++,h();d=0,c=[]}return i},e=function(){return k?k.id:void 0},o=function(c,d){var e,f,g,h;return h=!1,f=!1,e=function(){return f=!0},g=function(){return h=!0,e()},e=c.dispatcher.subscribe(function(c){return b(function(){var b;return h||(b=d(c),b!==a.noMore)?void 0:g()})}),f&&e(),g},i=function(){return l.length>0},{whenDoneWith:n,hasWaiters:i,inTransaction:j,currentEventId:e,wrappedSubscribe:o,afterTransaction:b}}(),a.EventStream=k,a.Property=q,a.Observable=p,a.Bus=c,a.Initial=m,a.Next=n,a.End=h,a.Error=i,V=function(){},N=function(a,b){return b},G=function(a){return a},I=function(a){return new m(a,!0)},U=function(a){return new n(a,!0)},C=function(){return new h},_=function(a){return a instanceof j?a:U(a)},w=function(a){return a.slice(0)},L=function(a){return"function"==typeof a},J=function(a){return a instanceof Array},M=function(a){return a instanceof p},W=function(a,b){return function(){var c;return c=1<=arguments.length?jb.call(arguments,0):[],a.apply(null,b.concat(c))}},T=function(a){return 1===a.length&&M(a[0])?gb.always(a[0]):Q(a)},Q=function(a){return a=Array.prototype.slice.call(a),R.apply(null,a)},R=fb(function(){var a,b;return b=arguments[0],a=2<=arguments.length?jb.call(arguments,1):[],L(b)?a.length?W(b,a):b:K(b)?ab(b,a):gb.always(b)}),P=function(a,b){return R.apply(null,[a].concat(jb.call(b)))},y=function(a){return L(a)?a:gb.always(a)},S=function(b){return M(b)?b:a.once(b)},K=function(a){return"string"==typeof a&&a.length>1&&"."===a.charAt(0)},a.isFieldKey=K,ab=function(a,b){var c,d;return d=a.slice(1).split("."),c=gb.map(db(b),d),function(b){var d,e;for(d=0,e=c.length;e>d;d++)a=c[d],b=a(b);return b}},db=function(a){return function(b){return function(c){var d;return null==c?void 0:(d=c[b],L(d)?d.apply(c,a):d)}}},bb=function(a){return a.slice(1)},$=function(a){var b;return L(a)?a:K(a)?(b=bb(a),function(a,c){return a[b](c)}):void 0},cb=function(a){return a instanceof s||a===o?a:new s(a)},"undefined"!=typeof define&&null!==define&&null!=define.amd?(define([],function(){return a}),this.Bacon=a):"undefined"!=typeof module&&null!==module&&null!=module.exports?(module.exports=a,a.Bacon=a):this.Bacon=a}).call(this);
-;
-;
-/* module-key = 'com.atlassian.bitbucket.server.bitbucket-bower-components:bacon', location = '/static/lib/Bacon-AMD.js' */
-define("bacon",["jquery"],function(b){var a=window.Bacon||window.module.exports;b.fn.asEventStream=a.$.asEventStream;return a});;
-;
-/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:performance-util', location = '/static/bitbucket/internal/util/performance.js' */
-define("bitbucket/internal/util/performance",["module","exports","jquery"],function(p,f,q){function n(c,a){function d(){e=null;k=!0;b.fire();b=new l.default.Callbacks;k=!1;a()}var b=new l.default.Callbacks,k=!1,e=null;return{name:c,forceExecute:function(){e&&(clearTimeout(e),d())},queue:function(a){k?a():(b.add(a),e||(e=setTimeout(d,0)))}}}Object.defineProperty(f,"__esModule",{value:!0});var l=babelHelpers.interopRequireDefault(q),m=n("READ",function(){g.forceExecute()}),g=n("WRITE",function(){m.forceExecute()});
-f.default={queueDOMRead:m.queue.bind(m),queueDOMWrite:g.queue.bind(g),enqueueCapped:function(c,a,d){d=d||1;var b=0;return function(){b>=d||(b++,c(function(){try{return a.apply(this,arguments)}finally{b--}}))}},frameBatchedMap:function(c,a,d){a=l.default.extend({initial:500,min:10,max:Infinity},a);d=d||function(b){b()};return function(b){function k(){for(var a=Math.min(h+e,b.length);h<a;h++)g[h]=c(b[h])}var e=a.initial,f=l.default.Deferred(),h=0,g=[];requestAnimationFrame(function r(){if("pending"===
-f.state()){var c=(new Date).getTime();d(k);c=(new Date).getTime()-c;c=Math.ceil(15/c*e);e=Math.min(a.max,Math.max(a.min,c));h===b.length?f.resolve(g):requestAnimationFrame(r)}});return f}}};p.exports=f["default"]});;
-;
-/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:bacon-util', location = '/static/bitbucket/internal/util/bacon.js' */
-define("bitbucket/internal/util/bacon","module exports bacon jquery lodash bitbucket/internal/util/events bitbucket/internal/util/function bitbucket/internal/util/performance".split(" "),function(r,m,n,p,t,u,v,w){Object.defineProperty(m,"__esModule",{value:!0});var e=babelHelpers.interopRequireDefault(n),f=babelHelpers.interopRequireDefault(p),g=babelHelpers.interopRequireDefault(t),q=babelHelpers.interopRequireDefault(u),x=babelHelpers.interopRequireDefault(v),y=babelHelpers.interopRequireDefault(w);
-n=g.default.once(function(){function a(){return{left:b.scrollLeft(),top:b.scrollTop()}}var b=(0,f.default)(window),c=e.default.fromBinder(function(a){var d=y.default.enqueueCapped(requestAnimationFrame,a),c=g.default.debounce(d,20);b.on("scroll",d).on("scroll",c);return function(){b.off("scroll",d).off("scroll",c)}}).map(a).skipDuplicates(function(a,b){return a.left===b.left&&a.top===b.top}).toProperty(a());c.onValue(f.default.noop);return c});p=g.default.once(function(){var a=(0,f.default)(window),
-a=e.default.fromBinder(function(a){var c=q.default.chain().on("window.resize",function(c,d){a(new e.default.Next({width:c,height:d}))});return function(){c.destroy()}}).toProperty({width:a.width(),height:a.height()});a.onValue(f.default.noop);return a});m.default={events:function(a){return e.default.fromBinder(function(b){return q.default.chain().on(a,b).destroy})},split:function(a,b){return e.default.fromBinder(function(c){var h=[],d,k=[];k.push(a.onValue(function(a){var e=b(a);d&&e!==d&&(c(h),h=
-[]);d=e;h.push(a)}));k.push(a.onEnd(function(){0<h.length&&c(h);c(new e.default.End)}));return g.default.partial(x.default.applyAll,k)})},toArray:function(a){var b=[];a.onValue(function(a){b.push(a)});return b},getWindowScrollProperty:n,getWindowSizeProperty:p,takeBetween:function(a,b){var c=b.start,h=b.end,d=b.startInclusive,k=b.endInclusive,l=b.equals||function(a,b){return a===b};if(l(c,h))return d||k?a.skipWhile(function(a){return!l(a,c)}).take(1):e.default.never();var f,g;return a.skipWhile(function(a){return g||
-f?!1:l(a,c)?(f=!0,!d):l(a,h)?(g=!0,!k):!0}).takeWhile(function(a){return l(a,c)?(f=!0,d):l(a,h)?(g=!0,k):!(g&&f)})}};r.exports=m["default"]});;
-;
-/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:keyboard-shortcuts', location = '/static/bitbucket/internal/widget/keyboard-shortcuts/keyboard-shortcuts.soy' */
-// This file was automatically generated from keyboard-shortcuts.soy.
-// Please don't edit this file by hand.
-
-/**
- * @fileoverview Templates in namespace bitbucket.internal.widget.
- */
-
-if (typeof bitbucket == 'undefined') { var bitbucket = {}; }
-if (typeof bitbucket.internal == 'undefined') { bitbucket.internal = {}; }
-if (typeof bitbucket.internal.widget == 'undefined') { bitbucket.internal.widget = {}; }
-
-
-bitbucket.internal.widget.keyboardShortcutsContent = function(opt_data, opt_ignored) {
-  var param6 = '';
-  var contextNameList7 = opt_data.contextNames;
-  var contextNameListLen7 = contextNameList7.length;
-  for (var contextNameIndex7 = 0; contextNameIndex7 < contextNameListLen7; contextNameIndex7++) {
-    var contextNameData7 = contextNameList7[contextNameIndex7];
-    param6 += (contextNameIndex7 % 2 == 0) ? bitbucket.internal.widget.keyboardShortContext({contextName: contextNameData7, contextShortcuts: opt_data.contexts[contextNameIndex7]}) : '';
-  }
-  var param5 = '' + aui.group.item({content: param6});
-  var param15 = '';
-  var contextNameList16 = opt_data.contextNames;
-  var contextNameListLen16 = contextNameList16.length;
-  for (var contextNameIndex16 = 0; contextNameIndex16 < contextNameListLen16; contextNameIndex16++) {
-    var contextNameData16 = contextNameList16[contextNameIndex16];
-    param15 += (contextNameIndex16 % 2 == 1) ? bitbucket.internal.widget.keyboardShortContext({contextName: contextNameData16, contextShortcuts: opt_data.contexts[contextNameIndex16]}) : '';
-  }
-  param5 += aui.group.item({content: param15});
-  var output = '' + aui.group.group({extraClasses: 'keyboard-shortcut-help', extraAttributes: {tabindex: '0'}, content: param5});
-  return output;
-};
-if (goog.DEBUG) {
-  bitbucket.internal.widget.keyboardShortcutsContent.soyTemplateName = 'bitbucket.internal.widget.keyboardShortcutsContent';
-}
-
-
-bitbucket.internal.widget.keyboardShortContext = function(opt_data, opt_ignored) {
-  var output = '<div class="keyboard-shortcut-context"><h3>' + soy.$$escapeHtml(opt_data.contextName) + '</h3><dl>';
-  var shortcutList29 = opt_data.contextShortcuts;
-  var shortcutListLen29 = shortcutList29.length;
-  for (var shortcutIndex29 = 0; shortcutIndex29 < shortcutListLen29; shortcutIndex29++) {
-    var shortcutData29 = shortcutList29[shortcutIndex29];
-    output += (! shortcutData29.hidden) ? bitbucket.internal.widget.keyboardShortcutItem({shortcut: shortcutData29}) : '';
-  }
-  output += '</dl></div>';
-  return output;
-};
-if (goog.DEBUG) {
-  bitbucket.internal.widget.keyboardShortContext.soyTemplateName = 'bitbucket.internal.widget.keyboardShortContext';
-}
-
-
-bitbucket.internal.widget.keyboardShortcutItem = function(opt_data, opt_ignored) {
-  var output = '<dt>' + soy.$$escapeHtml(opt_data.shortcut.description) + '</dt>';
-  var optionList40 = opt_data.shortcut.keys;
-  var optionListLen40 = optionList40.length;
-  for (var optionIndex40 = 0; optionIndex40 < optionListLen40; optionIndex40++) {
-    var optionData40 = optionList40[optionIndex40];
-    output += ((! (optionIndex40 == 0) && ! (optionIndex40 == optionListLen40 - 1)) ? '<dd class=\'separator\'>' + soy.$$escapeHtml(',') + '</dd>' : '') + ((! (optionIndex40 == 0) && optionIndex40 == optionListLen40 - 1) ? '<dd class=\'separator\'>' + soy.$$escapeHtml(' or') + '</dd>' : '') + '<dd>' + bitbucket.internal.widget.keyboardShortcutOption({sequence: optionData40}) + '</dd>';
-  }
-  return output;
-};
-if (goog.DEBUG) {
-  bitbucket.internal.widget.keyboardShortcutItem.soyTemplateName = 'bitbucket.internal.widget.keyboardShortcutItem';
-}
-
-
-bitbucket.internal.widget.keyboardShortcutOption = function(opt_data, opt_ignored) {
-  var output = '';
-  var keypressList57 = opt_data.sequence;
-  var keypressListLen57 = keypressList57.length;
-  for (var keypressIndex57 = 0; keypressIndex57 < keypressListLen57; keypressIndex57++) {
-    var keypressData57 = keypressList57[keypressIndex57];
-    output += ((! (keypressIndex57 == 0)) ? ' ' + soy.$$escapeHtml('then') + ' ' : '') + ((keypressData57.modifiers) ? bitbucket.internal.widget.keyboardShortcutModifier({keypress: keypressData57}) : bitbucket.internal.widget.keyboardShortcutKey({key: keypressData57}));
-  }
-  return output;
-};
-if (goog.DEBUG) {
-  bitbucket.internal.widget.keyboardShortcutOption.soyTemplateName = 'bitbucket.internal.widget.keyboardShortcutOption';
-}
-
-
-bitbucket.internal.widget.keyboardShortcutModifier = function(opt_data, opt_ignored) {
-  var output = '';
-  var modifierList72 = opt_data.keypress.modifiers;
-  var modifierListLen72 = modifierList72.length;
-  for (var modifierIndex72 = 0; modifierIndex72 < modifierListLen72; modifierIndex72++) {
-    var modifierData72 = modifierList72[modifierIndex72];
-    output += bitbucket.internal.widget.keyboardShortcutKey({key: modifierData72});
-  }
-  output += bitbucket.internal.widget.keyboardShortcutKey({key: opt_data.keypress.key});
-  return output;
-};
-if (goog.DEBUG) {
-  bitbucket.internal.widget.keyboardShortcutModifier.soyTemplateName = 'bitbucket.internal.widget.keyboardShortcutModifier';
-}
-
-
-bitbucket.internal.widget.keyboardShortcutKey = function(opt_data, opt_ignored) {
-  return '<kbd>' + soy.$$escapeHtml(opt_data.key) + '</kbd>';
-};
-if (goog.DEBUG) {
-  bitbucket.internal.widget.keyboardShortcutKey.soyTemplateName = 'bitbucket.internal.widget.keyboardShortcutKey';
-}
-;
-;
-/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:keyboard-shortcuts', location = '/static/bitbucket/internal/widget/keyboard-shortcuts/keyboard-shortcuts.js' */
-define("bitbucket/internal/widget/keyboard-shortcuts/keyboard-shortcuts","module exports aui jquery lodash bitbucket/internal/util/events bitbucket/internal/util/navigator".split(" "),function(q,l,r,t,u,v,w){function c(){if(!(this instanceof c))return new c;this._enabledContexts=[]}function m(a,b){a=f.default.extend({},a);a.keys=d.default.map(a.keys,function(a){return d.default.map(a,function(a){if(d.default.all(["key","modifiers"],d.default.partial(d.default.has,a)))return a;var g=1<a.length?a.split("+"):
-a;return d.default.isArray(g)&&1!==g.length?{key:g.pop(),modifiers:b&&!1===b.convertOSModifier?g:d.default.map(g,c.convertOSModifier)}:a})});a.displayContext||(a.displayContext=c._contextDisplayInfo[a.context]?c._contextDisplayInfo[a.context].displayName:a.context.replace(/\b[a-z]/g,function(a){return a.toUpperCase()}));h[a.displayContext]||(h[a.displayContext]=[]);h[a.displayContext].push(a)}function n(a,b){p.default.trigger("bitbucket.internal.ui.keyboard.shortcutClicked",null,{context:a,keyEventName:b})}
-Object.defineProperty(l,"__esModule",{value:!0});var b=babelHelpers.interopRequireDefault(r),f=babelHelpers.interopRequireDefault(t),d=babelHelpers.interopRequireDefault(u),p=babelHelpers.interopRequireDefault(v),x=babelHelpers.interopRequireDefault(w),y=/^[cC]trl$/i,k,h={};c.prototype._setRegistry=function(a){this._registry=a};c.prototype._initContent=function(){this._dialog=b.default.dialog2(aui.dialog.dialog2({titleText:"Keyboard shortcuts",content:bitbucket.internal.widget.keyboardShortcutsContent({contextNames:d.default.keys(h),
-contexts:d.default.values(h)}),size:"large",id:"keyboard-shortcut-dialog"}))};c.prototype._bind=function(a){this._$trigger=a;var b=this;this._$trigger.on("click",function(a){a.preventDefault();b._show()})};c.prototype.enableContext=function(a){-1===f.default.inArray(a,this._enabledContexts)&&(k=a,this._registry.enableContext(a),k=void 0,this._enabledContexts.push(a))};c.prototype.resetContexts=function(){b.default.trigger("remove-bindings.keyboardshortcuts");this._enabledContexts=[];b.default.trigger("add-bindings.keyboardshortcuts")};
-c.prototype._show=function(){this._hasShown||(this._initContent(),this._hasShown=!0);this._dialog.show()};c.prototype.addCustomShortcut=function(a,b,c,d){m({keys:b,context:a,displayContext:d,description:c},{convertOSModifier:!1})};c.convertOSModifier=function(a){return x.default.isMac()?a.replace(y,"\u2318"):a};c.internalizeShortcuts=function(a){d.default.each(a,m)};c._contextDisplayInfo={repository:{displayName:"Within A Repository"},"branch-compare":{displayName:"Branch compare"},
-"branch-list":{displayName:"Branch list"},commit:{displayName:"Commit"},commits:{displayName:"Commit List"},"diff-tree":{displayName:"Commit"},"diff-view":{displayName:"Diff View"},filebrowser:{displayName:"Directory Browsing"},
-global:{displayName:"Global"},"pull-request":{displayName:"Within A Pull Request"},"pull-request-list":{displayName:"Pull Request List"},"pull-request-overview":{displayName:"Within A Pull Request"},sourceview:{displayName:"Source View"}};
-var e=new c;l.default={onReady:function(){e._bind((0,f.default)(".keyboard-shortcut-link"));var a=f.default.Deferred();(0,f.default)(document).ready(function(){setTimeout(function(){a.resolve()},0)});b.default.bind("register-contexts.keyboardshortcuts",function(b,c){e._setRegistry(c.shortcutRegistry);e.enableContext("global");a.done(function(){p.default.trigger("bitbucket.internal.widget.keyboard-shortcuts.register-contexts",e,e)})});b.default.bind("shortcuts-loaded.keyboardshortcuts",function(a,
-b){c.internalizeShortcuts(b.shortcuts)});b.default.params["keyboardshortcut-hash"]="bundled";b.default.trigger("initialize.keyboardshortcuts");require("bitbucket/internal/util/shortcuts",null).bind("keyboardShortcutsDialog",e._show.bind(e))},addTooltip:function(a,e){var g=(0,d.default)(e.split("+")).chain().map(c.convertOSModifier).map(function(a){return"shift"===a?"Shift":"ctrl"===a?c.convertOSModifier("Ctrl"):
-a}).value().join(" + "),f=a.attr("title");a.attr("title",f+b.default.format(" (type \u0027\u0027{0}\u0027\u0027)",g));return{remove:function(){a.attr("title",f)}}},bindKeyboardShortcutAnalytics:function(a,b){b.onValue(n.bind(null,k,a))},getEnablingContext:function(){return k},showDialog:function(){e&&e._show()},resetContexts:function(){e.resetContexts()},fireKeyboardShocutAnalyticsEvent:n};q.exports=l["default"]});;
-;
-/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:base-layout', location = '/static/bitbucket/internal/layout/base/base.js' */
-define("bitbucket/internal/layout/base/base","module exports aui jquery lodash bitbucket/util/navbuilder bitbucket/internal/model/page-state bitbucket/internal/model/stash-user bitbucket/internal/util/analytics bitbucket/internal/util/client-storage bitbucket/internal/util/events bitbucket/internal/util/history bitbucket/internal/widget/aui/dropdown/dropdown bitbucket/internal/widget/aui/form/form".split(" "),function(l,e,c,m,n,p,q,r,t,u,v,w,x,y){function z(a){a&&(a.isAdmin=!!(0,f.default)("#header").find("a.admin-link").length,
-A.default.setCurrentUser(new B.default(a)))}function C(a){g.default.getSessionItem(a)||(g.default.setSessionItem(a,!0),D.default.add("demographics",{d_lang:document.documentElement.lang},!0))}Object.defineProperty(e,"__esModule",{value:!0});var E=babelHelpers.interopRequireDefault(c),f=babelHelpers.interopRequireDefault(m),h=babelHelpers.interopRequireDefault(n),k=babelHelpers.interopRequireDefault(p),A=babelHelpers.interopRequireDefault(q),B=babelHelpers.interopRequireDefault(r),D=babelHelpers.interopRequireDefault(t),
-g=babelHelpers.interopRequireDefault(u),b=babelHelpers.interopRequireDefault(v),F=babelHelpers.interopRequireDefault(w),G=babelHelpers.interopRequireDefault(x),H=babelHelpers.interopRequireDefault(y);location.search&&(c=k.default.parse(location.href).getQueryParamValue("eve"))&&b.default.on(c,function(){console.log([b.default.name()],this,arguments)});b.default.on("bitbucket.internal.history.changestate",function(a){var b=(0,f.default)("#login-link");b.length&&a.state&&b.attr("href",k.default.login().next().build());
-(0,f.default)("body").children(".tipsy").remove()});e.default={onReady:function(a,e){z(a);G.default.onReady();H.default.onReady();E.default.params["build-number"]=encodeURIComponent((0,f.default)("#product-version").attr("data-system-build-number"));var d=(0,f.default)(window),c=h.default.debounce(function(){b.default.trigger("window.resize.debounced",d,d.width(),d.height())},200);d.on("resize",c);c=h.default.throttle(function(){b.default.trigger("window.scroll.throttled",d,d.scrollTop())},25);d.on("scroll",
-c);F.default.setTitleSuffix(" - "+e);C(g.default.buildKey("demographic-analytics","user"))}};l.exports=e["default"]});;
-;
 /* module-key = 'com.atlassian.bitbucket.search.bitbucket-search-query:search-urls', location = '/bitbucket/internal/component/search-urls.js' */
 define("bitbucket/internal/impl/search-urls",["bitbucket/util/navbuilder"],function(b){return{fileUrl:function(a,c,d){a=b.project(a.project).repo(a).browse().path(c.split("/"));d&&(a=a.withFragment(d));return a.build()},projectAvatarUrl:function(a,c){return b.project(a).avatar(c).build()},searchRestUrl:function(){return b.rest("search").addPathComponents("search").build()}}});;
 ;
@@ -539,6 +235,146 @@ d.exports=a["default"]});;
 /* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:bitbucket-request', location = '/static/bitbucket/internal/impl/request.js' */
 define("bitbucket/internal/impl/request",["module","exports","bitbucket/util/server"],function(c,a,b){Object.defineProperty(a,"__esModule",{value:!0});b=babelHelpers.interopRequireDefault(b);a.default={rest:b.default.rest};c.exports=a["default"]});;
 ;
+/* module-key = 'com.atlassian.bitbucket.server.bitbucket-bower-components:bacon', location = '/static/bower/bacon/dist/Bacon.js' */
+(function(){var a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,$,_,ab,bb,cb,db,eb,fb,gb,hb,ib={}.hasOwnProperty,jb=[].slice,kb=function(a,b){function c(){this.constructor=a}for(var d in b)ib.call(b,d)&&(a[d]=b[d]);return c.prototype=b.prototype,a.prototype=new c,a.__super__=b.prototype,a},lb=function(a,b){return function(){return a.apply(b,arguments)}};a={toString:function(){return"Bacon"}},a.version="0.7.42",l=("undefined"!=typeof global&&null!==global?global:this).Error,gb={indexOf:Array.prototype.indexOf?function(a,b){return a.indexOf(b)}:function(a,b){var c,d,e,f;for(c=e=0,f=a.length;f>e;c=++e)if(d=a[c],b===d)return c;return-1},indexWhere:function(a,b){var c,d,e,f;for(c=e=0,f=a.length;f>e;c=++e)if(d=a[c],b(d))return c;return-1},head:function(a){return a[0]},always:function(a){return function(){return a}},negate:function(a){return function(b){return!a(b)}},empty:function(a){return 0===a.length},tail:function(a){return a.slice(1,a.length)},filter:function(a,b){var c,d,e,f;for(c=[],e=0,f=b.length;f>e;e++)d=b[e],a(d)&&c.push(d);return c},map:function(a,b){var c,d,e,f;for(f=[],d=0,e=b.length;e>d;d++)c=b[d],f.push(a(c));return f},each:function(a,b){var c,d;for(c in a)d=a[c],b(c,d);return void 0},toArray:function(a){return J(a)?a:[a]},contains:function(a,b){return-1!==gb.indexOf(a,b)},id:function(a){return a},last:function(a){return a[a.length-1]},all:function(a,b){var c,d,e;for(null==b&&(b=gb.id),d=0,e=a.length;e>d;d++)if(c=a[d],!b(c))return!1;return!0},any:function(a,b){var c,d,e;for(null==b&&(b=gb.id),d=0,e=a.length;e>d;d++)if(c=a[d],b(c))return!0;return!1},without:function(a,b){return gb.filter(function(b){return b!==a},b)},remove:function(a,b){var c;return c=gb.indexOf(b,a),c>=0?b.splice(c,1):void 0},fold:function(a,b,c){var d,e,f;for(e=0,f=a.length;f>e;e++)d=a[e],b=c(b,d);return b},flatMap:function(a,b){return gb.fold(b,[],function(b,c){return b.concat(a(c))})},cached:function(a){var b;return b=o,function(){return b===o&&(b=a(),a=void 0),b}},toString:function(a){var b,c,d,e;try{return X++,null==a?"undefined":L(a)?"function":J(a)?X>5?"[..]":"["+gb.map(gb.toString,a).toString()+"]":null!=(null!=a?a.toString:void 0)&&a.toString!==Object.prototype.toString?a.toString():"object"==typeof a?X>5?"{..}":(c=function(){var c;c=[];for(d in a)ib.call(a,d)&&(e=function(){try{return a[d]}catch(c){return b=c}}(),c.push(gb.toString(d)+":"+gb.toString(e)));return c}(),"{"+c+"}"):a}finally{X--}}},X=0,a._=gb,a.scheduler={setTimeout:function(a,b){return setTimeout(a,b)},setInterval:function(a,b){return setInterval(a,b)},clearInterval:function(a){return clearInterval(a)},now:function(){return(new Date).getTime()}},a.fromBinder=function(b,c){return null==c&&(c=gb.id),new k(B(a,"fromBinder",b,c),function(d){var e,f,g,h;return h=!1,e=!1,f=function(){return h?void 0:"undefined"!=typeof g&&null!==g?(g(),h=!0):e=!0},g=b(function(){var b,e,g,h,i,k;for(b=1<=arguments.length?jb.call(arguments,0):[],h=c.apply(this,b),J(h)&&gb.last(h)instanceof j||(h=[h]),g=a.more,i=0,k=h.length;k>i;i++)if(e=h[i],g=d(e=_(e)),g===a.noMore||e.isEnd())return f(),g;return g}),e&&f(),f})},a.$={},a.$.asEventStream=function(b,c,d){var e;return L(c)&&(e=[c,void 0],d=e[0],c=e[1]),eb(this.selector||this,"asEventStream",b,a.fromBinder(function(a){return function(d){return a.on(b,c,d),function(){return a.off(b,c,d)}}}(this),d))},null!=(hb="undefined"!=typeof jQuery&&null!==jQuery?jQuery:"undefined"!=typeof Zepto&&null!==Zepto?Zepto:void 0)&&(hb.fn.asEventStream=a.$.asEventStream),a.fromEventTarget=function(b,c,d){var e,f,g,h,i,j,k,l;return e=null!=(g=null!=(h=null!=(i=b.addEventListener)?i:b.addListener)?h:b.bind)?g:b.on,f=null!=(j=null!=(k=null!=(l=b.removeEventListener)?l:b.removeListener)?k:b.unbind)?j:b.off,eb(a,"fromEventTarget",b,c,a.fromBinder(function(a){return e.call(b,c,a),function(){return f.call(b,c,a)}},d))},a.fromPromise=function(b,c){return eb(a,"fromPromise",b,a.fromBinder(function(a){return b.then(a,function(b){return a(new i(b))}),function(){return c&&"function"==typeof b.abort?b.abort():void 0}},function(a){return[a,C()]}))},a.noMore=["<no-more>"],a.more=["<more>"],a.later=function(b,c){return eb(a,"later",b,c,a.fromPoll(b,function(){return[c,C()]}))},a.sequentially=function(b,c){var d;return d=0,eb(a,"sequentially",b,c,a.fromPoll(b,function(){var a;return a=c[d++],d<c.length?a:d===c.length?[a,C()]:C()}))},a.repeatedly=function(b,c){var d;return d=0,eb(a,"repeatedly",b,c,a.fromPoll(b,function(){return c[d++%c.length]}))},a.spy=function(a){return Z.push(a)},Z=[],Y=function(a){var b,c,d;if(Z.length&&!Y.running)try{for(Y.running=!0,c=0,d=Z.length;d>c;c++)(b=Z[c])(a)}finally{delete Y.running}return void 0},fb=function(a){return function(){var b,c,d,e;return d=arguments[0],b=2<=arguments.length?jb.call(arguments,1):[],"object"==typeof d&&b.length&&(c=d,e=b[0],d=function(){return c[e].apply(c,arguments)},b=b.slice(1)),a.apply(null,[d].concat(jb.call(b)))}},O=function(b,c){return fb(function(){var d,e,f;return e=arguments[0],d=2<=arguments.length?jb.call(arguments,1):[],f=W(c,[function(a,b){return e.apply(null,jb.call(a).concat([b]))}]),eb.apply(null,[a,b,e].concat(jb.call(d),[a.combineAsArray(d).flatMap(f)]))})},a.fromCallback=O("fromCallback",function(){var b,c;return c=arguments[0],b=2<=arguments.length?jb.call(arguments,1):[],a.fromBinder(function(a){return P(c,b)(a),V},function(a){return[a,C()]})}),a.fromNodeCallback=O("fromNodeCallback",function(){var b,c;return c=arguments[0],b=2<=arguments.length?jb.call(arguments,1):[],a.fromBinder(function(a){return P(c,b)(a),V},function(a,b){return a?[new i(a),C()]:[b,C()]})}),a.fromPoll=function(b,c){return eb(a,"fromPoll",b,c,a.fromBinder(function(c){var d;return d=a.scheduler.setInterval(c,b),function(){return a.scheduler.clearInterval(d)}},c))},a.interval=function(b,c){return null==c&&(c={}),eb(a,"interval",b,c,a.fromPoll(b,function(){return U(c)}))},a.constant=function(b){return new q(B(a,"constant",b),function(a){return a(I(b)),a(C()),V})},a.never=function(){return new k(B(a,"never"),function(a){return a(C()),V})},a.once=function(b){return new k(B(a,"once",b),function(a){return a(_(b)),a(C()),V})},a.fromArray=function(b){var c;return b.length?(c=0,new k(B(a,"fromArray",b),function(d){var e,f,g;return g=!1,f=a.more,e=function(){var h;return f===a.noMore||g||(h=b[c++],f=d(_(h)),f===a.noMore)?void 0:c===b.length?d(C()):u.afterTransaction(e)},e(),function(){return g=!0}})):eb(a,"fromArray",b,a.never())},a.mergeAll=function(){var b;return b=1<=arguments.length?jb.call(arguments,0):[],J(b[0])&&(b=b[0]),b.length?new k(B.apply(null,[a,"mergeAll"].concat(jb.call(b))),function(c){var d,e,f;return d=0,f=function(e){return function(f){return e.dispatcher.subscribe(function(e){var g;return e.isEnd()?(d++,d===b.length?c(C()):a.more):(g=c(e),g===a.noMore&&f(),g)})}},e=gb.map(f,b),x.apply(null,e)}):a.never()},a.zipAsArray=function(){var b;return b=1<=arguments.length?jb.call(arguments,0):[],J(b[0])&&(b=b[0]),eb.apply(null,[a,"zipAsArray"].concat(jb.call(b),[a.zipWith(b,function(){var a;return a=1<=arguments.length?jb.call(arguments,0):[]})]))},a.zipWith=function(){var b,c,d;return b=arguments[0],c=2<=arguments.length?jb.call(arguments,1):[],L(b)||(d=[b,c[0]],c=d[0],b=d[1]),c=gb.map(function(a){return a.toEventStream()},c),eb.apply(null,[a,"zipWith",b].concat(jb.call(c),[a.when(c,b)]))},a.groupSimultaneous=function(){var c,d,e;return e=1<=arguments.length?jb.call(arguments,0):[],1===e.length&&J(e[0])&&(e=e[0]),d=function(){var a,d,f;for(f=[],a=0,d=e.length;d>a;a++)c=e[a],f.push(new b(c));return f}(),eb.apply(null,[a,"groupSimultaneous"].concat(jb.call(e),[a.when(d,function(){var a;return a=1<=arguments.length?jb.call(arguments,0):[]})]))},a.combineAsArray=function(){var b,c,d,e,f,g,h;for(f=1<=arguments.length?jb.call(arguments,0):[],1===f.length&&J(f[0])&&(f=f[0]),b=g=0,h=f.length;h>g;b=++g)e=f[b],M(e)||(f[b]=a.constant(e));return f.length?(d=function(){var a,b,d;for(d=[],a=0,b=f.length;b>a;a++)c=f[a],d.push(new t(c,!0));return d}(),eb.apply(null,[a,"combineAsArray"].concat(jb.call(f),[a.when(d,function(){var a;return a=1<=arguments.length?jb.call(arguments,0):[]}).toProperty()]))):a.constant([])},a.onValues=function(){var b,c,d;return c=2<=arguments.length?jb.call(arguments,0,d=arguments.length-1):(d=0,[]),b=arguments[d++],a.combineAsArray(c).onValues(b)},a.combineWith=function(){var b,c;return b=arguments[0],c=2<=arguments.length?jb.call(arguments,1):[],eb.apply(null,[a,"combineWith",b].concat(jb.call(c),[a.combineAsArray(c).map(function(a){return b.apply(null,a)})]))},a.combineTemplate=function(b){var c,d,e,f,g,h,i,j,k,l;return i=[],l=[],h=function(a){return a[a.length-1]},k=function(a,b,c){return h(a)[b]=c},c=function(a,b){return function(c,d){return k(c,a,d[b])}},g=function(a,b){return function(c){return k(c,a,b)}},j=function(a){return J(a)?[]:{}},e=function(a,b){var d,e;return M(b)?(l.push(b),i.push(c(a,l.length-1))):b!==Object(b)||"function"==typeof b||b instanceof RegExp||b instanceof Date?i.push(g(a,b)):(e=function(a){return function(c){var d;return d=j(b),k(c,a,d),c.push(d)}},d=function(a){return a.pop()},i.push(e(a)),f(b),i.push(d))},f=function(a){return gb.each(a,e)},f(b),d=function(a){var c,d,e,f,g;for(e=j(b),c=[e],f=0,g=i.length;g>f;f++)(d=i[f])(c,a);return e},eb(a,"combineTemplate",b,a.combineAsArray(l).map(d))},a.retry=function(b){var c,d,e,f,g,h;if(!L(b.source))throw new l("'source' option has to be a function");return h=b.source,f=b.retries||0,e=b.maxRetries||f,c=b.delay||function(){return 0},d=b.isRetryable||function(){return!0},g=function(b){var g,i;return i={source:h,retries:f-1,maxRetries:e,delay:c,isRetryable:d},g=function(){return a.retry(i)},a.later(c(b)).filter(!1).concat(a.once().flatMap(g))},eb(a,"retry",b,h().flatMapError(function(b){return d(b)&&f>0?g({error:b,retriesDone:e-f}):a.once(new i(b))}))},D=0,j=function(){function a(){this.id=++D}return a.prototype.isEvent=function(){return!0},a.prototype.isEnd=function(){return!1},a.prototype.isInitial=function(){return!1},a.prototype.isNext=function(){return!1},a.prototype.isError=function(){return!1},a.prototype.hasValue=function(){return!1},a.prototype.filter=function(){return!0},a.prototype.inspect=function(){return this.toString()},a.prototype.log=function(){return this.toString()},a}(),n=function(a){function b(a,c){b.__super__.constructor.call(this),!c&&L(a)||a instanceof b?(this.valueF=a,this.valueInternal=void 0):(this.valueF=void 0,this.valueInternal=a)}return kb(b,a),b.prototype.isNext=function(){return!0},b.prototype.hasValue=function(){return!0},b.prototype.value=function(){return this.valueF instanceof b?(this.valueInternal=this.valueF.value(),this.valueF=void 0):this.valueF&&(this.valueInternal=this.valueF(),this.valueF=void 0),this.valueInternal},b.prototype.fmap=function(a){var b,c;return this.valueInternal?(c=this.valueInternal,this.apply(function(){return a(c)})):(b=this,this.apply(function(){return a(b.value())}))},b.prototype.apply=function(a){return new b(a)},b.prototype.filter=function(a){return a(this.value())},b.prototype.toString=function(){return gb.toString(this.value())},b.prototype.log=function(){return this.value()},b}(j),m=function(a){function b(){return b.__super__.constructor.apply(this,arguments)}return kb(b,a),b.prototype.isInitial=function(){return!0},b.prototype.isNext=function(){return!1},b.prototype.apply=function(a){return new b(a)},b.prototype.toNext=function(){return new n(this)},b}(n),h=function(a){function b(){return b.__super__.constructor.apply(this,arguments)}return kb(b,a),b.prototype.isEnd=function(){return!0},b.prototype.fmap=function(){return this},b.prototype.apply=function(){return this},b.prototype.toString=function(){return"<end>"},b}(j),i=function(a){function b(a){this.error=a}return kb(b,a),b.prototype.isError=function(){return!0},b.prototype.fmap=function(){return this},b.prototype.apply=function(){return this},b.prototype.toString=function(){return"<error> "+gb.toString(this.error)},b}(j),H=0,p=function(){function b(a){this.id=++H,eb(a,this),this.initialDesc=this.desc}return b.prototype.subscribe=function(a){return u.wrappedSubscribe(this,a)},b.prototype.subscribeInternal=function(a){return this.dispatcher.subscribe(a)},b.prototype.onValue=function(){var a;return a=Q(arguments),this.subscribe(function(b){return b.hasValue()?a(b.value()):void 0})},b.prototype.onValues=function(a){return this.onValue(function(b){return a.apply(null,b)})},b.prototype.onError=function(){var a;return a=Q(arguments),this.subscribe(function(b){return b.isError()?a(b.error):void 0})},b.prototype.onEnd=function(){var a;return a=Q(arguments),this.subscribe(function(b){return b.isEnd()?a():void 0})},b.prototype.errors=function(){return eb(this,"errors",this.filter(function(){return!1}))},b.prototype.filter=function(){var b,c;return c=arguments[0],b=2<=arguments.length?jb.call(arguments,1):[],A(this,c,b,function(b){return eb(this,"filter",b,this.withHandler(function(c){return c.filter(b)?this.push(c):a.more}))})},b.prototype.takeWhile=function(){var b,c;return c=arguments[0],b=2<=arguments.length?jb.call(arguments,1):[],A(this,c,b,function(b){return eb(this,"takeWhile",b,this.withHandler(function(c){return c.filter(b)?this.push(c):(this.push(C()),a.noMore)}))})},b.prototype.endOnError=function(){var a,b;return b=arguments[0],a=2<=arguments.length?jb.call(arguments,1):[],null==b&&(b=!0),A(this,b,a,function(a){return eb(this,"endOnError",this.withHandler(function(b){return b.isError()&&a(b.error)?(this.push(b),this.push(C())):this.push(b)}))})},b.prototype.take=function(b){return 0>=b?a.never():eb(this,"take",b,this.withHandler(function(c){return c.hasValue()?(b--,b>0?this.push(c):(0===b&&this.push(c),this.push(C()),a.noMore)):this.push(c)}))},b.prototype.map=function(){var a,b;return b=arguments[0],a=2<=arguments.length?jb.call(arguments,1):[],b instanceof q?b.sampledBy(this,G):A(this,b,a,function(a){return eb(this,"map",a,this.withHandler(function(b){return this.push(b.fmap(a))}))})},b.prototype.mapError=function(){var a;return a=Q(arguments),eb(this,"mapError",a,this.withHandler(function(b){return this.push(b.isError()?U(a(b.error)):b)}))},b.prototype.mapEnd=function(){var b;return b=Q(arguments),eb(this,"mapEnd",b,this.withHandler(function(c){return c.isEnd()?(this.push(U(b(c))),this.push(C()),a.noMore):this.push(c)}))},b.prototype.doAction=function(){var a;return a=Q(arguments),eb(this,"doAction",a,this.withHandler(function(b){return b.hasValue()&&a(b.value()),this.push(b)}))},b.prototype.skip=function(b){return eb(this,"skip",b,this.withHandler(function(c){return c.hasValue()&&b>0?(b--,a.more):this.push(c)}))},b.prototype.skipDuplicates=function(a){return null==a&&(a=function(a,b){return a===b}),eb(this,"skipDuplicates",this.withStateMachine(o,function(b,c){return c.hasValue()?c.isInitial()||b===o||!a(b.get(),c.value())?[new s(c.value()),[c]]:[b,[]]:[b,[c]]}))},b.prototype.skipErrors=function(){return eb(this,"skipErrors",this.withHandler(function(b){return b.isError()?a.more:this.push(b)}))},b.prototype.withStateMachine=function(b,c){var d;return d=b,eb(this,"withStateMachine",b,c,this.withHandler(function(b){var e,f,g,h,i,j,k;for(e=c(d,b),f=e[0],h=e[1],d=f,i=a.more,j=0,k=h.length;k>j;j++)if(g=h[j],i=this.push(g),i===a.noMore)return i;return i}))},b.prototype.scan=function(b,c){var d,e,f;return c=$(c),d=cb(b),f=function(b){return function(f){var g,h,i,j;return g=!1,j=V,h=a.more,i=function(){return g?void 0:d.forEach(function(b){return g=!0,h=f(new m(function(){return b})),h===a.noMore?(j(),j=V):void 0})},j=b.dispatcher.subscribe(function(b){var e,j;return b.hasValue()?g&&b.isInitial()?a.more:(b.isInitial()||i(),g=!0,j=d.getOrElse(void 0),e=c(j,b.value()),d=new s(e),f(b.apply(function(){return e}))):(b.isEnd()&&(h=i()),h!==a.noMore?f(b):void 0)}),u.whenDoneWith(e,i),j}}(this),e=new q(B(this,"scan",b,c),f)},b.prototype.fold=function(a,b){return eb(this,"fold",a,b,this.scan(a,b).sampledBy(this.filter(!1).mapEnd().toProperty()))},b.prototype.zip=function(b,c){return null==c&&(c=Array),eb(this,"zip",b,a.zipWith([this,b],c))},b.prototype.diff=function(a,b){return b=$(b),eb(this,"diff",a,b,this.scan([a],function(a,c){return[c,b(a[0],c)]}).filter(function(a){return 2===a.length}).map(function(a){return a[1]}))},b.prototype.flatMap=function(){return F(this,T(arguments))},b.prototype.flatMapFirst=function(){return F(this,T(arguments),!0)},b.prototype.flatMapWithConcurrencyLimit=function(){var a,b;return b=arguments[0],a=2<=arguments.length?jb.call(arguments,1):[],eb.apply(null,[this,"flatMapWithConcurrencyLimit",b].concat(jb.call(a),[F(this,T(a),!1,b)]))},b.prototype.flatMapLatest=function(){var a,b;return a=T(arguments),b=this.toEventStream(),eb(this,"flatMapLatest",a,b.flatMap(function(c){return S(a(c)).takeUntil(b)}))},b.prototype.flatMapError=function(b){return eb(this,"flatMapError",b,this.mapError(function(a){return new i(a)}).flatMap(function(c){return c instanceof i?b(c.error):a.once(c)}))},b.prototype.flatMapConcat=function(){return eb.apply(null,[this,"flatMapConcat"].concat(jb.call(arguments),[this.flatMapWithConcurrencyLimit.apply(this,[1].concat(jb.call(arguments)))]))},b.prototype.bufferingThrottle=function(b){return eb(this,"bufferingThrottle",b,this.flatMapConcat(function(c){return a.once(c).concat(a.later(b).filter(!1))}))},b.prototype.not=function(){return eb(this,"not",this.map(function(a){return!a}))},b.prototype.log=function(){var a;return a=1<=arguments.length?jb.call(arguments,0):[],this.subscribe(function(b){return"undefined"!=typeof console&&null!==console&&"function"==typeof console.log?console.log.apply(console,jb.call(a).concat([b.log()])):void 0}),this},b.prototype.slidingWindow=function(a,b){return null==b&&(b=0),eb(this,"slidingWindow",a,b,this.scan([],function(b,c){return b.concat([c]).slice(-a)}).filter(function(a){return a.length>=b}))},b.prototype.combine=function(b,c){var d;return d=$(c),eb(this,"combine",b,c,a.combineAsArray(this,b).map(function(a){return d(a[0],a[1])}))},b.prototype.decode=function(b){return eb(this,"decode",b,this.combine(a.combineTemplate(b),function(a,b){return b[a]}))},b.prototype.awaiting=function(b){return eb(this,"awaiting",b,a.groupSimultaneous(this,b).map(function(a){var b,c;return b=a[0],c=a[1],0===c.length}).toProperty(!1).skipDuplicates())},b.prototype.name=function(a){return this._name=a,this},b.prototype.withDescription=function(){return B.apply(null,arguments).apply(this)},b.prototype.toString=function(){return this._name?this._name:this.desc.toString()},b.prototype.internalDeps=function(){return this.initialDesc.deps()},b}(),p.prototype.reduce=p.prototype.fold,p.prototype.assign=p.prototype.onValue,p.prototype.inspect=p.prototype.toString,F=function(b,c,e,f){var g,h,i;return i=[b],g=[],h=new k(B(b,"flatMap"+(e?"First":""),c),function(h){var i,j,k,l,n;return k=new d,l=[],n=function(b){var d;return d=S(c(b.value())),g.push(d),k.add(function(b,c){return d.dispatcher.subscribe(function(e){var f;return e.isEnd()?(gb.remove(d,g),j(),i(c),a.noMore):(e instanceof m&&(e=e.toNext()),f=h(e),f===a.noMore&&b(),f)})})},j=function(){var a;return a=l.shift(),a?n(a):void 0},i=function(a){return a(),k.empty()?h(C()):void 0},k.add(function(c,d){return b.dispatcher.subscribe(function(b){return b.isEnd()?i(d):b.isError()?h(b):e&&k.count()>1?a.more:k.unsubscribed?a.noMore:f&&k.count()>f?l.push(b):n(b)})}),k.unsubscribe}),h.internalDeps=function(){return g.length?i.concat(g):i},h},k=function(b){function c(a,b,d){L(a)&&(d=b,b=a,a=[]),c.__super__.constructor.call(this,a),this.dispatcher=new g(b,d),Y(this)}return kb(c,b),c.prototype.delay=function(b){return eb(this,"delay",b,this.flatMap(function(c){return a.later(b,c)}))},c.prototype.debounce=function(b){return eb(this,"debounce",b,this.flatMapLatest(function(c){return a.later(b,c)}))},c.prototype.debounceImmediate=function(b){return eb(this,"debounceImmediate",b,this.flatMapFirst(function(c){return a.once(c).concat(a.later(b).filter(!1))}))},c.prototype.throttle=function(a){return eb(this,"throttle",a,this.bufferWithTime(a).map(function(a){return a[a.length-1]}))},c.prototype.bufferWithTime=function(a){return eb(this,"bufferWithTime",a,this.bufferWithTimeOrCount(a,Number.MAX_VALUE))},c.prototype.bufferWithCount=function(a){return eb(this,"bufferWithCount",a,this.bufferWithTimeOrCount(void 0,a))},c.prototype.bufferWithTimeOrCount=function(a,b){var c;return c=function(c){return c.values.length===b?c.flush():void 0!==a?c.schedule():void 0},eb(this,"bufferWithTimeOrCount",a,b,this.buffer(a,c,c))},c.prototype.buffer=function(b,c,d){var e,f,g;return null==c&&(c=V),null==d&&(d=V),e={scheduled:!1,end:void 0,values:[],flush:function(){var b;if(this.scheduled=!1,this.values.length>0){if(b=this.push(U(this.values)),this.values=[],null!=this.end)return this.push(this.end);if(b!==a.noMore)return d(this)}else if(null!=this.end)return this.push(this.end)},schedule:function(){return this.scheduled?void 0:(this.scheduled=!0,b(function(a){return function(){return a.flush()}}(this)))}},g=a.more,L(b)||(f=b,b=function(b){return a.scheduler.setTimeout(b,f)}),eb(this,"buffer",this.withHandler(function(a){return e.push=function(a){return function(b){return a.push(b)}}(this),a.isError()?g=this.push(a):a.isEnd()?(e.end=a,e.scheduled||e.flush()):(e.values.push(a.value()),c(e)),g}))},c.prototype.merge=function(b){var c;return c=this,eb(c,"merge",b,a.mergeAll(this,b))},c.prototype.toProperty=function(b){var c,d;return d=0===arguments.length?o:cb(function(){return b}),c=this.dispatcher,new q(B(this,"toProperty",b),function(b){var e,f,g,h;return e=!1,h=V,f=a.more,g=function(){return e?void 0:d.forEach(function(c){return e=!0,f=b(new m(c)),f===a.noMore?(h(),h=V):void 0})},h=c.subscribe(function(c){return c.hasValue()?e&&c.isInitial()?a.more:(c.isInitial()||g(),e=!0,d=new s(c),b(c)):(c.isEnd()&&(f=g()),f!==a.noMore?b(c):void 0)}),g(),h})},c.prototype.toEventStream=function(){return this},c.prototype.sampledBy=function(a,b){return eb(this,"sampledBy",a,b,this.toProperty().sampledBy(a,b))},c.prototype.concat=function(a){var b;return b=this,new c(B(b,"concat",a),function(c){var d,e;return e=V,d=b.dispatcher.subscribe(function(b){return b.isEnd()?e=a.dispatcher.subscribe(c):c(b)}),function(){return d(),e()}})},c.prototype.takeUntil=function(b){var c;return c={},eb(this,"takeUntil",b,a.groupSimultaneous(this.mapEnd(c),b.skipErrors()).withHandler(function(d){var e,f,g,h,i,j;if(d.hasValue()){if(j=d.value(),e=j[0],b=j[1],b.length)return this.push(C());for(f=a.more,h=0,i=e.length;i>h;h++)g=e[h],f=this.push(g===c?C():U(g));return f}return this.push(d)}))},c.prototype.skipUntil=function(a){var b;return b=a.take(1).map(!0).toProperty(!1),eb(this,"skipUntil",a,this.filter(b))},c.prototype.skipWhile=function(){var b,c,d;return c=arguments[0],b=2<=arguments.length?jb.call(arguments,1):[],d=!1,A(this,c,b,function(b){return eb(this,"skipWhile",b,this.withHandler(function(c){return!d&&c.hasValue()&&b(c.value())?a.more:(c.hasValue()&&(d=!0),this.push(c))}))})},c.prototype.holdWhen=function(b){var c,d,e;return e=b.startWith(!1),d=e.filter(function(a){return!a}),c=e.filter(gb.id),eb(this,"holdWhen",b,this.filter(!1).merge(e.flatMapConcat(function(b){return function(e){return e?b.scan([],function(a,b){return a.concat(b)}).sampledBy(d).take(1).flatMap(a.fromArray):b.takeUntil(c)}}(this))))},c.prototype.startWith=function(b){return eb(this,"startWith",b,a.once(b).concat(this))},c.prototype.withHandler=function(a){return new c(B(this,"withHandler",a),this.dispatcher.subscribe,a)},c}(p),q=function(b){function c(a,b,d){L(a)&&(d=b,b=a,a=[]),c.__super__.constructor.call(this,a),this.dispatcher=new r(this,b,d),Y(this)}return kb(c,b),c.prototype.sampledBy=function(b,d){var e,f,g,h,i;return null!=d?d=$(d):(e=!0,d=function(a){return a.value()}),i=new t(this,!1,e),g=new t(b,!0,e),h=a.when([i,g],d),f=b instanceof c?h.toProperty():h,eb(this,"sampledBy",b,d,f)},c.prototype.sample=function(b){return eb(this,"sample",b,this.sampledBy(a.interval(b,{})))},c.prototype.changes=function(){return new k(B(this,"changes"),function(a){return function(b){return a.dispatcher.subscribe(function(a){return a.isInitial()?void 0:b(a)})}}(this))},c.prototype.withHandler=function(a){return new c(B(this,"withHandler",a),this.dispatcher.subscribe,a)},c.prototype.toProperty=function(){return this},c.prototype.toEventStream=function(){return new k(B(this,"toEventStream"),function(a){return function(b){return a.dispatcher.subscribe(function(a){return a.isInitial()&&(a=a.toNext()),b(a)})}}(this))},c.prototype.and=function(a){return eb(this,"and",a,this.combine(a,function(a,b){return a&&b}))},c.prototype.or=function(a){return eb(this,"or",a,this.combine(a,function(a,b){return a||b}))},c.prototype.delay=function(a){return this.delayChanges("delay",a,function(b){return b.delay(a)})},c.prototype.debounce=function(a){return this.delayChanges("debounce",a,function(b){return b.debounce(a)})},c.prototype.throttle=function(a){return this.delayChanges("throttle",a,function(b){return b.throttle(a)})},c.prototype.delayChanges=function(){var a,b,c;return a=2<=arguments.length?jb.call(arguments,0,c=arguments.length-1):(c=0,[]),b=arguments[c++],eb.apply(null,[this].concat(jb.call(a),[v(this,b(this.changes()))]))},c.prototype.takeUntil=function(a){var b;return b=this.changes().takeUntil(a),eb(this,"takeUntil",a,v(this,b))},c.prototype.startWith=function(a){return eb(this,"startWith",a,this.scan(a,function(a,b){return b}))},c.prototype.bufferingThrottle=function(){var a;return(a=c.__super__.bufferingThrottle.apply(this,arguments)).bufferingThrottle.apply(a,arguments).toProperty()},c}(p),A=function(a,b,c,d){var e;return b instanceof q?(e=b.sampledBy(a,function(a,b){return[a,b]}),d.call(e,function(a){var b,c;return b=a[0],c=a[1],b}).map(function(a){var b,c;return b=a[0],c=a[1]})):(b=P(b,c),d.call(a,b))},v=function(b,c){var d;return d=new k(B(b,"justInitValue"),function(c){var e,f;return f=void 0,e=b.dispatcher.subscribe(function(b){return b.isEnd()||(f=b),a.noMore}),u.whenDoneWith(d,function(){return null!=f&&c(f),c(C())}),e}),d.concat(c).toProperty()},g=function(){function b(a,b){this._subscribe=a,this._handleEvent=b,this.subscribe=lb(this.subscribe,this),this.handleEvent=lb(this.handleEvent,this),this.subscriptions=[],this.queue=[],this.pushing=!1,this.ended=!1,this.prevError=void 0,this.unsubSrc=void 0}return b.prototype.hasSubscribers=function(){return this.subscriptions.length>0},b.prototype.removeSub=function(a){return this.subscriptions=gb.without(a,this.subscriptions)},b.prototype.push=function(a){return a.isEnd()&&(this.ended=!0),u.inTransaction(a,this,this.pushIt,[a])},b.prototype.pushToSubscriptions=function(b){var c,d,e,f,g,h;try{for(f=this.subscriptions,g=0,h=f.length;h>g;g++)e=f[g],d=e.sink(b),(d===a.noMore||b.isEnd())&&this.removeSub(e);return!0}catch(i){throw c=i,this.pushing=!1,this.queue=[],c}},b.prototype.pushIt=function(b){if(this.pushing)return this.queue.push(b),a.more;if(b!==this.prevError){for(b.isError()&&(this.prevError=b),this.pushing=!0,this.pushToSubscriptions(b),this.pushing=!1;this.queue.length;)b=this.queue.shift(),this.push(b);return this.hasSubscribers()?a.more:(this.unsubscribeFromSource(),a.noMore)}},b.prototype.handleEvent=function(a){return this._handleEvent?this._handleEvent(a):this.push(a)},b.prototype.unsubscribeFromSource=function(){return this.unsubSrc&&this.unsubSrc(),this.unsubSrc=void 0},b.prototype.subscribe=function(a){var b;return this.ended?(a(C()),V):(b={sink:a},this.subscriptions.push(b),1===this.subscriptions.length&&(this.unsubSrc=this._subscribe(this.handleEvent)),function(a){return function(){return a.removeSub(b),a.hasSubscribers()?void 0:a.unsubscribeFromSource()}}(this))},b}(),r=function(b){function c(a,b,d){this.property=a,this.subscribe=lb(this.subscribe,this),c.__super__.constructor.call(this,b,d),this.current=o,this.currentValueRootId=void 0,this.propertyEnded=!1}return kb(c,b),c.prototype.push=function(a){return a.isEnd()&&(this.propertyEnded=!0),a.hasValue()&&(this.current=new s(a),this.currentValueRootId=u.currentEventId()),c.__super__.push.call(this,a)},c.prototype.maybeSubSource=function(b,c){return c===a.noMore?V:this.propertyEnded?(b(C()),V):g.prototype.subscribe.call(this,b)},c.prototype.subscribe=function(b){var c,d,e,f;return d=!1,e=a.more,this.current.isDefined&&(this.hasSubscribers()||this.propertyEnded)?(c=u.currentEventId(),f=this.currentValueRootId,!this.propertyEnded&&f&&c&&c!==f?(u.whenDoneWith(this.property,function(a){return function(){return a.currentValueRootId===f?b(I(a.current.get().value())):void 0}}(this)),this.maybeSubSource(b,e)):(u.inTransaction(void 0,this,function(){return e=b(I(this.current.get().value()))},[]),this.maybeSubSource(b,e))):this.maybeSubSource(b,e)},c}(g),c=function(b){function c(){this.guardedSink=lb(this.guardedSink,this),this.subscribeAll=lb(this.subscribeAll,this),this.unsubAll=lb(this.unsubAll,this),this.sink=void 0,this.subscriptions=[],this.ended=!1,c.__super__.constructor.call(this,B(a,"Bus"),this.subscribeAll)}return kb(c,b),c.prototype.unsubAll=function(){var a,b,c,d;for(d=this.subscriptions,b=0,c=d.length;c>b;b++)a=d[b],"function"==typeof a.unsub&&a.unsub();return void 0},c.prototype.subscribeAll=function(a){var b,c,d,e;for(this.sink=a,e=w(this.subscriptions),c=0,d=e.length;d>c;c++)b=e[c],this.subscribeInput(b);return this.unsubAll},c.prototype.guardedSink=function(b){return function(c){return function(d){return d.isEnd()?(c.unsubscribeInput(b),a.noMore):c.sink(d)}}(this)},c.prototype.subscribeInput=function(a){return a.unsub=a.input.dispatcher.subscribe(this.guardedSink(a.input))},c.prototype.unsubscribeInput=function(a){var b,c,d,e,f;for(f=this.subscriptions,b=d=0,e=f.length;e>d;b=++d)if(c=f[b],c.input===a)return"function"==typeof c.unsub&&c.unsub(),void this.subscriptions.splice(b,1)},c.prototype.plug=function(a){var b;if(!this.ended)return b={input:a},this.subscriptions.push(b),null!=this.sink&&this.subscribeInput(b),function(b){return function(){return b.unsubscribeInput(a)}}(this)},c.prototype.end=function(){return this.ended=!0,this.unsubAll(),"function"==typeof this.sink?this.sink(C()):void 0},c.prototype.push=function(a){return"function"==typeof this.sink?this.sink(U(a)):void 0},c.prototype.error=function(a){return"function"==typeof this.sink?this.sink(new i(a)):void 0},c}(k),t=function(){function a(a,b,c){this.obs=a,this.sync=b,this.lazy=null!=c?c:!1,this.queue=[]}return a.prototype.subscribe=function(a){return this.obs.dispatcher.subscribe(a)},a.prototype.toString=function(){return this.obs.toString()},a.prototype.markEnded=function(){return this.ended=!0},a.prototype.consume=function(){return this.lazy?{value:gb.always(this.queue[0])}:this.queue[0]},a.prototype.push=function(a){return this.queue=[a]},a.prototype.mayHave=function(){return!0},a.prototype.hasAtLeast=function(){return this.queue.length},a.prototype.flatten=!0,a}(),e=function(a){function b(){return b.__super__.constructor.apply(this,arguments)}return kb(b,a),b.prototype.consume=function(){return this.queue.shift()},b.prototype.push=function(a){return this.queue.push(a)},b.prototype.mayHave=function(a){return!this.ended||this.queue.length>=a},b.prototype.hasAtLeast=function(a){return this.queue.length>=a},b.prototype.flatten=!1,b}(t),b=function(a){function b(a){b.__super__.constructor.call(this,a,!0)}return kb(b,a),b.prototype.consume=function(){var a;return a=this.queue,this.queue=[],{value:function(){return a}}},b.prototype.push=function(a){return this.queue.push(a.value())},b.prototype.hasAtLeast=function(){return!0},b}(t),t.isTrigger=function(a){return a instanceof t?a.sync:a instanceof k},t.fromObservable=function(a){return a instanceof t?a:a instanceof q?new t(a,!1):new e(a,!0)},B=function(){var a,b,c;return b=arguments[0],c=arguments[1],a=3<=arguments.length?jb.call(arguments,2):[],(b||c)instanceof f?b||c:new f(b,c,a)},E=function(a){return J(a)?gb.flatMap(E,a):M(a)?[a]:a instanceof t?[a.obs]:[]},f=function(){function a(a,b,c){this.context=a,this.method=b,this.args=c,this.cached=void 0
+}return a.prototype.deps=function(){return this.cached||(this.cached=E([this.context].concat(this.args)))},a.prototype.apply=function(a){return a.desc=this,a},a.prototype.toString=function(){return gb.toString(this.context)+"."+gb.toString(this.method)+"("+gb.map(gb.toString,this.args)+")"},a}(),eb=function(){var a,b,c;return a=2<=arguments.length?jb.call(arguments,0,c=arguments.length-1):(c=0,[]),b=arguments[c++],B.apply(null,a).apply(b)},a.when=function(){var b,c,d,e,f,g,h,i,j,l,m,n,o,p,q,r,s,v,w,A;if(0===arguments.length)return a.never();for(f=arguments.length,q="when: expecting arguments in the form (Observable+,function)+",o=[],j=[],c=0,l=[];f>c;){for(l[c]=arguments[c],l[c+1]=arguments[c+1],i=gb.toArray(arguments[c]),b=y(arguments[c+1]),h={f:b,ixs:[]},p=!1,r=0,v=i.length;v>r;r++){for(n=i[r],d=gb.indexOf(o,n),p||(p=t.isTrigger(n)),0>d&&(o.push(n),d=o.length-1),A=h.ixs,s=0,w=A.length;w>s;s++)e=A[s],e.index===d&&e.count++;h.ixs.push({index:d,count:1})}i.length>0&&j.push(h),c+=2}return o.length?(o=gb.map(t.fromObservable,o),g=gb.any(o,function(a){return a.flatten})&&z(gb.map(function(a){return a.obs},o)),m=new k(B.apply(null,[a,"when"].concat(jb.call(l))),function(b){var d,e,f,h,i,k,l;return l=[],f=!1,h=function(a){var b,d,e;for(e=a.ixs,b=0,d=e.length;d>b;b++)if(c=e[b],!o[c.index].hasAtLeast(c.count))return!1;return!0},e=function(a){return!a.sync||a.ended},d=function(a){var b,d,e;for(e=a.ixs,b=0,d=e.length;d>b;b++)if(c=e[b],!o[c.index].mayHave(c.count))return!0},i=function(a){return!a.source.flatten},k=function(k){return function(n){var p,q,r;return q=function(){return u.whenDoneWith(m,p)},r=function(){var d,e,f,g,k,m;if(!(l.length>0))return a.more;for(f=a.more,g=l.pop(),k=0,m=j.length;m>k;k++)if(e=j[k],h(e))return d=function(){var a,b,d,f;for(d=e.ixs,f=[],a=0,b=d.length;b>a;a++)c=d[a],f.push(o[c.index].consume());return f}(),f=b(g.e.apply(function(){var a,b;return b=function(){var b,c,e;for(e=[],b=0,c=d.length;c>b;b++)a=d[b],e.push(a.value());return e}(),e.f.apply(e,b)})),l.length&&(l=gb.filter(i,l)),f===a.noMore?f:r()},p=function(){var c;return c=r(),f&&(f=!1,(gb.all(o,e)||gb.all(j,d))&&(c=a.noMore,b(C()))),c===a.noMore&&n(),c},k.subscribe(function(c){var d;return c.isEnd()?(f=!0,k.markEnded(),q()):c.isError()?d=b(c):(k.push(c),k.sync&&(l.push({source:k,e:c}),g||u.hasWaiters()?q():p())),d===a.noMore&&n(),d||a.more})}},x.apply(null,function(){var a,b,c;for(c=[],a=0,b=o.length;b>a;a++)n=o[a],c.push(k(n));return c}())})):a.never()},z=function(a,b){var c;return null==b&&(b=[]),c=function(a){var d;return gb.contains(b,a)?!0:(d=a.internalDeps(),d.length?(b.push(a),gb.any(d,c)):(b.push(a),!1))},gb.any(a,c)},a.update=function(){var b,c,d,e;for(c=arguments[0],e=2<=arguments.length?jb.call(arguments,1):[],d=function(a){return function(){var b;return b=1<=arguments.length?jb.call(arguments,0):[],function(c){return a.apply(null,[c].concat(b))}}},b=e.length-1;b>0;)e[b]instanceof Function||(e[b]=function(a){return function(){return a}}(e[b])),e[b]=d(e[b]),b-=2;return eb.apply(null,[a,"update",c].concat(jb.call(e),[a.when.apply(a,e).scan(c,function(a,b){return b(a)})]))},x=function(){var a;return a=1<=arguments.length?jb.call(arguments,0):[],new d(a).unsubscribe},d=function(){function a(a){var b,c,d;for(null==a&&(a=[]),this.unsubscribe=lb(this.unsubscribe,this),this.unsubscribed=!1,this.subscriptions=[],this.starting=[],c=0,d=a.length;d>c;c++)b=a[c],this.add(b)}return a.prototype.add=function(a){var b,c,d;if(!this.unsubscribed)return b=!1,c=V,this.starting.push(a),d=function(d){return function(){return d.unsubscribed?void 0:(b=!0,d.remove(c),gb.remove(a,d.starting))}}(this),c=a(this.unsubscribe,d),this.unsubscribed||b||this.subscriptions.push(c),gb.remove(a,this.starting),c},a.prototype.remove=function(a){return this.unsubscribed?void 0:void 0!==gb.remove(a,this.subscriptions)?a():void 0},a.prototype.unsubscribe=function(){var a,b,c,d;if(!this.unsubscribed){for(this.unsubscribed=!0,d=this.subscriptions,b=0,c=d.length;c>b;b++)(a=d[b])();return this.subscriptions=[],this.starting=[]}},a.prototype.count=function(){return this.unsubscribed?0:this.subscriptions.length+this.starting.length},a.prototype.empty=function(){return 0===this.count()},a}(),a.CompositeUnsubscribe=d,s=function(){function a(a){this.value=a}return a.prototype.getOrElse=function(){return this.value},a.prototype.get=function(){return this.value},a.prototype.filter=function(b){return b(this.value)?new a(this.value):o},a.prototype.map=function(b){return new a(b(this.value))},a.prototype.forEach=function(a){return a(this.value)},a.prototype.isDefined=!0,a.prototype.toArray=function(){return[this.value]},a.prototype.inspect=function(){return"Some("+this.value+")"},a.prototype.toString=function(){return this.inspect()},a}(),o={getOrElse:function(a){return a},filter:function(){return o},map:function(){return o},forEach:function(){},isDefined:!1,toArray:function(){return[]},inspect:function(){return"None"},toString:function(){return this.inspect()}},u=function(){var b,c,d,e,f,g,h,i,j,k,l,m,n,o;return k=void 0,l=[],m={},c=[],d=0,b=function(a){return k?c.push(a):a()},n=function(a,b){var c;return k?(c=m[a.id],null==c?(c=m[a.id]=[b],l.push(a)):c.push(b)):b()},f=function(){for(;l.length>0;)h(0);return void 0},h=function(a){var b,c,d,e,f,h;for(c=l[a],d=c.id,e=m[d],l.splice(a,1),delete m[d],g(c),f=0,h=e.length;h>f;f++)(b=e[f])();return void 0},g=function(a){var b,c,d,e,f;for(c=a.internalDeps(),e=0,f=c.length;f>e;e++)b=c[e],g(b),m[b.id]&&(d=gb.indexOf(l,b),h(d));return void 0},j=function(a,b,e,g){var h,i;if(k)return e.apply(b,g);k=a;try{i=e.apply(b,g),f()}finally{for(k=void 0;d<c.length;)h=c[d],d++,h();d=0,c=[]}return i},e=function(){return k?k.id:void 0},o=function(c,d){var e,f,g,h;return h=!1,f=!1,e=function(){return f=!0},g=function(){return h=!0,e()},e=c.dispatcher.subscribe(function(c){return b(function(){var b;return h||(b=d(c),b!==a.noMore)?void 0:g()})}),f&&e(),g},i=function(){return l.length>0},{whenDoneWith:n,hasWaiters:i,inTransaction:j,currentEventId:e,wrappedSubscribe:o,afterTransaction:b}}(),a.EventStream=k,a.Property=q,a.Observable=p,a.Bus=c,a.Initial=m,a.Next=n,a.End=h,a.Error=i,V=function(){},N=function(a,b){return b},G=function(a){return a},I=function(a){return new m(a,!0)},U=function(a){return new n(a,!0)},C=function(){return new h},_=function(a){return a instanceof j?a:U(a)},w=function(a){return a.slice(0)},L=function(a){return"function"==typeof a},J=function(a){return a instanceof Array},M=function(a){return a instanceof p},W=function(a,b){return function(){var c;return c=1<=arguments.length?jb.call(arguments,0):[],a.apply(null,b.concat(c))}},T=function(a){return 1===a.length&&M(a[0])?gb.always(a[0]):Q(a)},Q=function(a){return a=Array.prototype.slice.call(a),R.apply(null,a)},R=fb(function(){var a,b;return b=arguments[0],a=2<=arguments.length?jb.call(arguments,1):[],L(b)?a.length?W(b,a):b:K(b)?ab(b,a):gb.always(b)}),P=function(a,b){return R.apply(null,[a].concat(jb.call(b)))},y=function(a){return L(a)?a:gb.always(a)},S=function(b){return M(b)?b:a.once(b)},K=function(a){return"string"==typeof a&&a.length>1&&"."===a.charAt(0)},a.isFieldKey=K,ab=function(a,b){var c,d;return d=a.slice(1).split("."),c=gb.map(db(b),d),function(b){var d,e;for(d=0,e=c.length;e>d;d++)a=c[d],b=a(b);return b}},db=function(a){return function(b){return function(c){var d;return null==c?void 0:(d=c[b],L(d)?d.apply(c,a):d)}}},bb=function(a){return a.slice(1)},$=function(a){var b;return L(a)?a:K(a)?(b=bb(a),function(a,c){return a[b](c)}):void 0},cb=function(a){return a instanceof s||a===o?a:new s(a)},"undefined"!=typeof define&&null!==define&&null!=define.amd?(define([],function(){return a}),this.Bacon=a):"undefined"!=typeof module&&null!==module&&null!=module.exports?(module.exports=a,a.Bacon=a):this.Bacon=a}).call(this);
+;
+;
+/* module-key = 'com.atlassian.bitbucket.server.bitbucket-bower-components:bacon', location = '/static/lib/Bacon-AMD.js' */
+define("bacon",["jquery"],function(b){var a=window.Bacon||window.module.exports;b.fn.asEventStream=a.$.asEventStream;return a});;
+;
+/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:performance-util', location = '/static/bitbucket/internal/util/performance.js' */
+define("bitbucket/internal/util/performance",["module","exports","jquery"],function(p,f,q){function n(c,a){function d(){e=null;k=!0;b.fire();b=new l.default.Callbacks;k=!1;a()}var b=new l.default.Callbacks,k=!1,e=null;return{name:c,forceExecute:function(){e&&(clearTimeout(e),d())},queue:function(a){k?a():(b.add(a),e||(e=setTimeout(d,0)))}}}Object.defineProperty(f,"__esModule",{value:!0});var l=babelHelpers.interopRequireDefault(q),m=n("READ",function(){g.forceExecute()}),g=n("WRITE",function(){m.forceExecute()});
+f.default={queueDOMRead:m.queue.bind(m),queueDOMWrite:g.queue.bind(g),enqueueCapped:function(c,a,d){d=d||1;var b=0;return function(){b>=d||(b++,c(function(){try{return a.apply(this,arguments)}finally{b--}}))}},frameBatchedMap:function(c,a,d){a=l.default.extend({initial:500,min:10,max:Infinity},a);d=d||function(b){b()};return function(b){function k(){for(var a=Math.min(h+e,b.length);h<a;h++)g[h]=c(b[h])}var e=a.initial,f=l.default.Deferred(),h=0,g=[];requestAnimationFrame(function r(){if("pending"===
+f.state()){var c=(new Date).getTime();d(k);c=(new Date).getTime()-c;c=Math.ceil(15/c*e);e=Math.min(a.max,Math.max(a.min,c));h===b.length?f.resolve(g):requestAnimationFrame(r)}});return f}}};p.exports=f["default"]});;
+;
+/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:bacon-util', location = '/static/bitbucket/internal/util/bacon.js' */
+define("bitbucket/internal/util/bacon","module exports bacon jquery lodash bitbucket/internal/util/events bitbucket/internal/util/function bitbucket/internal/util/performance".split(" "),function(r,m,n,p,t,u,v,w){Object.defineProperty(m,"__esModule",{value:!0});var e=babelHelpers.interopRequireDefault(n),f=babelHelpers.interopRequireDefault(p),g=babelHelpers.interopRequireDefault(t),q=babelHelpers.interopRequireDefault(u),x=babelHelpers.interopRequireDefault(v),y=babelHelpers.interopRequireDefault(w);
+n=g.default.once(function(){function a(){return{left:b.scrollLeft(),top:b.scrollTop()}}var b=(0,f.default)(window),c=e.default.fromBinder(function(a){var d=y.default.enqueueCapped(requestAnimationFrame,a),c=g.default.debounce(d,20);b.on("scroll",d).on("scroll",c);return function(){b.off("scroll",d).off("scroll",c)}}).map(a).skipDuplicates(function(a,b){return a.left===b.left&&a.top===b.top}).toProperty(a());c.onValue(f.default.noop);return c});p=g.default.once(function(){var a=(0,f.default)(window),
+a=e.default.fromBinder(function(a){var c=q.default.chain().on("window.resize",function(c,d){a(new e.default.Next({width:c,height:d}))});return function(){c.destroy()}}).toProperty({width:a.width(),height:a.height()});a.onValue(f.default.noop);return a});m.default={events:function(a){return e.default.fromBinder(function(b){return q.default.chain().on(a,b).destroy})},split:function(a,b){return e.default.fromBinder(function(c){var h=[],d,k=[];k.push(a.onValue(function(a){var e=b(a);d&&e!==d&&(c(h),h=
+[]);d=e;h.push(a)}));k.push(a.onEnd(function(){0<h.length&&c(h);c(new e.default.End)}));return g.default.partial(x.default.applyAll,k)})},toArray:function(a){var b=[];a.onValue(function(a){b.push(a)});return b},getWindowScrollProperty:n,getWindowSizeProperty:p,takeBetween:function(a,b){var c=b.start,h=b.end,d=b.startInclusive,k=b.endInclusive,l=b.equals||function(a,b){return a===b};if(l(c,h))return d||k?a.skipWhile(function(a){return!l(a,c)}).take(1):e.default.never();var f,g;return a.skipWhile(function(a){return g||
+f?!1:l(a,c)?(f=!0,!d):l(a,h)?(g=!0,!k):!0}).takeWhile(function(a){return l(a,c)?(f=!0,d):l(a,h)?(g=!0,k):!(g&&f)})}};r.exports=m["default"]});;
+;
+/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:keyboard-shortcuts', location = '/static/bitbucket/internal/widget/keyboard-shortcuts/keyboard-shortcuts.soy' */
+// This file was automatically generated from keyboard-shortcuts.soy.
+// Please don't edit this file by hand.
+
+/**
+ * @fileoverview Templates in namespace bitbucket.internal.widget.
+ */
+
+if (typeof bitbucket == 'undefined') { var bitbucket = {}; }
+if (typeof bitbucket.internal == 'undefined') { bitbucket.internal = {}; }
+if (typeof bitbucket.internal.widget == 'undefined') { bitbucket.internal.widget = {}; }
+
+
+bitbucket.internal.widget.keyboardShortcutsContent = function(opt_data, opt_ignored) {
+  var param6 = '';
+  var contextNameList7 = opt_data.contextNames;
+  var contextNameListLen7 = contextNameList7.length;
+  for (var contextNameIndex7 = 0; contextNameIndex7 < contextNameListLen7; contextNameIndex7++) {
+    var contextNameData7 = contextNameList7[contextNameIndex7];
+    param6 += (contextNameIndex7 % 2 == 0) ? bitbucket.internal.widget.keyboardShortContext({contextName: contextNameData7, contextShortcuts: opt_data.contexts[contextNameIndex7]}) : '';
+  }
+  var param5 = '' + aui.group.item({content: param6});
+  var param15 = '';
+  var contextNameList16 = opt_data.contextNames;
+  var contextNameListLen16 = contextNameList16.length;
+  for (var contextNameIndex16 = 0; contextNameIndex16 < contextNameListLen16; contextNameIndex16++) {
+    var contextNameData16 = contextNameList16[contextNameIndex16];
+    param15 += (contextNameIndex16 % 2 == 1) ? bitbucket.internal.widget.keyboardShortContext({contextName: contextNameData16, contextShortcuts: opt_data.contexts[contextNameIndex16]}) : '';
+  }
+  param5 += aui.group.item({content: param15});
+  var output = '' + aui.group.group({extraClasses: 'keyboard-shortcut-help', extraAttributes: {tabindex: '0'}, content: param5});
+  return output;
+};
+if (goog.DEBUG) {
+  bitbucket.internal.widget.keyboardShortcutsContent.soyTemplateName = 'bitbucket.internal.widget.keyboardShortcutsContent';
+}
+
+
+bitbucket.internal.widget.keyboardShortContext = function(opt_data, opt_ignored) {
+  var output = '<div class="keyboard-shortcut-context"><h3>' + soy.$$escapeHtml(opt_data.contextName) + '</h3><dl>';
+  var shortcutList29 = opt_data.contextShortcuts;
+  var shortcutListLen29 = shortcutList29.length;
+  for (var shortcutIndex29 = 0; shortcutIndex29 < shortcutListLen29; shortcutIndex29++) {
+    var shortcutData29 = shortcutList29[shortcutIndex29];
+    output += (! shortcutData29.hidden) ? bitbucket.internal.widget.keyboardShortcutItem({shortcut: shortcutData29}) : '';
+  }
+  output += '</dl></div>';
+  return output;
+};
+if (goog.DEBUG) {
+  bitbucket.internal.widget.keyboardShortContext.soyTemplateName = 'bitbucket.internal.widget.keyboardShortContext';
+}
+
+
+bitbucket.internal.widget.keyboardShortcutItem = function(opt_data, opt_ignored) {
+  var output = '<dt>' + soy.$$escapeHtml(opt_data.shortcut.description) + '</dt>';
+  var optionList40 = opt_data.shortcut.keys;
+  var optionListLen40 = optionList40.length;
+  for (var optionIndex40 = 0; optionIndex40 < optionListLen40; optionIndex40++) {
+    var optionData40 = optionList40[optionIndex40];
+    output += ((! (optionIndex40 == 0) && ! (optionIndex40 == optionListLen40 - 1)) ? '<dd class=\'separator\'>' + soy.$$escapeHtml(',') + '</dd>' : '') + ((! (optionIndex40 == 0) && optionIndex40 == optionListLen40 - 1) ? '<dd class=\'separator\'>' + soy.$$escapeHtml(' or') + '</dd>' : '') + '<dd>' + bitbucket.internal.widget.keyboardShortcutOption({sequence: optionData40}) + '</dd>';
+  }
+  return output;
+};
+if (goog.DEBUG) {
+  bitbucket.internal.widget.keyboardShortcutItem.soyTemplateName = 'bitbucket.internal.widget.keyboardShortcutItem';
+}
+
+
+bitbucket.internal.widget.keyboardShortcutOption = function(opt_data, opt_ignored) {
+  var output = '';
+  var keypressList57 = opt_data.sequence;
+  var keypressListLen57 = keypressList57.length;
+  for (var keypressIndex57 = 0; keypressIndex57 < keypressListLen57; keypressIndex57++) {
+    var keypressData57 = keypressList57[keypressIndex57];
+    output += ((! (keypressIndex57 == 0)) ? ' ' + soy.$$escapeHtml('then') + ' ' : '') + ((keypressData57.modifiers) ? bitbucket.internal.widget.keyboardShortcutModifier({keypress: keypressData57}) : bitbucket.internal.widget.keyboardShortcutKey({key: keypressData57}));
+  }
+  return output;
+};
+if (goog.DEBUG) {
+  bitbucket.internal.widget.keyboardShortcutOption.soyTemplateName = 'bitbucket.internal.widget.keyboardShortcutOption';
+}
+
+
+bitbucket.internal.widget.keyboardShortcutModifier = function(opt_data, opt_ignored) {
+  var output = '';
+  var modifierList72 = opt_data.keypress.modifiers;
+  var modifierListLen72 = modifierList72.length;
+  for (var modifierIndex72 = 0; modifierIndex72 < modifierListLen72; modifierIndex72++) {
+    var modifierData72 = modifierList72[modifierIndex72];
+    output += bitbucket.internal.widget.keyboardShortcutKey({key: modifierData72});
+  }
+  output += bitbucket.internal.widget.keyboardShortcutKey({key: opt_data.keypress.key});
+  return output;
+};
+if (goog.DEBUG) {
+  bitbucket.internal.widget.keyboardShortcutModifier.soyTemplateName = 'bitbucket.internal.widget.keyboardShortcutModifier';
+}
+
+
+bitbucket.internal.widget.keyboardShortcutKey = function(opt_data, opt_ignored) {
+  return '<kbd>' + soy.$$escapeHtml(opt_data.key) + '</kbd>';
+};
+if (goog.DEBUG) {
+  bitbucket.internal.widget.keyboardShortcutKey.soyTemplateName = 'bitbucket.internal.widget.keyboardShortcutKey';
+}
+;
+;
+/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:keyboard-shortcuts', location = '/static/bitbucket/internal/widget/keyboard-shortcuts/keyboard-shortcuts.js' */
+define("bitbucket/internal/widget/keyboard-shortcuts/keyboard-shortcuts","module exports aui jquery lodash bitbucket/internal/util/events bitbucket/internal/util/navigator".split(" "),function(q,l,r,t,u,v,w){function c(){if(!(this instanceof c))return new c;this._enabledContexts=[]}function m(a,b){a=f.default.extend({},a);a.keys=d.default.map(a.keys,function(a){return d.default.map(a,function(a){if(d.default.all(["key","modifiers"],d.default.partial(d.default.has,a)))return a;var g=1<a.length?a.split("+"):
+a;return d.default.isArray(g)&&1!==g.length?{key:g.pop(),modifiers:b&&!1===b.convertOSModifier?g:d.default.map(g,c.convertOSModifier)}:a})});a.displayContext||(a.displayContext=c._contextDisplayInfo[a.context]?c._contextDisplayInfo[a.context].displayName:a.context.replace(/\b[a-z]/g,function(a){return a.toUpperCase()}));h[a.displayContext]||(h[a.displayContext]=[]);h[a.displayContext].push(a)}function n(a,b){p.default.trigger("bitbucket.internal.ui.keyboard.shortcutClicked",null,{context:a,keyEventName:b})}
+Object.defineProperty(l,"__esModule",{value:!0});var b=babelHelpers.interopRequireDefault(r),f=babelHelpers.interopRequireDefault(t),d=babelHelpers.interopRequireDefault(u),p=babelHelpers.interopRequireDefault(v),x=babelHelpers.interopRequireDefault(w),y=/^[cC]trl$/i,k,h={};c.prototype._setRegistry=function(a){this._registry=a};c.prototype._initContent=function(){this._dialog=b.default.dialog2(aui.dialog.dialog2({titleText:"Keyboard shortcuts",content:bitbucket.internal.widget.keyboardShortcutsContent({contextNames:d.default.keys(h),
+contexts:d.default.values(h)}),size:"large",id:"keyboard-shortcut-dialog"}))};c.prototype._bind=function(a){this._$trigger=a;var b=this;this._$trigger.on("click",function(a){a.preventDefault();b._show()})};c.prototype.enableContext=function(a){-1===f.default.inArray(a,this._enabledContexts)&&(k=a,this._registry.enableContext(a),k=void 0,this._enabledContexts.push(a))};c.prototype.resetContexts=function(){b.default.trigger("remove-bindings.keyboardshortcuts");this._enabledContexts=[];b.default.trigger("add-bindings.keyboardshortcuts")};
+c.prototype._show=function(){this._hasShown||(this._initContent(),this._hasShown=!0);this._dialog.show()};c.prototype.addCustomShortcut=function(a,b,c,d){m({keys:b,context:a,displayContext:d,description:c},{convertOSModifier:!1})};c.convertOSModifier=function(a){return x.default.isMac()?a.replace(y,"\u2318"):a};c.internalizeShortcuts=function(a){d.default.each(a,m)};c._contextDisplayInfo={repository:{displayName:"Within A Repository"},"branch-compare":{displayName:"Branch compare"},
+"branch-list":{displayName:"Branch list"},commit:{displayName:"Commit"},commits:{displayName:"Commit List"},"diff-tree":{displayName:"Commit"},"diff-view":{displayName:"Diff View"},filebrowser:{displayName:"Directory Browsing"},
+global:{displayName:"Global"},"pull-request":{displayName:"Within A Pull Request"},"pull-request-list":{displayName:"Pull Request List"},"pull-request-overview":{displayName:"Within A Pull Request"},sourceview:{displayName:"Source View"}};
+var e=new c;l.default={onReady:function(){e._bind((0,f.default)(".keyboard-shortcut-link"));var a=f.default.Deferred();(0,f.default)(document).ready(function(){setTimeout(function(){a.resolve()},0)});b.default.bind("register-contexts.keyboardshortcuts",function(b,c){e._setRegistry(c.shortcutRegistry);e.enableContext("global");a.done(function(){p.default.trigger("bitbucket.internal.widget.keyboard-shortcuts.register-contexts",e,e)})});b.default.bind("shortcuts-loaded.keyboardshortcuts",function(a,
+b){c.internalizeShortcuts(b.shortcuts)});b.default.params["keyboardshortcut-hash"]="bundled";b.default.trigger("initialize.keyboardshortcuts");require("bitbucket/internal/util/shortcuts",null).bind("keyboardShortcutsDialog",e._show.bind(e))},addTooltip:function(a,e){var g=(0,d.default)(e.split("+")).chain().map(c.convertOSModifier).map(function(a){return"shift"===a?"Shift":"ctrl"===a?c.convertOSModifier("Ctrl"):
+a}).value().join(" + "),f=a.attr("title");a.attr("title",f+b.default.format(" (type \u0027\u0027{0}\u0027\u0027)",g));return{remove:function(){a.attr("title",f)}}},bindKeyboardShortcutAnalytics:function(a,b){b.onValue(n.bind(null,k,a))},getEnablingContext:function(){return k},showDialog:function(){e&&e._show()},resetContexts:function(){e.resetContexts()},fireKeyboardShocutAnalyticsEvent:n};q.exports=l["default"]});;
+;
 /* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:keyboard-shortcuts-util', location = '/static/bitbucket/internal/util/shortcuts.js' */
 define("bitbucket/internal/util/shortcuts","module exports aui bacon bitbucket/util/events bitbucket/internal/util/navigator bitbucket/internal/widget/keyboard-shortcuts/keyboard-shortcuts".split(" "),function(l,f,m,n,p,q,r){function k(b){var a=d[b];a.lazy.whenIType&&a.lazy.whenIType.unbind();var c=t.default.whenIType(a.lazy.keys);a.lazy.whenIType=c;c.execute(a._sink);c.execute(g.default.fireKeyboardShocutAnalyticsEvent.bind(null,a.lazy.analyticsContext,b))}function h(b){d.hasOwnProperty(b)||(d[b]=
 {analyticsBound:!1,lazy:{keys:null,whenIType:null,analyticsContext:null},baconSink:function(a){this._sink&&this._sink(a)},_sink:null,stream:u.default.fromBinder(function(a){var c=d[b];c._sink=a;c.lazy.keys&&k(b);return function(){c._sink=null;c.lazy.whenIType&&c.lazy.whenIType.unbind()}})});return d[b]}Object.defineProperty(f,"__esModule",{value:!0});var t=babelHelpers.interopRequireDefault(m),u=babelHelpers.interopRequireDefault(n),v=babelHelpers.interopRequireDefault(p),w=babelHelpers.interopRequireDefault(q),
@@ -631,6 +467,165 @@ if (goog.DEBUG) {
 define("bitbucket/internal/feature/quick-search/internal/analytics",["module","exports","bitbucket/internal/impl/analytics","bitbucket/internal/impl/search-analytics-utils","../../search-common/analytics"],function(l,f,b,e,m){function g(a,d){var c={context:n.default.getPageContext()};d&&(c["repository.id"]=d.id);a&&(c["project.id"]=a.id);return c}Object.defineProperty(f,"__esModule",{value:!0});var h=b&&b.__esModule?b:{default:b},n=e&&e.__esModule?e:{default:e},k=Object.assign||function(a){for(var d=
 1;d<arguments.length;d++){var c=arguments[d],b;for(b in c)Object.prototype.hasOwnProperty.call(c,b)&&(a[b]=c[b])}return a};f.default={focused:function(a){a=g(a.project,a.repository);h.default.trigger("bitbucket.ui.quick-search.focused",a)},resultsLoaded:function(a){a=k({time:a.time},(0,m.queryAttributes)(a.query),g(a.project,a.repository));h.default.trigger("bitbucket.ui.quick-search.results.loaded",a)},resultClicked:function(a){a=k({"clicked.project.id":a.clickedProjectId,"clicked.repository.id":a.clickedRepoId},
 g(a.project,a.repository));h.default.trigger("bitbucket.ui.quick-search.result.clicked",a)}};l.exports=f["default"]});;
+;
+/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:user-link', location = '/static/bitbucket/internal/widget/user/user-link.soy' */
+// This file was automatically generated from user-link.soy.
+// Please don't edit this file by hand.
+
+/**
+ * @fileoverview Templates in namespace bitbucket.internal.widget.
+ */
+
+if (typeof bitbucket == 'undefined') { var bitbucket = {}; }
+if (typeof bitbucket.internal == 'undefined') { bitbucket.internal = {}; }
+if (typeof bitbucket.internal.widget == 'undefined') { bitbucket.internal.widget = {}; }
+
+
+bitbucket.internal.widget.userLink = function(opt_data, opt_ignored) {
+  var output = '';
+  var displayName__soy3 = opt_data.user.displayName || opt_data.user.name;
+  output += (opt_data.href || opt_data.user.type == 'NORMAL' && opt_data.user.slug && !!(require('bitbucket/internal/model/page-state').getCurrentUser())) ? '<a href="' + soy.$$escapeHtml(opt_data.href ? opt_data.href : require('bitbucket/util/navbuilder').user(opt_data.user).build()) + '" ' + ((opt_data.extraClasses) ? 'class="' + soy.$$escapeHtml(opt_data.extraClasses) + '"' : '') + ((! opt_data.skipTitle) ? 'title="' + soy.$$escapeHtml(displayName__soy3) + '"' : '') + '>' + soy.$$escapeHtml(soy.$$truncate(displayName__soy3, 100, true)) + '</a>' : '<span' + ((opt_data.extraClasses) ? ' class="' + soy.$$escapeHtml(opt_data.extraClasses) + '"' : '') + ((! opt_data.skipTitle) ? ' title="' + soy.$$escapeHtml(displayName__soy3) + '"' : '') + '>' + soy.$$escapeHtml(soy.$$truncate(displayName__soy3, 100, true)) + '</span>';
+  return output;
+};
+if (goog.DEBUG) {
+  bitbucket.internal.widget.userLink.soyTemplateName = 'bitbucket.internal.widget.userLink';
+}
+;
+;
+/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:avatar', location = '/static/bitbucket/internal/widget/avatar/access-key-avatar.soy' */
+// This file was automatically generated from access-key-avatar.soy.
+// Please don't edit this file by hand.
+
+/**
+ * @fileoverview Templates in namespace bitbucket.internal.widget.
+ */
+
+if (typeof bitbucket == 'undefined') { var bitbucket = {}; }
+if (typeof bitbucket.internal == 'undefined') { bitbucket.internal = {}; }
+if (typeof bitbucket.internal.widget == 'undefined') { bitbucket.internal.widget = {}; }
+
+
+bitbucket.internal.widget.accessKey = function(opt_data, opt_ignored) {
+  return '<span title="' + soy.$$escapeHtml(opt_data.text) + '"><span class="aui-avatar aui-avatar-' + soy.$$escapeHtml(opt_data.size) + ' key-avatar"></span><span class="access-key-label">' + soy.$$escapeHtml(opt_data.label || opt_data.text) + '</span></span>';
+};
+if (goog.DEBUG) {
+  bitbucket.internal.widget.accessKey.soyTemplateName = 'bitbucket.internal.widget.accessKey';
+}
+
+
+bitbucket.internal.widget.accessKeyWithText = function(opt_data, opt_ignored) {
+  return bitbucket.internal.widget.accessKey(opt_data) + '<span class="access-key-text" title="' + soy.$$escapeHtml(opt_data.text) + '">' + soy.$$escapeHtml(opt_data.text) + '</span>';
+};
+if (goog.DEBUG) {
+  bitbucket.internal.widget.accessKeyWithText.soyTemplateName = 'bitbucket.internal.widget.accessKeyWithText';
+}
+;
+;
+/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:avatar', location = '/static/bitbucket/internal/widget/avatar/group-avatar.soy' */
+// This file was automatically generated from group-avatar.soy.
+// Please don't edit this file by hand.
+
+/**
+ * @fileoverview Templates in namespace bitbucket.internal.widget.
+ */
+
+if (typeof bitbucket == 'undefined') { var bitbucket = {}; }
+if (typeof bitbucket.internal == 'undefined') { bitbucket.internal = {}; }
+if (typeof bitbucket.internal.widget == 'undefined') { bitbucket.internal.widget = {}; }
+
+
+bitbucket.internal.widget.groupAvatar = function(opt_data, opt_ignored) {
+  return '<span class="aui-avatar aui-avatar-' + soy.$$escapeHtml(opt_data.size) + ' group-avatar' + soy.$$escapeHtml(opt_data.extraClasses ? ' ' + opt_data.extraClasses : '') + '" data-groupname="' + soy.$$escapeHtml(opt_data.name) + '"></span>';
+};
+if (goog.DEBUG) {
+  bitbucket.internal.widget.groupAvatar.soyTemplateName = 'bitbucket.internal.widget.groupAvatar';
+}
+
+
+bitbucket.internal.widget.groupAvatarWithName = function(opt_data, opt_ignored) {
+  return '<span title="' + soy.$$escapeHtml(opt_data.name) + '"' + ((opt_data.extraClasses) ? ' class="' + soy.$$escapeHtml(opt_data.extraClasses) + '"' : '') + '><span class="aui-avatar aui-avatar-' + soy.$$escapeHtml(opt_data.size) + ' group-avatar' + soy.$$escapeHtml(opt_data.avatarClasses ? ' ' + opt_data.avatarClasses : '') + '" data-groupname="' + soy.$$escapeHtml(opt_data.name) + '"></span>' + soy.$$escapeHtml(opt_data.name) + '</span>';
+};
+if (goog.DEBUG) {
+  bitbucket.internal.widget.groupAvatarWithName.soyTemplateName = 'bitbucket.internal.widget.groupAvatarWithName';
+}
+;
+;
+/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:avatar', location = '/static/bitbucket/internal/widget/avatar/avatar.soy' */
+// This file was automatically generated from avatar.soy.
+// Please don't edit this file by hand.
+
+/**
+ * @fileoverview Templates in namespace bitbucket.internal.widget.
+ */
+
+if (typeof bitbucket == 'undefined') { var bitbucket = {}; }
+if (typeof bitbucket.internal == 'undefined') { bitbucket.internal = {}; }
+if (typeof bitbucket.internal.widget == 'undefined') { bitbucket.internal.widget = {}; }
+
+
+bitbucket.internal.widget.avatar = function(opt_data, opt_ignored) {
+  return '' + aui.avatar.avatar({size: opt_data.size, avatarImageUrl: require('bitbucket/util/navbuilder')._avatarUrl(opt_data.person, ({XSMALL:32,SMALL:48,MEDIUM:64,LARGE:96,XLARGE:128,XXLARGE:192,XXXLARGE:256})[opt_data.size.toUpperCase()]).build(), accessibilityText: opt_data.person.displayName || opt_data.person.name, title: opt_data.tooltip, badgeContent: opt_data.badgeContent, extraClasses: 'user-avatar' + (opt_data.hideBadge ? ' badge-hidden' : '') + (opt_data.extraClasses ? ' ' + opt_data.extraClasses : ''), imageClasses: opt_data.imageClasses, extraAttributes: {'data-username': opt_data.person.name}, id: opt_data.id});
+};
+if (goog.DEBUG) {
+  bitbucket.internal.widget.avatar.soyTemplateName = 'bitbucket.internal.widget.avatar';
+}
+
+
+bitbucket.internal.widget.avatarWithName = function(opt_data, opt_ignored) {
+  var output = '';
+  var personName__soy14 = opt_data.person.displayName || opt_data.person.name;
+  output += '<div class="avatar-with-name' + ((opt_data.extraClasses) ? ' ' + soy.$$escapeHtml(opt_data.extraClasses) : '') + ((opt_data.deleted) ? ' deleted-user' : '') + '" title="' + soy.$$escapeHtml(personName__soy14) + '">' + bitbucket.internal.widget.avatar({size: opt_data.size, person: opt_data.person, imageClasses: opt_data.imageClasses, extraClasses: opt_data.avatarClasses, badgeContent: opt_data.badgeContent, hideBadge: opt_data.hideBadge, id: opt_data.id}) + ((opt_data.link && ! opt_data.deleted) ? bitbucket.internal.widget.userLink({user: opt_data.person, href: opt_data.href, extraClasses: opt_data.linkExtraClasses, skipTitle: true}) : '<span class="display-name">' + soy.$$escapeHtml(personName__soy14) + '</span>') + '</div>';
+  return output;
+};
+if (goog.DEBUG) {
+  bitbucket.internal.widget.avatarWithName.soyTemplateName = 'bitbucket.internal.widget.avatarWithName';
+}
+
+
+bitbucket.internal.widget.avatarWithNameAndEmail = function(opt_data, opt_ignored) {
+  return bitbucket.internal.widget.avatarWithName(opt_data) + '<span class="email-address" title="' + soy.$$escapeHtml(opt_data.person.emailAddress) + '">' + soy.$$escapeHtml(opt_data.person.emailAddress) + '</span>';
+};
+if (goog.DEBUG) {
+  bitbucket.internal.widget.avatarWithNameAndEmail.soyTemplateName = 'bitbucket.internal.widget.avatarWithNameAndEmail';
+}
+
+
+bitbucket.internal.widget.avatarSizeInPx = function(opt_data, opt_ignored) {
+  return '' + soy.$$escapeHtml(({XSMALL:32,SMALL:48,MEDIUM:64,LARGE:96,XLARGE:128,XXLARGE:192,XXXLARGE:256})[opt_data.size.toUpperCase()]) + ((opt_data.showPx) ? 'px' : '');
+};
+if (goog.DEBUG) {
+  bitbucket.internal.widget.avatarSizeInPx.soyTemplateName = 'bitbucket.internal.widget.avatarSizeInPx';
+}
+
+
+bitbucket.internal.widget.avatarWithBadge = function(opt_data, opt_ignored) {
+  return '' + bitbucket.internal.widget.avatar({size: opt_data.size, person: opt_data.person, tooltip: opt_data.tooltip, imageClasses: opt_data.imageClasses, extraClasses: opt_data.extraClasses, id: opt_data.id, hideBadge: opt_data.hideBadge, badgeContent: '<span class="badge' + soy.$$escapeHtml(opt_data.badgeClasses ? ' ' + opt_data.badgeClasses : '') + '">' + soy.$$escapeHtml(opt_data.badgeText) + '</span>'});
+};
+if (goog.DEBUG) {
+  bitbucket.internal.widget.avatarWithBadge.soyTemplateName = 'bitbucket.internal.widget.avatarWithBadge';
+}
+
+
+bitbucket.internal.widget.avatarWithNameAndBadge = function(opt_data, opt_ignored) {
+  return '' + bitbucket.internal.widget.avatarWithName({size: opt_data.size, person: opt_data.person, extraClasses: opt_data.extraClasses, avatarClasses: opt_data.avatarClasses, imageClasses: opt_data.imageClasses, id: opt_data.id, hideBadge: opt_data.hideBadge, badgeContent: '<span class="badge' + soy.$$escapeHtml(opt_data.badgeClasses ? ' ' + opt_data.badgeClasses : '') + '">' + soy.$$escapeHtml(opt_data.badgeText) + '</span>'});
+};
+if (goog.DEBUG) {
+  bitbucket.internal.widget.avatarWithNameAndBadge.soyTemplateName = 'bitbucket.internal.widget.avatarWithNameAndBadge';
+}
+;
+;
+/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:person-model', location = '/static/bitbucket/internal/model/person.js' */
+define("bitbucket/internal/model/person",["module","exports","backbone-brace"],function(c,a,b){Object.defineProperty(a,"__esModule",{value:!0});b=babelHelpers.interopRequireDefault(b);a.default=b.default.Model.extend({namedAttributes:{emailAddress:"string",name:"string"},idAttribute:"name",initialize:function(){null==this.namedAttributes.id&&this.setId(this.attributes[this.idAttribute])}});c.exports=a["default"]});;
+;
+/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:stash-user-model', location = '/static/bitbucket/internal/model/stash-user.js' */
+define("bitbucket/internal/model/stash-user",["module","exports","bitbucket/internal/model/person"],function(c,a,b){Object.defineProperty(a,"__esModule",{value:!0});b=babelHelpers.interopRequireDefault(b).default.extend({namedAttributes:{active:"boolean",avatarUrl:"string",displayName:"string",id:"number",isAdmin:"boolean",link:Object,links:Object,type:"string",slug:"string"}});a.default=b;c.exports=a["default"]});;
+;
+/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:base-layout', location = '/static/bitbucket/internal/layout/base/base.js' */
+define("bitbucket/internal/layout/base/base","module exports aui jquery lodash bitbucket/util/navbuilder bitbucket/internal/model/page-state bitbucket/internal/model/stash-user bitbucket/internal/util/analytics bitbucket/internal/util/client-storage bitbucket/internal/util/events bitbucket/internal/util/history bitbucket/internal/widget/aui/dropdown/dropdown bitbucket/internal/widget/aui/form/form".split(" "),function(l,e,c,m,n,p,q,r,t,u,v,w,x,y){function z(a){a&&(a.isAdmin=!!(0,f.default)("#header").find("a.admin-link").length,
+A.default.setCurrentUser(new B.default(a)))}function C(a){g.default.getSessionItem(a)||(g.default.setSessionItem(a,!0),D.default.add("demographics",{d_lang:document.documentElement.lang},!0))}Object.defineProperty(e,"__esModule",{value:!0});var E=babelHelpers.interopRequireDefault(c),f=babelHelpers.interopRequireDefault(m),h=babelHelpers.interopRequireDefault(n),k=babelHelpers.interopRequireDefault(p),A=babelHelpers.interopRequireDefault(q),B=babelHelpers.interopRequireDefault(r),D=babelHelpers.interopRequireDefault(t),
+g=babelHelpers.interopRequireDefault(u),b=babelHelpers.interopRequireDefault(v),F=babelHelpers.interopRequireDefault(w),G=babelHelpers.interopRequireDefault(x),H=babelHelpers.interopRequireDefault(y);location.search&&(c=k.default.parse(location.href).getQueryParamValue("eve"))&&b.default.on(c,function(){console.log([b.default.name()],this,arguments)});b.default.on("bitbucket.internal.history.changestate",function(a){var b=(0,f.default)("#login-link");b.length&&a.state&&b.attr("href",k.default.login().next().build());
+(0,f.default)("body").children(".tipsy").remove()});e.default={onReady:function(a,e){z(a);G.default.onReady();H.default.onReady();E.default.params["build-number"]=encodeURIComponent((0,f.default)("#product-version").attr("data-system-build-number"));var d=(0,f.default)(window),c=h.default.debounce(function(){b.default.trigger("window.resize.debounced",d,d.width(),d.height())},200);d.on("resize",c);c=h.default.throttle(function(){b.default.trigger("window.scroll.throttled",d,d.scrollTop())},25);d.on("scroll",
+c);F.default.setTitleSuffix(" - "+e);C(g.default.buildKey("demographic-analytics","user"))}};l.exports=e["default"]});;
 ;
 /* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:project-avatar', location = '/static/bitbucket/internal/feature/project/project-avatar/project-avatar.soy' */
 // This file was automatically generated from project-avatar.soy.
@@ -985,3 +980,449 @@ function(){a.attr("data-commit-message","Commit request failed");f(a)});return "
 ;
 /* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:upgrade', location = '/static/bitbucket/internal/util/upgrade.js' */
 define("bitbucket/internal/util/upgrade",["exports","aui","bitbucket/util/server"],function(a,b,c){Object.defineProperty(a,"__esModule",{value:!0});a.pluginsDisabledAcknowledge=void 0;var d=babelHelpers.interopRequireDefault(b),e=babelHelpers.interopRequireDefault(c);a.pluginsDisabledAcknowledge=function(){var a=d.default.contextPath()+"/mvc/maintenance/upgrade-notification";e.default.rest({url:a,type:"DELETE"})}});;
+;
+/* module-key = 'com.atlassian.analytics.analytics-client:js-events', location = 'js/store-1.3.1.js' */
+(function(){var l={},h=window,k=h.document,c="localStorage",n="globalStorage",d="__storejs__",g;l.disabled=false;l.set=function(e,o){};l.get=function(e){};l.remove=function(e){};l.clear=function(){};l.transact=function(e,o){var p=l.get(e);if(typeof p=="undefined"){p={}}o(p);l.set(e,p)};l.serialize=function(e){return JSON.stringify(e)};l.deserialize=function(e){if(typeof e!="string"){return undefined}return JSON.parse(e)};function b(){try{return(c in h&&h[c])}catch(e){return false}}function m(){try{return(n in h&&h[n]&&h[n][h.location.hostname])}catch(e){return false}}if(b()){g=h[c];l.set=function(e,o){if(o===undefined){return l.remove(e)}g.setItem(e,l.serialize(o))};l.get=function(e){return l.deserialize(g.getItem(e))};l.remove=function(e){g.removeItem(e)};l.clear=function(){g.clear()}}else{if(m()){g=h[n][h.location.hostname];l.set=function(e,o){if(o===undefined){return l.remove(e)}g[e]=l.serialize(o)};l.get=function(e){return l.deserialize(g[e]&&g[e].value)};l.remove=function(e){delete g[e]};l.clear=function(){for(var e in g){delete g[e]}}}else{if(k.documentElement.addBehavior){var j,f;try{f=new ActiveXObject("htmlfile");f.open();f.write('<script>document.w=window<\/script><iframe src="/favicon.ico"></frame>');f.close();j=f.w.frames[0].document;g=j.createElement("div")}catch(i){g=k.createElement("div");j=k.body}function a(e){return function(){var p=Array.prototype.slice.call(arguments,0);p.unshift(g);j.appendChild(g);g.addBehavior("#default#userData");g.load(c);var o=e.apply(l,p);j.removeChild(g);return o}}l.set=a(function(p,e,o){if(o===undefined){return l.remove(e)}p.setAttribute(e,l.serialize(o));p.save(c)});l.get=a(function(o,e){return l.deserialize(o.getAttribute(e))});l.remove=a(function(o,e){o.removeAttribute(e);o.save(c)});l.clear=a(function(q){var o=q.XMLDocument.documentElement.attributes;q.load(c);for(var p=0,e;e=o[p];p++){q.removeAttribute(e.name)}q.save(c)})}}}try{l.set(d,d);if(l.get(d)!=d){l.disabled=true}l.remove(d)}catch(i){l.disabled=true}if(typeof module!="undefined"){module.exports=l}else{if(typeof define==="function"&&define.amd){define(l)}else{this.store=l}}})();;
+;
+/* module-key = 'com.atlassian.analytics.analytics-client:js-events', location = 'js/page-visibility.js' */
+define("atlassian/analytics/page-visibility",function(){var a=(document.hidden!==undefined);var b={supported:a,isHidden:function(){return a?document.hidden:false}};return b});;
+;
+/* module-key = 'com.atlassian.analytics.analytics-client:js-events', location = 'js/user-activity-xhr-header.js' */
+define("atlassian/analytics/user-activity-xhr-header",["atlassian/analytics/page-visibility"],function(c){var e="x-atlassian-mau-ignore";var d=XMLHttpRequest.prototype.send;var a=window.fetch;var b=false;return{install:function(){if(!b&&c.supported){XMLHttpRequest.prototype.send=function(){if(c.isHidden()){this.setRequestHeader(e,c.isHidden())}d.apply(this,arguments)};if(a){window.fetch=function(f,i){var g=i||{};var h=g.headers;if(c.isHidden()){g.headers=(h)?new Headers(h):new Headers();g.headers.append(e,c.isHidden())}return a.call(this,f,g)}}b=true}},uninstall:function(){if(b){XMLHttpRequest.prototype.send=d;if(a){window.fetch=a}}b=false}}});require("atlassian/analytics/user-activity-xhr-header").install();;
+;
+/* module-key = 'com.atlassian.analytics.analytics-client:js-events', location = 'js/atlassian-analytics.js' */
+(function(d){var p=AJS.$.ajax;var k="atlassian-analytics";var i=typeof AJS.contextPath=="function"?AJS.contextPath():typeof AJS.Confluence!="undefined"?AJS.Confluence.getContextPath():window.contextPath!=null?window.contextPath:"";var o=null;var l=null;var f=null;var q="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(y){var x=Math.random()*16|0,w=y=="x"?x:(x&3|8);return w.toString(16)});var s=function(){var w="unknown";if(document.body.id=="jira"){w="jira"}else{if(document.body.id=="com-atlassian-confluence"){w="confluence"}}l=k+"."+w;f=l+".lock"};var e=function(){if(store.get(f)){return false}store.set(f,q);return(store.get(f)===q)};var t=function(){store.set(f,null)};var h=function(){var x=[],z,A,w,y;if(AJS.EventQueue.length==0){return}x=store.get(l)||x;for(w=0,y=AJS.EventQueue.length;w<y;++w){A=AJS.EventQueue[w];if(A.name){z={name:A.name,properties:A.properties,time:A.time||0};x.push(z)}}AJS.EventQueue.length=0;store.set(l,x)};var u=0;var a=function(w){return Math.min(5000*Math.pow(2,w),5*60*1000)};var g=function(){var z;function x(){setTimeout(g,a(u=0))}function w(){setTimeout(g,a(++u))}if(!e()){return x()}h();z=store.get(l);if(!z||!z.length){t();return x()}store.remove(l);t();if(!n(z)){return x()}var A=new Date().getTime();for(var y=0;y<z.length;y++){if(z[y].time>0){z[y].timeDelta=z[y].time-A}else{z[y].timeDelta=y-z.length}delete z[y].time}o=p({type:"POST",url:i+"/rest/analytics/1.0/publish/bulk",data:JSON.stringify(z),contentType:"application/json",dataType:"json"});o.fail(function(){AJS.EventQueue.concat(z);h();w()});o.done(function(){x()})};var n=function(y){for(var x=y.length-1;x>=0;x--){var A="";var z=y[x];var w=z.properties;if(typeof z.name==="undefined"){A="you must provide a name for the event."}else{if(typeof w!=="undefined"&&w!==null){if(w.constructor!==Object){A="properties must be an object with key value pairs."}else{b(w)}}}if(A!==""){AJS.log("WARN: Invalid analytics event detected and ignored, "+A+"\nEvent: "+JSON.stringify(z));y.splice(x,1)}}return y.length};var b=function(y){for(var x in y){if(y.hasOwnProperty(x)){var w=y[x];if(c(w)&&j(w)){}else{if(c(w)&&w.toString){y[x]=w.toString()}else{y[x]=""}}}}};function c(w){return typeof w!=="undefined"&&w!==null}function j(w){return typeof w==="number"||typeof w==="string"||typeof w==="boolean"}var m=function(){if(o&&!(o.state()==="resolved"||o.state()==="rejected")){o.abort()}};AJS.EventQueue=AJS.EventQueue||[];var r=Array.prototype.push;AJS.EventQueue.push=function(w){w.time=new Date().getTime();r.call(AJS.EventQueue,w)};AJS.toInit(function(){s();setTimeout(g,500);v()});d(window).unload(function(){m();h()});AJS.Analytics={triggerPrivacyPolicySafeEvent:function(w,x){AJS.log("WARN: 'triggerPrivacyPolicySafeEvent' has been deprecated");AJS.EventQueue.push({name:w,properties:x})}};AJS.bind("analytics",function(w,x){AJS.EventQueue.push({name:x.name,properties:x.data})});AJS.bind("analyticsEvent",function(w,x){AJS.EventQueue.push({name:x.name,properties:x.data})});var v=function(){if(window.location.pathname.indexOf("/secure/admin/ViewApplicationProperties")>-1){AJS.$("[data-property-id='analytics-enabled']").remove()}else{if(window.location.pathname.indexOf("/secure/admin/EditApplicationProperties")>-1){var x=AJS.$(":contains(Enable Atlassian analytics)");if(x.size()>0){var w=x[x.size()-2];if(w){w.remove()}}}}}}(AJS.$));;
+;
+/* module-key = 'com.atlassian.analytics.analytics-client:policy-update-init', location = 'js/policy-update-init.js' */
+AJS.toInit(function(){var a=WRM.data.claim("com.atlassian.analytics.analytics-client:policy-update-init.policy-update-data-provider");if(a){WRM.require("wrc!com.atlassian.analytics.analytics-client:policy-update")}});;
+;
+/* module-key = 'com.atlassian.analytics.analytics-client:programmatic-analytics-init', location = 'js/programmatic-analytics-init.js' */
+(function(){var a=WRM.data.claim("com.atlassian.analytics.analytics-client:programmatic-analytics-init.programmatic-analytics-data-provider");if(a){WRM.require("wrc!com.atlassian.analytics.analytics-client:programmatic-analytics")}}());;
+;
+/* module-key = 'com.atlassian.plugins.atlassian-nav-links-plugin:application-header-administration-cog-resource', location = 'header/cog.js' */
+var NavLinks=(function(a){a.ApplicationHeader=function(b){b.Cog=(function(){var c=function(){var d=AJS.$("#system-admin-menu-content");if(d.length>0){return d}var e=AJS.$("#admin-menu-link-content");if(e.length>0){return e}return AJS.$("#bamboo\\.global\\.header-admin\\.menu")};return{getDropdown:c}}());return b}(a.ApplicationHeader||{});return a}(NavLinks||{}));;
+;
+/* module-key = 'com.atlassian.plugins.atlassian-nav-links-plugin:administration-shortcuts-resources', location = 'adminshortcuts/adminshortcuts.soy' */
+// This file was automatically generated from adminshortcuts.soy.
+// Please don't edit this file by hand.
+
+/**
+ * @fileoverview Templates in namespace navlinks.templates.adminshortcuts.
+ */
+
+if (typeof navlinks == 'undefined') { var navlinks = {}; }
+if (typeof navlinks.templates == 'undefined') { navlinks.templates = {}; }
+if (typeof navlinks.templates.adminshortcuts == 'undefined') { navlinks.templates.adminshortcuts = {}; }
+
+
+navlinks.templates.adminshortcuts.section = function(opt_data, opt_ignored) {
+  var param5 = '<ul class="aui-list-truncate">';
+  var linkList7 = opt_data.links;
+  var linkListLen7 = linkList7.length;
+  for (var linkIndex7 = 0; linkIndex7 < linkListLen7; linkIndex7++) {
+    var linkData7 = linkList7[linkIndex7];
+    param5 += '<li><a href="' + soy.$$escapeHtml(linkData7.link) + '">' + soy.$$escapeHtml(linkData7.label) + '</a></li>';
+  }
+  param5 += '</ul>';
+  var output = '' + aui.dropdown2.section({id: 'nl-remote-admin-section', label: 'Other applications', content: param5});
+  return output;
+};
+if (goog.DEBUG) {
+  navlinks.templates.adminshortcuts.section.soyTemplateName = 'navlinks.templates.adminshortcuts.section';
+}
+;
+;
+/* module-key = 'com.atlassian.plugins.atlassian-nav-links-plugin:administration-shortcuts-resources', location = 'adminshortcuts/adminnavlinks.js' */
+var NavLinks=(function(a){a.AdminShortcuts=(function(){var c=function(){return AJS.$.ajax({url:AJS.contextPath()+"/rest/menu/latest/admin",cache:false,dataType:"json"})};var b=function(){AJS.$("#nl-remote-admin-section").on("click","a",function(){NL.trackEvent("remoteAdminItemSelected",NL.getCurrentApplication(),$(this).attr("href"))})};return{render:function(){c().done(function(e){e=_.reject(e,function(f){return f.local===true});if(e.length){var d=navlinks.templates.adminshortcuts.section({links:e});a.ApplicationHeader.Cog.getDropdown().append(d);b()}})}}}());return a}(NavLinks||{}));;
+;
+/* module-key = 'com.atlassian.plugins.atlassian-nav-links-plugin:rotp-projectshortcuts', location = 'projectshortcuts/projectshortcuts.soy' */
+// This file was automatically generated from projectshortcuts.soy.
+// Please don't edit this file by hand.
+
+/**
+ * @fileoverview Templates in namespace navlinks.templates.projectshortcuts.
+ */
+
+if (typeof navlinks == 'undefined') { var navlinks = {}; }
+if (typeof navlinks.templates == 'undefined') { navlinks.templates = {}; }
+if (typeof navlinks.templates.projectshortcuts == 'undefined') { navlinks.templates.projectshortcuts = {}; }
+
+
+navlinks.templates.projectshortcuts.dialogContent = function(opt_data, opt_ignored) {
+  return '' + ((opt_data.localShortcuts && opt_data.localShortcuts.length > 0) ? navlinks.templates.projectshortcuts.dialogContentShortcuts({shortcuts: opt_data.localShortcuts, listClass: 'projectshortcut-links'}) : '') + ((opt_data.remoteShortcuts != null) ? (opt_data.remoteShortcuts.length > 0) ? '<h2 class="projectshortcuts-heading">Related Links</h2>' + navlinks.templates.projectshortcuts.dialogContentShortcuts(soy.$$augmentMap(opt_data.remoteShortcuts, {shortcuts: opt_data.remoteShortcuts, listClass: 'projectshortcut-links'})) : '' : navlinks.templates.projectshortcuts.dialogLoading(null));
+};
+if (goog.DEBUG) {
+  navlinks.templates.projectshortcuts.dialogContent.soyTemplateName = 'navlinks.templates.projectshortcuts.dialogContent';
+}
+
+
+navlinks.templates.projectshortcuts.headingWrapper = function(opt_data, opt_ignored) {
+  return '<div class="project-dialog-header-wrapper"><div class="project-header"><img class="project-img" src="' + soy.$$escapeHtml(opt_data.logoUrl) + '"><h2 class="dialog-title">' + soy.$$escapeHtml(opt_data.title) + '</h2></div><div class="project-content-wrapper">' + soy.$$filterNoAutoescape(opt_data.contentHtml) + '</div></div>';
+};
+if (goog.DEBUG) {
+  navlinks.templates.projectshortcuts.headingWrapper.soyTemplateName = 'navlinks.templates.projectshortcuts.headingWrapper';
+}
+
+
+navlinks.templates.projectshortcuts.dialogContentShortcuts = function(opt_data, opt_ignored) {
+  opt_data = opt_data || {};
+  var output = '<ul' + ((opt_data.listClass) ? ' class="' + soy.$$escapeHtml(opt_data.listClass) + '"' : '') + '>';
+  var shortcutList35 = opt_data.shortcuts;
+  var shortcutListLen35 = shortcutList35.length;
+  for (var shortcutIndex35 = 0; shortcutIndex35 < shortcutListLen35; shortcutIndex35++) {
+    var shortcutData35 = shortcutList35[shortcutIndex35];
+    output += '<li' + ((shortcutIndex35 == shortcutListLen35 - 1) ? ' class="last"' : '') + '>' + navlinks.templates.projectshortcuts.dialogContentShortcut(shortcutData35) + '</li>';
+  }
+  output += '</ul>';
+  return output;
+};
+if (goog.DEBUG) {
+  navlinks.templates.projectshortcuts.dialogContentShortcuts.soyTemplateName = 'navlinks.templates.projectshortcuts.dialogContentShortcuts';
+}
+
+
+navlinks.templates.projectshortcuts.dialogContentShortcut = function(opt_data, opt_ignored) {
+  return '<a href="' + soy.$$escapeHtml(opt_data.link) + '"' + ((opt_data.tooltip) ? ' title="' + soy.$$escapeHtml(opt_data.tooltip) + '"' : '') + '>' + soy.$$escapeHtml(opt_data.label) + '</a>';
+};
+if (goog.DEBUG) {
+  navlinks.templates.projectshortcuts.dialogContentShortcut.soyTemplateName = 'navlinks.templates.projectshortcuts.dialogContentShortcut';
+}
+
+
+navlinks.templates.projectshortcuts.dialogLoading = function(opt_data, opt_ignored) {
+  opt_data = opt_data || {};
+  return '<div class="projectshortcuts-loading">' + ((opt_data.text) ? soy.$$escapeHtml(opt_data.text) : '') + '</div>';
+};
+if (goog.DEBUG) {
+  navlinks.templates.projectshortcuts.dialogLoading.soyTemplateName = 'navlinks.templates.projectshortcuts.dialogLoading';
+}
+;
+;
+/* module-key = 'com.atlassian.plugins.atlassian-nav-links-plugin:rotp-projectshortcuts', location = 'projectshortcuts/projectshortcuts.js' */
+(function(e,g){var i,k={},m="key",b="name",j="entity-type";function f(s){var n=e(this),o=n.data(m),q=n.data(b),p=n.data(j);if(typeof o==="undefined"){return}s.preventDefault();i=new AJS.Dialog({width:600,keypressListener:function(u){if(u.which==jQuery.ui.keyCode.ESCAPE){i.remove()}},id:"project-shortcuts-dialog"}).addCancel("Close",function(){i.remove()}).addPanel("",navlinks.templates.projectshortcuts.headingWrapper({title:q,logoUrl:h(),contentHtml:navlinks.templates.projectshortcuts.dialogLoading({text:"Retrieving links…"})})).show();c(i);if(!k[o]){k[o]={entity:{title:q},localShortcuts:null,remoteShortcuts:null};d(AJS.contextPath()+"/rest/project-shortcuts/1.0/local/"+o,{entityType:p}).done(t);d(AJS.contextPath()+"/rest/project-shortcuts/1.0/remote/"+o,{entityType:p}).done(r).fail(function(){var u=i.getCurrentPanel().body.find(".project-content-wrapper");u.find(".projectshortcuts-loading").remove();AJS.messages.error(u,{body:"Could not retrieve remote project shortcuts",closeable:false});c(i)})}else{l(k[o])}function t(u){k[o].localShortcuts=u.shortcuts;l(k[o])}function r(u){k[o].remoteShortcuts=u.shortcuts;l(k[o])}}function h(){return e(".project-shortcut-dialog-trigger img").attr("src")}function l(n){if(n.localShortcuts){i.getCurrentPanel().html(navlinks.templates.projectshortcuts.headingWrapper({title:n.entity.title,logoUrl:h(),contentHtml:navlinks.templates.projectshortcuts.dialogContent(n)}));c(i)}}function a(p){var o=210;if(!p||p.length<=o){return p}var n=o;while(n>0&&p.charAt(n)!=" "){n--}if(n==0){n=o}p=p.substring(0,n);if(p.length>=n){p=p+"..."}return p}function c(n){var q=n.popup.element,p=q.find(".dialog-panel-body"),o=q.find(".dialog-components");p.height("auto");q.height(o.outerHeight()-1);e(".aui-shadow").remove()}function d(n,o){return e.ajax({url:n,cache:false,data:o,dataType:"json"})}e(document).on("click",".project-shortcut-dialog-trigger",f)}(jQuery,window.NL=(window.NL||{})));;
+;
+/* module-key = 'com.atlassian.plugins.atlassian-nav-links-plugin:atlassian-ui-popup-display-controller', location = 'popups/DisplayController.js' */
+AJS.Popups=AJS.Popups||{};AJS.Popups.DisplayController=function(){var c=[];var a=false;var b=false;AJS.toInit(function(){setTimeout(function(){AJS.Popups.DisplayController.render()},0)});return{request:function(d){c.push(d);if(a&&b===false){this.render()}},render:function(){c.sort(function(e,d){return e.weight-d.weight});a=true;if(c.length!==0){b=true;c[0].show()}}}}();;
+;
+/* module-key = 'com.atlassian.plugins.atlassian-nav-links-plugin:rotp-menu', location = 'appswitcher/appswitcher.soy' */
+// This file was automatically generated from appswitcher.soy.
+// Please don't edit this file by hand.
+
+/**
+ * @fileoverview Templates in namespace navlinks.templates.appswitcher.
+ */
+
+if (typeof navlinks == 'undefined') { var navlinks = {}; }
+if (typeof navlinks.templates == 'undefined') { navlinks.templates = {}; }
+if (typeof navlinks.templates.appswitcher == 'undefined') { navlinks.templates.appswitcher = {}; }
+
+
+navlinks.templates.appswitcher.linkSection = function(opt_data, opt_ignored) {
+  var output = '';
+  if (opt_data.list.length > 0) {
+    output += '<div class="aui-nav-heading sidebar-section-header">' + soy.$$escapeHtml(opt_data.title) + '</div><ul class="aui-nav nav-links">';
+    var linkList8 = opt_data.list;
+    var linkListLen8 = linkList8.length;
+    for (var linkIndex8 = 0; linkIndex8 < linkListLen8; linkIndex8++) {
+      var linkData8 = linkList8[linkIndex8];
+      output += navlinks.templates.appswitcher.applicationsItem(linkData8);
+    }
+    output += '</ul>';
+  }
+  return output;
+};
+if (goog.DEBUG) {
+  navlinks.templates.appswitcher.linkSection.soyTemplateName = 'navlinks.templates.appswitcher.linkSection';
+}
+
+
+navlinks.templates.appswitcher.applicationsItem = function(opt_data, opt_ignored) {
+  return '<li class="nav-link"><a href="' + soy.$$escapeHtml(opt_data.link) + '" ' + ((opt_data.self) ? 'class="checked"' : '') + ' title="' + soy.$$escapeHtml(opt_data.link) + '"><span class="nav-link-label">' + soy.$$escapeHtml(opt_data.label) + '</span></a></li>';
+};
+if (goog.DEBUG) {
+  navlinks.templates.appswitcher.applicationsItem.soyTemplateName = 'navlinks.templates.appswitcher.applicationsItem';
+}
+
+
+navlinks.templates.appswitcher.shortcutsItem = function(opt_data, opt_ignored) {
+  return '<li class="nav-link"><a href="' + soy.$$escapeHtml(opt_data.link) + '" ' + ((opt_data.self) ? 'class="checked"' : '') + ' title="' + soy.$$escapeHtml(opt_data.link) + '"><span class="nav-link-label">' + soy.$$escapeHtml(opt_data.label) + '</span>' + ((opt_data.showDescription && opt_data.description) ? '<span class="nav-link-description">' + soy.$$escapeHtml(opt_data.description) + '</span>' : '') + '</a></li>';
+};
+if (goog.DEBUG) {
+  navlinks.templates.appswitcher.shortcutsItem.soyTemplateName = 'navlinks.templates.appswitcher.shortcutsItem';
+}
+
+
+navlinks.templates.appswitcher.error = function(opt_data, opt_ignored) {
+  return '<div class="app-switcher-error">' + soy.$$filterNoAutoescape('Something went wrong, please \x3cspan class\x3d\x22app-switcher-retry\x22\x3etry again\x3c/span\x3e.') + '</div>';
+};
+if (goog.DEBUG) {
+  navlinks.templates.appswitcher.error.soyTemplateName = 'navlinks.templates.appswitcher.error';
+}
+
+
+navlinks.templates.appswitcher.sidebarContents = function(opt_data, opt_ignored) {
+  return '<div class="aui-page-panel-nav"><nav class="aui-navgroup aui-navgroup-vertical"><div class="app-switcher-section app-switcher-applications"><div class="aui-nav-heading">' + soy.$$escapeHtml('Application Links') + '</div><div class="app-switcher-loading">' + soy.$$filterNoAutoescape('Loading\x26hellip;') + '</div></div><div class="app-switcher-section app-switcher-shortcuts"><div class="aui-nav-heading">' + soy.$$escapeHtml('Shortcuts') + '</div><div class="app-switcher-loading">' + soy.$$filterNoAutoescape('Loading\x26hellip;') + '</div></div></nav></div>';
+};
+if (goog.DEBUG) {
+  navlinks.templates.appswitcher.sidebarContents.soyTemplateName = 'navlinks.templates.appswitcher.sidebarContents';
+}
+
+
+navlinks.templates.appswitcher.trigger = function(opt_data, opt_ignored) {
+  return '<span class="aui-icon aui-icon-small aui-iconfont-appswitcher">' + soy.$$escapeHtml('Linked Applications') + '</span>';
+};
+if (goog.DEBUG) {
+  navlinks.templates.appswitcher.trigger.soyTemplateName = 'navlinks.templates.appswitcher.trigger';
+}
+
+
+navlinks.templates.appswitcher.projectHeaderSection = function(opt_data, opt_ignored) {
+  return '<div class="app-switcher-title">' + aui.avatar.avatar({size: 'large', avatarImageUrl: opt_data.avatarUrl, isProject: true, title: opt_data.name}) + '<div class="sidebar-project-name">' + soy.$$escapeHtml(opt_data.name) + '</div></div>';
+};
+if (goog.DEBUG) {
+  navlinks.templates.appswitcher.projectHeaderSection.soyTemplateName = 'navlinks.templates.appswitcher.projectHeaderSection';
+}
+
+
+navlinks.templates.appswitcher.cogDropdown = function(opt_data, opt_ignored) {
+  var output = '';
+  var dropdownList__soy74 = '' + navlinks.templates.appswitcher.dropdownList({list: opt_data.links});
+  output += aui.dropdown2.dropdown2({menu: {id: opt_data.id, content: dropdownList__soy74, extraClasses: 'aui-style-default sidebar-customize-section'}, trigger: {showIcon: false, content: '<span class="aui-icon aui-icon-small aui-iconfont-configure"></span>', container: '#app-switcher'}});
+  return output;
+};
+if (goog.DEBUG) {
+  navlinks.templates.appswitcher.cogDropdown.soyTemplateName = 'navlinks.templates.appswitcher.cogDropdown';
+}
+
+
+navlinks.templates.appswitcher.dropdownList = function(opt_data, opt_ignored) {
+  var output = '<ul class="sidebar-admin-links">';
+  var linkList82 = opt_data.list;
+  var linkListLen82 = linkList82.length;
+  for (var linkIndex82 = 0; linkIndex82 < linkListLen82; linkIndex82++) {
+    var linkData82 = linkList82[linkIndex82];
+    output += '<li class="nav-link"><a href="' + soy.$$escapeHtml(linkData82.href) + '" title="' + soy.$$escapeHtml(linkData82.title) + '"><span class="nav-link-label">' + soy.$$escapeHtml(linkData82.label) + '</span></a></li>';
+  }
+  output += '</ul>';
+  return output;
+};
+if (goog.DEBUG) {
+  navlinks.templates.appswitcher.dropdownList.soyTemplateName = 'navlinks.templates.appswitcher.dropdownList';
+}
+
+
+navlinks.templates.appswitcher.switcher = function(opt_data, opt_ignored) {
+  var output = '';
+  if (true) {
+    if (AJS.DarkFeatures.isEnabled('rotp.sidebar')) {
+      var sidebarContents__soy97 = '' + navlinks.templates.appswitcher.sidebarContents(null);
+      var triggerContent__soy99 = '' + navlinks.templates.appswitcher.trigger(null);
+      output += navlinks.templates.appswitcher.sidebar({sidebar: {id: 'app-switcher', content: sidebarContents__soy97}, trigger: {showIcon: false, content: triggerContent__soy99}});
+    } else {
+      output += navlinks.templates.appswitcher_old.switcher(null);
+    }
+  }
+  return output;
+};
+if (goog.DEBUG) {
+  navlinks.templates.appswitcher.switcher.soyTemplateName = 'navlinks.templates.appswitcher.switcher';
+}
+
+
+navlinks.templates.appswitcher.sidebar = function(opt_data, opt_ignored) {
+  return '<a href="' + soy.$$escapeHtml(opt_data.sidebar.id) + '" class="sidebar-trigger app-switcher-trigger" aria-owns="' + soy.$$escapeHtml(opt_data.sidebar.id) + '" aria-haspopup="true" data-is-user-admin="' + soy.$$escapeHtml(false) + '" data-is-sidebar="true" >' + soy.$$filterNoAutoescape(opt_data.trigger.content) + '</a><div id=' + soy.$$escapeHtml(opt_data.sidebar.id) + ' class="app-switcher-sidebar aui-style-default sidebar-offscreen">' + soy.$$filterNoAutoescape(opt_data.sidebar.content) + '</div>';
+};
+if (goog.DEBUG) {
+  navlinks.templates.appswitcher.sidebar.soyTemplateName = 'navlinks.templates.appswitcher.sidebar';
+}
+;
+;
+/* module-key = 'com.atlassian.plugins.atlassian-nav-links-plugin:rotp-menu', location = 'appswitcher/appswitcher.js' */
+(function(e,a){var d="is-user-admin";var c="#app-switcher";a.SideBar=function(f){var g=this;this.$sidebar=null;f=e.extend({sidebarContents:null},f);this.getLinks=function(){return e.ajax({url:AJS.contextPath()+"/rest/menu/latest/appswitcher",cache:false,dataType:"json"}).done(this.updateAppLinks).fail(this.showAppSwitcherError)};this.populateProjectHeader=function(i,h){g.getSidebar().find(".app-switcher-shortcuts .aui-nav-heading").after(navlinks.templates.appswitcher.projectHeaderSection({avatarUrl:h,name:i}))};this.getProjectData=function(){var h=e(".project-shortcut-dialog-trigger"),i=h.data("key"),j=h.data("entity-type");if(h.size()==0||!i||!j){e(".app-switcher-shortcuts").remove();return}var l,k;k=e.ajax({url:AJS.contextPath()+"/rest/project-shortcuts/1.0/local/"+i,cache:false,data:{entityType:j},dataType:"json"});l=e.ajax({url:AJS.contextPath()+"/rest/project-shortcuts/1.0/remote/"+i,cache:false,data:{entityType:j},dataType:"json"});e.when(k,l).then(function(n,m){g.updateProjectShortcuts(n,m,{key:i,entityType:j,name:h.data("name"),avatarUrl:h.find("img").prop("src")})},g.showProjectShortcutsError)};this.getSidebar=function(){if(!this.$sidebar){this.$sidebar=e(f.sidebarContents)}return this.$sidebar};this.addApplicationsCog=function(){e(".app-switcher-applications .aui-nav-heading").before(navlinks.templates.appswitcher.cogDropdown({id:"sidebar-applications-admin-dropdown",links:[{href:AJS.contextPath()+"/plugins/servlet/customize-application-navigator",label:"Customize navigator",title:"Add new entries, hide existing or restrict who sees what"},{href:AJS.contextPath()+"/plugins/servlet/applinks/listApplicationLinks",label:"Manage application links",title:"Link to more Atlassian applications"}]}))};this.addProjectShortcutsCog=function(h,j){var i=[{href:AJS.contextPath()+"/plugins/servlet/custom-content-links-admin?entityKey="+h,label:"Customize shortcuts",title:""}];if(g.entityMappings[j]){i.push({href:g.generateEntityLinksUrl(h,g.entityMappings[j]),label:"Manage product links",title:""})}g.getSidebar().find(".app-switcher-shortcuts .aui-nav-heading").before(navlinks.templates.appswitcher.cogDropdown({id:"sidebar-project-shortcuts-admin-dropdown",links:i}))};this.updateAppLinks=function(h){e(function(){g.getSidebar().find(".app-switcher-applications").html(navlinks.templates.appswitcher.linkSection({title:"Application Links",list:h}));if(g.getSidebar().data(d)){g.addApplicationsCog()}g.bindAnalyticsHandlers(g.getSidebar(),h)})};this.updateProjectShortcuts=function(k,i,j){var l=k[0].shortcuts,h=i[0].shortcuts;g.getSidebar().find(".app-switcher-shortcuts").html(navlinks.templates.appswitcher.linkSection({title:"Shortcuts",list:l.concat(h)}));if(g.getSidebar().data(d)){g.addProjectShortcutsCog(j.key,j.entityType)}g.populateProjectHeader(j.name,j.avatarUrl);g.bindAnalyticsHandlers(g.getSidebar(),data)};this.entityMappings={"confluence.space":"com.atlassian.applinks.api.application.confluence.ConfluenceSpaceEntityType","jira.project":"com.atlassian.applinks.api.application.jira.JiraProjectEntityType","bamboo.project":"com.atlassian.applinks.api.application.bamboo.BambooProjectEntityType","stash.project":"com.atlassian.applinks.api.application.stash.StashProjectEntityType"};this.generateEntityLinksUrl=function(h,i){if(i===g.entityMappings["confluence.space"]){return AJS.contextPath()+"/spaces/listentitylinks.action?typeId="+i+"&key="+h}else{return AJS.contextPath()+"/plugins/servlet/applinks/listEntityLinks/"+i+"/"+h}};this.showAppSwitcherError=function(){e(function(){var h=g.getSidebar();h.find(".app-switcher-applications .app-switcher-loading").replaceWith(navlinks.templates.appswitcher.error());h.off(".appswitcher").on("click.appswitcher",".app-switcher-retry",e.proxy(g.retryLoading,g))})};this.showProjectShortcutsError=function(){e(function(){var h=g.getSidebar();h.find(".app-switcher-shortcuts .app-switcher-loading").replaceWith(navlinks.templates.appswitcher.error());h.off(".appswitcher").on("click.appswitcher",".app-switcher-retry",e.proxy(g.retryLoading,g))})};this.retryLoading=function(h){this.getSidebar().html(navlinks.templates.appswitcher.sidebarContents());this.getLinks();this.getProjectData();h&&h.stopPropagation()};this.bindAnalyticsHandlers=function(h,i){};this.getLinks();e(this.getProjectData);this.toggleSidebar=function(j){var k=g.getSidebar(),i=e("body"),h=e(window.document);if(!i.hasClass("app-switcher-open")){var m=e("#header");k.css("left",-k.width());k.parent("body").length||k.appendTo("body");b({data:k});k.animate({left:0},300);function l(n){var p=n.target&&e(n.target),o=n.keyCode;if(n.originalEvent===j.originalEvent){return}if(p&&!o&&!(p.closest(k).length||p.closest(m).length)&&j.which==1&&!(n.shiftKey||n.ctrlKey||n.metaKey)){g.toggleSidebar()}else{if(o===27){g.toggleSidebar()}}}h.on("click.appSwitcher",l);h.on("keydown.appSwitcher",l);h.on("scroll.appSwitcher",k,b)}else{h.off(".appSwitcher")}i.toggleClass("app-switcher-open")};e("#header").on("click",".app-switcher-trigger",this.toggleSidebar)};function b(h){var f=e(document).scrollTop(),i=e("#header"),g=(i.height()+i.offset().top)-f;if(g>=0){h.data.css({top:g,position:"fixed"})}else{h.data.css({top:0,left:0,position:"fixed"})}}e(function(){if(e(c).data("is-sidebar")===true){new a.SideBar({sidebarContents:c})}})}(jQuery,window.NL=(window.NL||{})));;
+;
+/* module-key = 'com.atlassian.plugins.atlassian-nav-links-plugin:rotp-menu', location = 'appswitcher/appswitcher_old.js' */
+var APPSWITCHER_TRIGGER_CLICK="appswitcher.trigger.click";var APPSWITCHER_DROPDOWN_SHOW="appswitcher.dropdown.show";var APPSWITCHER_DROPDOWN_DISPLAY_ERROR="appswitcher.dropdown.display.error";var APPSWITCHER_APP_LINK_CLICK="appswitcher.app.link.click";var APPSWITCHER_CONFIGURE_LINK_CLICK="appswitcher.configure.link.click";(function(c,f){var b="isAppSuggestionAvailable";var d="isSiteAdminUser";var e="isUserAdmin";var a="#app-switcher";f.AppSwitcher=function(j){var l=AJS.contextPath()+"/plugins/servlet/customize-application-navigator";var k="unified.usermanagement";var m=this;this.$dropdown=null;j=c.extend({dropdownContents:null},j);this.getLinks=function(){return c.ajax({url:AJS.contextPath()+"/rest/menu/latest/appswitcher",cache:false,dataType:"json"}).done(this.updateDropdown).fail(this.showError)};this.getDropdown=function(){if(!this.$dropdown){this.$dropdown=c(j.dropdownContents);this.envData=this.$dropdown.data("environment")}return this.$dropdown};this.updateDropdown=function(n){c(function(){m.getDropdown().html(navlinks.templates.appswitcher_old.applications({apps:n,showAdminLink:m.envData[e],adminLink:l}));m.bindAnalyticsHandlers();if(m.envData[b]===true){m.handleSuggestionApps(n)}})};this.bindAnalyticsHandlers=function(){c(".app-switcher-trigger").on("click",function(){AJS.trigger("analyticsEvent",{name:APPSWITCHER_TRIGGER_CLICK})});c("#app-switcher").on("aui-dropdown2-show",function(){AJS.trigger("analyticsEvent",{name:APPSWITCHER_DROPDOWN_SHOW})});c("#app-switcher .nav-link").on("click",function(){var p="custom";var q=c(this).find("a");var o=q.attr("href");var n=window.location.hostname;if(o&&o.indexOf("bitbucket.org")>-1){p="bitbucket-cloud"}else{if(o.indexOf(n+"/wiki")>-1){p="confluence"}else{if(o.indexOf(n+"/build")>-1){p="bamboo"}else{if(o.indexOf(n)>-1){p="jira"}}}}AJS.trigger("analyticsEvent",{name:APPSWITCHER_APP_LINK_CLICK,data:{product:p}})});c(".nav-link-edit-wrapper").on("click",function(){AJS.trigger("analyticsEvent",{name:APPSWITCHER_CONFIGURE_LINK_CLICK})})};this.isBillingSystemEnabled=function(){return(this.envData[d]===true)&&AJS.DarkFeatures.isEnabled(k)};this.handleSuggestionApps=function(q){var r=_.map(q,function(s){return s.applicationType.toLowerCase()});var o=c("<div id='app-switcher-suggestion-apps' class='aui-dropdown2-section'/>");o.html(navlinks.templates.appswitcher_old.suggestionApps);var p=o.find(".suggestion-apps");var n=false;_.each(g,function(s){if(!_.contains(r,s.appName)){n=true;p.append(navlinks.templates.appswitcher_old.suggestionApp({suggestionApp:s,isBillingSystemEnabled:m.isBillingSystemEnabled()}))}});if(!n){return}c("#app-switcher").append(o);c(".app-discovery-suggestion-app").click(function(){var t=c(this).find("a");var s;if(m.envData[d]===true){s="appswitcher.discovery.siteadmin.select.inproduct."}else{s="appswitcher.discovery.user.select."}s=s+t.attr("id").toLowerCase();AJS.trigger("analytics",{name:s})});c(".app-discovery-suggestion-app").hover(function(){c(this).find("a").removeClass("active").removeClass("aui-dropdown2-active")});c(".app-discovery-cancel-button").click(function(){AJS.trigger("analytics",{name:"appswitcher.discovery.nothanks.button.click"});i(h,"true");o.remove()})};this.showError=function(){c(function(){AJS.trigger("analyticsEvent",{name:APPSWITCHER_DROPDOWN_DISPLAY_ERROR});m.getDropdown().html(navlinks.templates.appswitcher_old.error()).off(".appswitcher").on("click.appswitcher",".app-switcher-retry",c.proxy(m.retryLoading,m))})};this.retryLoading=function(n){this.getDropdown().html(navlinks.templates.appswitcher_old.loading());this.getLinks();n&&n.stopPropagation()};this.getLinks()};var h="key-no-thanks";var g=[{appName:"jira",appDesc:"Issue & Project Tracking Software",discoveryUrl:"https://www.atlassian.com/software/jira",billingSystemDiscoveryUrl:"/admin/billing/addapplication"},{appName:"confluence",appDesc:"Collaboration and content sharing",discoveryUrl:"https://www.atlassian.com/software/confluence",billingSystemDiscoveryUrl:"/admin/billing/addapplication?product=confluence.ondemand"},{appName:"bamboo",appDesc:"Continuous integration",discoveryUrl:"https://www.atlassian.com/software/bamboo",billingSystemDiscoveryUrl:"/admin/billing/addapplication?product=bamboo.ondemand"}];var i=function(j,k){c.ajax({url:AJS.contextPath()+"/rest/menu/latest/userdata/",type:"PUT",contentType:"application/json",data:JSON.stringify({key:j,value:k})})};c(function(){if(c(a).data("is-switcher")===true){new f.AppSwitcher({dropdownContents:a})}})}(jQuery,window.NL=(window.NL||{})));;
+;
+/* module-key = 'com.atlassian.plugins.atlassian-nav-links-plugin:rotp-menu', location = 'appswitcher/appswitcher_old.soy' */
+// This file was automatically generated from appswitcher_old.soy.
+// Please don't edit this file by hand.
+
+/**
+ * @fileoverview Templates in namespace navlinks.templates.appswitcher_old.
+ */
+
+if (typeof navlinks == 'undefined') { var navlinks = {}; }
+if (typeof navlinks.templates == 'undefined') { navlinks.templates = {}; }
+if (typeof navlinks.templates.appswitcher_old == 'undefined') { navlinks.templates.appswitcher_old = {}; }
+
+
+navlinks.templates.appswitcher_old.applications = function(opt_data, opt_ignored) {
+  return '' + navlinks.templates.appswitcher_old.applicationsSection({list: opt_data.apps, listClass: 'nav-links', showDescription: opt_data.showDescription}) + ((opt_data.custom) ? navlinks.templates.appswitcher_old.applicationsSection({list: opt_data.custom, showDescription: opt_data.showDescription}) : '') + ((opt_data.showAdminLink) ? navlinks.templates.appswitcher_old.adminSection(opt_data) : '');
+};
+if (goog.DEBUG) {
+  navlinks.templates.appswitcher_old.applications.soyTemplateName = 'navlinks.templates.appswitcher_old.applications';
+}
+
+
+navlinks.templates.appswitcher_old.applicationsSection = function(opt_data, opt_ignored) {
+  var output = '';
+  if (opt_data.list.length > 0) {
+    var param19 = '<ul' + ((opt_data.listClass) ? ' class="' + soy.$$escapeHtml(opt_data.listClass) + '"' : '') + '>';
+    var linkList27 = opt_data.list;
+    var linkListLen27 = linkList27.length;
+    for (var linkIndex27 = 0; linkIndex27 < linkListLen27; linkIndex27++) {
+      var linkData27 = linkList27[linkIndex27];
+      param19 += navlinks.templates.appswitcher_old.applicationsItem(soy.$$augmentMap(linkData27, {showDescription: opt_data.showDescription}));
+    }
+    param19 += '</ul>';
+    output += aui.dropdown2.section({content: param19});
+  }
+  return output;
+};
+if (goog.DEBUG) {
+  navlinks.templates.appswitcher_old.applicationsSection.soyTemplateName = 'navlinks.templates.appswitcher_old.applicationsSection';
+}
+
+
+navlinks.templates.appswitcher_old.applicationsItem = function(opt_data, opt_ignored) {
+  return '<li class="nav-link' + ((opt_data.self) ? ' nav-link-local' : '') + '"><a href="' + soy.$$escapeHtml(opt_data.link) + '" class="aui-dropdown2-radio ' + ((opt_data.self) ? 'aui-dropdown2-checked' : '') + '" title="' + soy.$$escapeHtml(opt_data.link) + '"><span class="nav-link-label">' + soy.$$escapeHtml(opt_data.label) + '</span>' + ((opt_data.showDescription && opt_data.description) ? '<span class="nav-link-description">' + soy.$$escapeHtml(opt_data.description) + '</span>' : '') + '</a></li>';
+};
+if (goog.DEBUG) {
+  navlinks.templates.appswitcher_old.applicationsItem.soyTemplateName = 'navlinks.templates.appswitcher_old.applicationsItem';
+}
+
+
+navlinks.templates.appswitcher_old.adminSection = function(opt_data, opt_ignored) {
+  return '' + aui.dropdown2.section({content: '<ul class="nav-links"><li><a class="nav-link-edit-wrapper" href="' + soy.$$escapeHtml(opt_data.adminLink) + '"><span class="nav-link-edit">' + soy.$$filterNoAutoescape('Configure\x26hellip;') + '</span></a></li></ul>'});
+};
+if (goog.DEBUG) {
+  navlinks.templates.appswitcher_old.adminSection.soyTemplateName = 'navlinks.templates.appswitcher_old.adminSection';
+}
+
+
+navlinks.templates.appswitcher_old.error = function(opt_data, opt_ignored) {
+  return '<div class="app-switcher-error">' + soy.$$filterNoAutoescape('Something went wrong, please \x3cspan class\x3d\x22app-switcher-retry\x22\x3etry again\x3c/span\x3e.') + '</div>';
+};
+if (goog.DEBUG) {
+  navlinks.templates.appswitcher_old.error.soyTemplateName = 'navlinks.templates.appswitcher_old.error';
+}
+
+
+navlinks.templates.appswitcher_old.loading = function(opt_data, opt_ignored) {
+  return '<div class="app-switcher-loading">' + soy.$$filterNoAutoescape('Loading\x26hellip;') + '</div>';
+};
+if (goog.DEBUG) {
+  navlinks.templates.appswitcher_old.loading.soyTemplateName = 'navlinks.templates.appswitcher_old.loading';
+}
+
+
+navlinks.templates.appswitcher_old.trigger = function(opt_data, opt_ignored) {
+  return '<span class="aui-icon aui-icon-small aui-iconfont-appswitcher">' + soy.$$escapeHtml('Linked Applications') + '</span>';
+};
+if (goog.DEBUG) {
+  navlinks.templates.appswitcher_old.trigger.soyTemplateName = 'navlinks.templates.appswitcher_old.trigger';
+}
+
+
+navlinks.templates.appswitcher_old.switcher = function(opt_data, opt_ignored) {
+  var output = '';
+  if (true) {
+    var loadingContent__soy81 = '' + navlinks.templates.appswitcher_old.loading(null);
+    var triggerContent__soy83 = '' + navlinks.templates.appswitcher_old.trigger(null);
+    output += aui.dropdown2.dropdown2({menu: {id: 'app-switcher', content: loadingContent__soy81, extraClasses: 'aui-style-default', extraAttributes: {'data-environment': {}, 'data-is-switcher': 'true'}}, trigger: {showIcon: false, content: triggerContent__soy83, extraClasses: 'app-switcher-trigger', extraAttributes: {href: '#app-switcher'}}});
+  }
+  return output;
+};
+if (goog.DEBUG) {
+  navlinks.templates.appswitcher_old.switcher.soyTemplateName = 'navlinks.templates.appswitcher_old.switcher';
+}
+
+
+navlinks.templates.appswitcher_old.suggestionApp = function(opt_data, opt_ignored) {
+  var output = '';
+  var href__soy89 = opt_data.isBillingSystemEnabled == true ? opt_data.suggestionApp.billingSystemDiscoveryUrl : opt_data.suggestionApp.discoveryUrl;
+  output += '<li class="app-discovery-suggestion-app"><a id="' + soy.$$escapeHtml(opt_data.suggestionApp.appName) + '" href="' + soy.$$escapeHtml(href__soy89) + '" class="app-discovery-link aui-icon-container app-discovery-' + soy.$$escapeHtml(opt_data.suggestionApp.appName) + '-product-icon" title="' + soy.$$escapeHtml(href__soy89) + '" target="_blank"/><div class="app-discovery-small">' + soy.$$escapeHtml(opt_data.suggestionApp.appDesc) + '</div></li>';
+  return output;
+};
+if (goog.DEBUG) {
+  navlinks.templates.appswitcher_old.suggestionApp.soyTemplateName = 'navlinks.templates.appswitcher_old.suggestionApp';
+}
+
+
+navlinks.templates.appswitcher_old.suggestionApps = function(opt_data, opt_ignored) {
+  return '<ul class=\'nav-links suggestion-apps\'><li><span class=\'app-discovery-suggest-title nav-link-label\'><h6>' + soy.$$escapeHtml('Try other Atlassian apps') + '</h6></span></li></ul><div class=\'buttons-container app-discovery-suggest-apps-buttons\'><div class=\'buttons\'><button class=\'aui-button aui-button-link app-discovery-cancel-button\' name=\'cancel\' accesskey=\'c\' href=\'#\'>' + soy.$$escapeHtml('Don\x27t show this again') + '</button></div></div>';
+};
+if (goog.DEBUG) {
+  navlinks.templates.appswitcher_old.suggestionApps.soyTemplateName = 'navlinks.templates.appswitcher_old.suggestionApps';
+}
+;
+;
+/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:time-zone-onboarding', location = '/static/bitbucket/internal/feature/timezone/onboarding/timezone-onboarding.js' */
+define("bitbucket/internal/feature/timezone/onboarding/timezone-onboarding","module exports aui jquery bitbucket/util/navbuilder bitbucket/internal/feature/alerts/alerts bitbucket/internal/model/page-state bitbucket/internal/util/ajax bitbucket/internal/util/client-storage bitbucket/internal/util/events bitbucket/internal/util/feature-enabled".split(" "),function(p,b,q,r,t,u,v,w,x,y,z){function c(a){A.default.trigger("bitbucket.internal.ui.time.zone.onboarding."+a)}function B(){c("changed");g()}function C(){var a=
+d.default.getItem("bitbucket_known_time_zone_offset");return a?String(a):null}function D(){var a=h.default.getCurrentUser();return a?k.default.rest({url:e.default.rest().users(a.getSlug()).addPathComponents("settings").build(),type:"GET",statusCode:{"*":!1}}).then(function(a){a=String(a.USER_BROWSER_TIME_ZONE_OFFSET);d.default.setItem("bitbucket_known_time_zone_offset",a);return void 0!==a&&null!==a?a:null}):l.default.Deferred().reject().promise()}function m(a){return a!==String((new Date).getTimezoneOffset())}
+function g(){var a={};a.USER_BROWSER_TIME_ZONE_OFFSET=String((new Date).getTimezoneOffset());return k.default.rest({url:e.default.rest().users(h.default.getCurrentUser().getSlug()).addPathComponents("settings").build(),type:"POST",data:a,statusCode:{"*":!1}}).done(function(){d.default.setItem("bitbucket_known_time_zone_offset",a.USER_BROWSER_TIME_ZONE_OFFSET)})}Object.defineProperty(b,"__esModule",{value:!0});var f=babelHelpers.interopRequireDefault(q),l=babelHelpers.interopRequireDefault(r),e=babelHelpers.interopRequireDefault(t),
+h=babelHelpers.interopRequireDefault(v),k=babelHelpers.interopRequireDefault(w),d=babelHelpers.interopRequireDefault(x),A=babelHelpers.interopRequireDefault(y),n;babelHelpers.interopRequireDefault(z).default.getFromProvider("user.time.zone.onboarding").done(function(a){n=a});b.default={onReady:function(){if(n&&Number((new Date).getTimezoneOffset())!==Number((0,l.default)("#content").attr("data-timezone"))&&m(C()))return D().done(function(a){m(a)&&(c("shown"),(0,u.add)({title:"Let\u0027s synchronize watches",
+description:"It looks like your Bitbucket and browser time zones don\u0027t match.",closeable:!0,closeCallback:function(){c("dismissed");g()},anchorText:"Change time zone",anchorLink:e.default.newBuilder("account").build(),anchorCallback:B,type:"info"}))})}};p.exports=b["default"]});;
+;
+/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:time-zone-onboarding', location = '/static/bitbucket/internal/feature/timezone/onboarding/timezone-onboarding-init.js' */
+jQuery(function(){require("bitbucket/internal/feature/timezone/onboarding/timezone-onboarding").onReady()});;
+;
+/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:integrity-check-alert', location = '/static/bitbucket/internal/feature/integrity/alert.js' */
+define("bitbucket/internal/feature/integrity/alert",["exports","aui","bitbucket/util/navbuilder","bitbucket/internal/feature/alerts/alerts","bitbucket/internal/util/ajax"],function(a,f,g,h,k){Object.defineProperty(a,"__esModule",{value:!0});a.init=function(a){if(a&&0!==a.length){var b=void 0,c=void 0;switch(a[0]){case "acknowledged":return;case "started":c=d.INFO;b=e.STARTED;break;case "inconsistency":if("started"===a[1])c=d.WARN,b=e.INCONSISTENT;else return;break;case "completed":"inconsistency"===
+a[1]?(c=d.WARN,b=e.INCONSISTENT_COMPLETED):(c=d.INFO,b=e.COMPLETED);break;default:console.warn("Could not identify integrity checks state.",a);return}a=babelHelpers.extends({type:c,closeCallback:function(){l.default.rest({url:m.default.newBuilder("admin").addPathComponents("integrity-check","acknowledge").build(),type:"POST"})}},b);(0,h.add)(a);return a}};a=babelHelpers.interopRequireDefault(f);var m=babelHelpers.interopRequireDefault(g),l=babelHelpers.interopRequireDefault(k),d={INFO:"info",WARN:"warning"},
+e={STARTED:{closeable:!1,title:"Integrity checks are running",description:"Check the application logs for further information."},INCONSISTENT:{closeable:!1,title:"Integrity checks are running and some inconsistencies were found",description:"Check the application logs for further information."},COMPLETED:{closeable:!0,title:"Integrity checks are complete",
+description:"Check the application logs for further information."},INCONSISTENT_COMPLETED:{closeable:!0,title:"Integrity checks are complete and some inconsistencies were found",description:"Check the application logs for information on any restore actions carried out."}}});;
+;
+/* module-key = 'com.atlassian.bitbucket.server.bitbucket-web:integrity-check-alert', location = '/static/bitbucket/internal/feature/integrity/alert.soy' */
+// This file was automatically generated from alert.soy.
+// Please don't edit this file by hand.
+
+/**
+ * @fileoverview Templates in namespace bitbucket.notification.alert.
+ */
+
+if (typeof bitbucket == 'undefined') { var bitbucket = {}; }
+if (typeof bitbucket.notification == 'undefined') { bitbucket.notification = {}; }
+if (typeof bitbucket.notification.alert == 'undefined') { bitbucket.notification.alert = {}; }
+
+
+bitbucket.notification.alert.bitbucketIntegrityCheckRunning = function(opt_data, opt_ignored) {
+  opt_data = opt_data || {};
+  return '' + ((opt_data.integrityCheckState) ? '<script type="text/javascript">require(\'bitbucket/internal/feature/integrity/alert\').init(' + soy.$$filterNoAutoescape(JSON.stringify(opt_data.integrityCheckState).replace(/\//g, '\\/')) + ');<\/script>' : '');
+};
+if (goog.DEBUG) {
+  bitbucket.notification.alert.bitbucketIntegrityCheckRunning.soyTemplateName = 'bitbucket.notification.alert.bitbucketIntegrityCheckRunning';
+}
+;
+;
+/* module-key = 'com.atlassian.plugins.atlassian-nps-plugin:nps-amd-shims', location = '/js/amd-shims/ajs.js' */
+define("atlassian-nps-plugin/js/amd-shims/ajs",function(){return AJS});;
+;
+/* module-key = 'com.atlassian.plugins.atlassian-nps-plugin:nps-amd-shims', location = '/js/amd-shims/templates.js' */
+define("atlassian-nps-plugin/js/amd-shims/templates",function(){return NPS.Templates});;
+;
+/* module-key = 'com.atlassian.plugins.atlassian-nps-plugin:nps-amd-shims', location = '/js/amd-shims/wrm.js' */
+define("atlassian-nps-plugin/js/amd-shims/wrm",function(){return WRM});;
+;
+/* module-key = 'com.atlassian.plugins.atlassian-nps-plugin:nps-acknowledgement-resources', location = 'js/nps/server/nps-initialiser.js' */
+require(["jquery","atlassian-nps-plugin/js/amd-shims/ajs","atlassian-nps-plugin/js/amd-shims/wrm"],function(d,c,b){c.toInit(function(){var e=b.data.claim("com.atlassian.plugins.atlassian-nps-plugin:nps-acknowledgement-resources.analytics-enabled-data-provider");if(e==="true"){a()}else{c.bind("analytics-policy-acknowledged",function(){a()})}});function a(){b.require("wr!com.atlassian.plugins.atlassian-nps-plugin:nps-acknowledgement-flag-resources-async",function(){require(["atlassian-nps-plugin/js/nps/server/acknowledgement-flag","atlassian-nps-plugin/js/nps/product"],function(k,f){var j=true;if(!f.allowDisplayAcknowledgementFlag()){return}var i=localStorage.getItem("nps-testing")==="true";if(typeof f.enableABTesting==="function"&&f.enableABTesting()){var h=[0,1,2,3,4,5,6,7];var e=b.data.claim("com.atlassian.plugins.atlassian-nps-plugin:nps-acknowledgement-resources.sen-data-provider");var g=parseInt(e.slice(-1));j=h.indexOf(g)>=0}if(j||i){k.displayNpsAcknowledgementFlag()}})})}});;
+;
+/* module-key = 'com.atlassian.plugins.atlassian-nps-plugin:nps-acknowledgement-resources', location = 'js/nps/product/bitbucket.js' */
+define("atlassian-nps-plugin/js/nps/product",["atlassian-nps-plugin/js/amd-shims/ajs"],function(a){return{getProductName:function(){return"Bitbucket"},setBindings:function(){return false},getUserKey:function(){return a.$(".user-dropdown #current-user").data("username")},isServerMode:function(){return true},allowDisplayNotification:function(){return !this.isOnboardingFlow()},getSurveyTrigger:function(){return".user-dropdown-trigger"},enableABTesting:function(){if(a.DarkFeatures&&a.DarkFeatures.isEnabled("nps.experiment.enabled.by.sen")!==undefined){return a.DarkFeatures.isEnabled("nps.experiment.enabled.by.sen")}return true},allowDisplayAcknowledgementFlag:function(){return !this.isOnboardingFlow()},isOnboardingFlow:function(){var b=window.location;return/\/(getting-started|upgrade-onboarding)$/.test(b.href)}}});;
+;
+/* module-key = 'com.atlassian.bitbucket.server.bitbucket-page-data:page-data-loader', location = '/static/lib/page-data-loader.js' */
+var _PageDataPlugin=function(){function k(){e.each(f,function(a,d){e.each(d,function(b,c){c.reject(h[a]?Error("Provider "+a+" not included with context "+b):Error("Provider "+a+" not included on page."))})})}var l=Object.prototype.hasOwnProperty,e=jQuery,h={},f={};e(document).ready(k);return{load:function(a,d){for(var b in d)if(l.call(d,b)){var c=f[b]||(f[b]={}),c=c[a]||(c[a]=e.Deferred()),g=h[b]||(h[b]={});g[a]=d[b];if("pending"!==c.state())throw Error("Attempt to set context "+a+" for plugin key "+
+b+" multiple times.");c.resolve(g[a])}},data:h,ready:function(a,d){var b=Array.prototype.slice.call(arguments,2),c=f[a]||(f[a]={}),g=c[d]||(c[d]=e.Deferred());b.forEach(function(a){g.done(a)});return g},_domReady:k}}();;
+;
+/* module-key = 'com.atlassian.support.stp:stp-license-status-resources', location = 'js/stp-licenseStatus.js' */
+(function(b){var a={destroyBanner:function(){AJS.$("#stp-licenseStatus-banner").slideUp(function(){AJS.$("#stp-licenseStatus-banner").remove();AJS.trigger("stp-licenseStatus-banner:destroyed")})},remindMeNever:function(c){c.preventDefault();AJS.$.ajax({type:"POST",async:true,headers:{"X-Atlassian-Token":"no-check"},url:AJS.contextPath()+"/rest/stp/1.0/license/remindMeNever"});a.destroyBanner()},remindMeLater:function(){AJS.$.ajax({type:"POST",async:true,headers:{"X-Atlassian-Token":"no-check"},url:AJS.contextPath()+"/rest/stp/1.0/license/remindMeLater"});a.destroyBanner()},createBanner:function(d,f){var c="\n<div id='stp-licenseStatus-banner' class='aui-message warning'>\n";var g="https://www.atlassian.com/purchase/renew?utm_source=STP&utm_medium=renewals_reminder&utm_campaign=renewals_reminder";if(d===0){c+=AJS.format("Your {0} maintenance expires today. For continued access to support and updates, {1}renew your maintenance{2}. {3}Remind me later{4} or {5}never remind me again{6}.",f,"<a id='stp-licenseStatus-renewNow' target='_blank' href=\""+g+'">',"</a>","<a id='stp-licenseStatus-remindMeLater' href='#'>","</a>","<a id='stp-licenseStatus-remindMeNever' href='#'>","</a>");c+="<span class ='aui-icon icon-warning'></span>\n</div>"}else{c+=AJS.format("Your {0} maintenance expires in {1} days. For continued access to support and updates, {2}renew your maintenance{3}. {4}Remind me later{5} or {6}never remind me again{7}.",f,d,"<a id='stp-licenseStatus-renewNow' target='_blank' href=\""+g+'">',"</a>","<a id='stp-licenseStatus-remindMeLater' href='#'>","</a>","<a id='stp-licenseStatus-remindMeNever' href='#'>","</a>");c+="<span class ='aui-icon icon-warning'></span>\n</div>"}var e=b("#stp-licenseStatus-banner-container");if(e.length===0){e=b(document.body)}e.prepend(c);AJS.$("#stp-licenseStatus-remindMeNever").click(a.remindMeNever);AJS.$("#stp-licenseStatus-remindMeLater").click(function(h){h.preventDefault();a.remindMeLater()});AJS.$("#stp-licenseStatus-renewNow").click(function(h){a.remindMeLater()});AJS.trigger("stp-licenseStatus-banner:created")}};AJS.$(document).ready(function(){var i=AJS.$("meta[name='stp-license-days-to-expiry']");var c=AJS.$("meta[name='stp-license-is-admin']");var f=AJS.$("meta[name='stp-license-should-keep-banner-hidden']");var h=AJS.$("meta[name='stp-license-product-name']");var g={};var k=b.Deferred();var d=i.length&&c.length&&f.length&&h.length;if(d){var l=i.attr("content")||-1;g.daysToExpiry=parseInt(l);g.shouldKeepBannerHidden=f.attr("content")==="true";g.isAdmin=c.attr("content")==="true";g.productName=h.attr("content");k.resolve(g)}else{b.ajax({type:"GET",dataType:"json",async:true,url:AJS.contextPath()+"/rest/stp/1.0/license/status",headers:{"X-Atlassian-Token":"no-check"},statusCode:{200:function(m){k.resolve(b.extend(m,{viaRest:true}))},204:function(){k.reject("204. No reason to display banner.")}},error:function(){k.reject("Error returned from call to license/status")}})}k.done(function j(n){var m=l<30&&l>=0;if(n.viaRest||(n.isAdmin&&m&&!n.shouldKeepBannerHidden)){b("#stp-licenseStatus-banner").length||a.createBanner(n.daysToExpiry,n.productName)}}).fail(function e(m){console.log("Not displaying license banner: "+m)})})})(AJS.$);;
+;
+/* module-key = 'com.atlassian.bitbucket.server.bitbucket-client-web-fragments:web-fragment-manager', location = '/static/bitbucket/internal/util/web-fragment-manager.js' */
+window.WebFragments=function(){function x(a){for(var b=Array.prototype.slice.call(arguments,1),c=void 0,f=b.length,c=0;c<f;c++){var g=b[c];if(g)for(var q=p(g),h=void 0,w=q.length,h=0;h<w;h++){var d=q[h];a[d]=g[d]}}return a}function t(a,b){return"function"===typeof a?a(x({},b)):a}function e(a){var b=l[a];return function(c,f){var g=b[c],q=[];if(g&&g.length)for(var h=void 0,w=g.length,h=0;h<w;h++){var d;d=g[h];var m=f,r=void 0,n=void 0,k=void 0,e=void 0,l={type:a.toUpperCase()};if(u.call(d,"serverCondition")&&
+!d.serverCondition)d=null;else if(m=x({},m,d.serverContext,d.params),u.call(d,"condition")&&!t(d.condition,m))d=null;else{d["context-provider"]&&"function"===typeof d["context-provider"]&&(m=t(d["context-provider"],m));r=p(d);k=0;for(e=r.length;k<e;k++)n=r[k],/con(dition|text-provider)|params/.test(n)||(l[n]=t(d[n],m));if(d.params)for(var v=l.params={},r=p(d.params),k=0,e=r.length;k<e;k++)n=r[k],v[n]=t(d.params[n],m);d=l}d&&q.push(d)}-1===c.indexOf("bitbucket.internal.")&&(new RegExp("[\\?\x26]web\\."+
+a+"s(\x3d|\x26|$)")).test(window.location.search)&&q.push(B[a](c,f));return q}}function v(a){var b=l[a];return function(a){if(!a)throw Error("No descriptor provided");if("string"!==typeof a.location)throw Error("No location provided, or location was not a string.");if("string"!==typeof a.completeModuleKey)throw Error("No completeModuleKey provided, or completeModuleKey was not a string.");y(a);b[a.location]||(b[a.location]=[]);b[a.location].push(a);b[a.location].sort(z)}}function z(a,b){return(0<=
+a.weight?a.weight:1E3)-(0<=b.weight?b.weight:1E3)}var u=Object.prototype.hasOwnProperty,l={item:{},section:{},panel:{}},p=function(a){var b=[],c;for(c in a)u.call(a,c)&&b.push(c);return b},y=void 0,y=window._PageDataPlugin&&_PageDataPlugin.ready?function(a){_PageDataPlugin.ready(a.completeModuleKey,a.location,function(b){u.call(b,"serverCondition")&&(a.serverCondition=b.serverCondition);u.call(b,"serverContext")&&(a.serverContext=b.serverContext)})}:function(a){return a},B={item:function(a,b){return{url:"#example-web-item-url",
+pluginKey:"org.example.plugins",moduleKey:"example-web-item",completeModuleKey:"org.example.plugins:example-web-item",linkText:"Client Web Item: "+a,hasTooltip:!0,tooltip:"Client Context Items: "+p(b).join(", "),hasIcon:!1,iconUrl:null,iconWidth:0,iconHeight:0,styleClass:"plugin-point",linkId:null,description:null,params:{},type:"ITEM",weight:1E3}},section:function(a,b){return{name:"example-web-section",key:"example-web-section",location:a,labelText:"Client Web Section: "+a,type:"SECTION",params:{},
+weight:1E3}},panel:function(a,b){return{view:'\x3cdiv class\x3d"plugin-point web-panel"\x3e\x3cstrong\x3eClient Web Panel\x3c/strong\x3e: '+a+"\x3cbr /\x3e\x3cstrong\x3eClient Context Items\x3c/strong\x3e: "+p(b).join(", ")+"\x3c/div\x3e",weight:1E3}}},A=e("panel");e("item");return{getWebItems:e("item"),getWebSections:e("section"),getWebPanels:function(a,b){for(var c=A(a,b),f=void 0,g=c.length,f=0;f<g;f++)c[f]=c[f].view;return c},getWebFragmentDescriptors:function(a,b){var c=l[b];return(c=c&&c[a])&&
+c.slice()},addWebItemDescriptor:v("item"),addWebSectionDescriptor:v("section"),addWebPanelDescriptor:v("panel"),getWebFragments:function(a,b,c){"string"!==typeof b&&(c=b,b=a);a=this.getWebItems(a,c);b=this.getWebSections(b,c);b=a.concat(b);b.sort(z);return b},_getValue:t,_formatI18n:function(a,b,c){var f=(a===b?c:a)||b||c||"";return function(a){var b=[],c=p(a);c.sort();for(var e=void 0,d=c.length,e=0;e<d;e++)b.push(a[c[e]]);return AJS.format(f,b)}},_getWebPanels:A}}();
+define("bitbucket/internal/util/web-fragment-manager",function(){return window.WebFragments});;
